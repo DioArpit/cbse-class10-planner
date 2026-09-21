@@ -1,0 +1,2535 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#121016" id="metaThemeColor" />
+  <meta name="description" content="CBSE Class 10 Topper Command Center - Arpit AIR 1 Edition. 108 Chapters Syllabus Checklist, Focus Arboretum, Pomodoro & Leaderboard." />
+  <title>CBSE Class 10 Topper Command Center • Arpit AIR 1 Edition</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Press Start 2P & Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --md-primary: #5B40A8;
+      --md-on-primary: #FFFFFF;
+      --md-primary-container: #E7DEFF;
+      --md-on-primary-container: #17004B;
+      --md-surface: #FAF8FD;
+      --md-surface-dim: #F2EEF8;
+      --md-card-bg: #FFFFFF;
+      --md-surface-variant: #E5E0EC;
+      --md-on-surface: #1B1A1E;
+      --md-on-surface-variant: #48454E;
+      --md-outline: #78757F;
+      --md-outline-variant: #CBC4CF;
+      --md-chip-bg: #F0EAF5;
+      --md-glow: rgba(91, 64, 168, 0.15);
+      --md-elevation-1: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.08);
+      --md-elevation-2: 0 6px 16px -2px rgba(91,64,168,0.1), 0 2px 6px -1px rgba(0,0,0,0.06);
+    }
+
+    html.dark {
+      --md-primary: #CFBCFF;
+      --md-on-primary: #2E156D;
+      --md-primary-container: #442B83;
+      --md-on-primary-container: #E7DEFF;
+      --md-surface: #121016;
+      --md-surface-dim: #191620;
+      --md-card-bg: #201D27;
+      --md-surface-variant: #49454F;
+      --md-on-surface: #E6E1E8;
+      --md-on-surface-variant: #CAC4CE;
+      --md-outline: #938F99;
+      --md-outline-variant: #3B3842;
+      --md-chip-bg: #2B2636;
+      --md-glow: rgba(207, 188, 255, 0.15);
+      --md-elevation-1: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
+      --md-elevation-2: 0 6px 18px -2px rgba(0,0,0,0.6), 0 2px 6px -1px rgba(0,0,0,0.4);
+    }
+
+    html.amoled {
+      --md-primary: #38BDF8;
+      --md-on-primary: #000000;
+      --md-primary-container: #0C4A6E;
+      --md-on-primary-container: #BAE6FD;
+      --md-surface: #000000;
+      --md-surface-dim: #050505;
+      --md-card-bg: #0A0A0C;
+      --md-surface-variant: #18181B;
+      --md-on-surface: #F4F4F5;
+      --md-on-surface-variant: #A1A1AA;
+      --md-outline: #71717A;
+      --md-outline-variant: #27272A;
+      --md-chip-bg: #121216;
+      --md-glow: rgba(56, 189, 248, 0.2);
+      --md-elevation-1: 0 0 0 1px #27272A;
+      --md-elevation-2: 0 0 0 1px #3F3F46, 0 8px 24px -4px rgba(0,0,0,0.9);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--md-surface);
+      color: var(--md-on-surface);
+      transition: background-color 0.25s ease, color 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .selectable-text { user-select: text; }
+    .font-retro { font-family: 'Press Start 2P', monospace; }
+    .font-code { font-family: 'Space Mono', monospace; }
+
+    .svg-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.15rem;
+      height: 1.15rem;
+      flex-shrink: 0;
+      fill: currentColor;
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--md-outline-variant); border-radius: 9999px; }
+
+    .m3-card {
+      background-color: var(--md-card-bg);
+      border-radius: 20px;
+      box-shadow: var(--md-elevation-1);
+      transition: transform 0.18s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.18s cubic-bezier(0.2, 0, 0, 1), border-color 0.18s ease;
+    }
+    .m3-card:hover {
+      box-shadow: var(--md-elevation-2);
+      transform: translateY(-1.5px);
+    }
+
+    .dropdown-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+      opacity: 0;
+    }
+    .dropdown-content > div { overflow: hidden; }
+    .dropdown-content.open { grid-template-rows: 1fr; opacity: 1; }
+
+    .chevron-icon { transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1); }
+    .chevron-icon.rotated { transform: rotate(180deg); }
+
+    .retro-crt-screen {
+      background: #080D0A;
+      border: 3px solid #1B3824;
+      box-shadow: inset 0 0 45px rgba(16, 185, 129, 0.18), 0 10px 30px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .retro-crt-screen::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+      z-index: 5;
+      background-size: 100% 3px, 3px 100%;
+      pointer-events: none;
+    }
+
+    @keyframes swayTree {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(2.5deg); }
+    }
+    .tree-sway {
+      transform-origin: bottom center;
+      animation: swayTree 3.2s ease-in-out infinite;
+    }
+
+    #confettiCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body class="h-screen w-screen overflow-hidden flex flex-col md:flex-row">
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- LEFT NAVIGATION DRAWER -->
+  <aside id="sidebar" class="w-full md:w-72 lg:w-80 flex-shrink-0 flex flex-col justify-between border-b md:border-b-0 md:border-r border-[var(--md-outline-variant)]/50 p-3 md:p-4 z-30 transition-all duration-300" style="background-color: var(--md-surface-dim);">
+    <div class="flex flex-col h-full justify-between overflow-hidden">
+      <div>
+        
+        <!-- Profile & Handle Banner -->
+        <div onclick="openProfileModal()" class="cursor-pointer group flex items-center justify-between gap-3 mb-2.5 p-2.5 rounded-2xl hover:bg-[var(--md-chip-bg)] transition-all border border-transparent hover:border-[var(--md-outline-variant)]/50" title="Click to customize profile & User ID">
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <img id="userAvatarImg" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=140&q=80" alt="Avatar" class="w-11 h-11 rounded-2xl object-cover border-2 border-[var(--md-primary)] shadow-md group-hover:scale-105 transition-transform" />
+              <span class="absolute -bottom-1 -right-1 w-5 h-5 bg-amber-400 text-black font-black text-[9px] rounded-full flex items-center justify-center border-2 border-[var(--md-card-bg)] shadow-sm">
+                ★
+              </span>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h1 id="userNameDisplay" class="text-xs sm:text-sm font-black tracking-tight text-[var(--md-on-surface)] leading-tight truncate max-w-[120px]">
+                  Topper Arpit
+                </h1>
+                <span id="userRankBadge" class="px-1.5 py-0.2 rounded-md text-[8px] font-black uppercase bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 tracking-wider">AIR 1</span>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-[10px] font-bold text-[var(--md-outline)] mt-0.5">
+                <span id="userUidBadge" class="font-code text-[9px] px-1.5 py-0.5 rounded bg-[var(--md-chip-bg)] text-[var(--md-primary)]">ID: #ARPIT_AIR1</span>
+                <span>•</span>
+                <span id="userScoreDisplay" class="text-amber-500 font-extrabold">0 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-1.5 rounded-xl bg-[var(--md-chip-bg)] group-hover:bg-[var(--md-primary)] group-hover:text-white transition-colors text-[var(--md-outline)]">
+            <svg class="svg-icon w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+          </div>
+        </div>
+
+        <!-- Real Calendar Streak & Global Status Widget -->
+        <div class="mb-3 grid grid-cols-2 gap-2 text-xs font-semibold">
+          <div class="p-2 rounded-2xl border border-[var(--md-outline-variant)]/40 flex items-center gap-2" style="background-color: var(--md-card-bg);">
+            <div class="w-7 h-7 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center text-sm">🔥</div>
+            <div>
+              <div class="text-[8px] uppercase font-black text-[var(--md-outline)]">Daily Streak</div>
+              <div class="font-black text-[11px] text-[var(--md-on-surface)]"><span id="streakCount">1</span> Days</div>
+            </div>
+          </div>
+          
+          <div onclick="switchMainView('leaderboard')" class="p-2 rounded-2xl border border-[var(--md-outline-variant)]/40 flex items-center gap-2 cursor-pointer hover:border-[var(--md-primary)] transition-colors" style="background-color: var(--md-card-bg);" title="View Global & Squad Leaderboards">
+            <div class="w-7 h-7 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-sm">🏆</div>
+            <div>
+              <div class="text-[8px] uppercase font-black text-[var(--md-outline)]">Board Rank</div>
+              <div class="font-black text-[11px] text-indigo-600 dark:text-indigo-400 flex items-center gap-0.5">
+                <span id="sideBoardRankDisplay">#1 Global</span>
+                <span class="text-[9px]">↗</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs Selector -->
+        <div class="grid grid-cols-4 gap-1 p-1 rounded-2xl mb-3" style="background-color: var(--md-chip-bg);">
+          <button id="viewTabSyllabus" onclick="switchMainView('syllabus')" class="py-2 px-1 rounded-xl text-[10px] font-black transition-all flex flex-col sm:flex-row items-center justify-center gap-1 shadow-sm text-[var(--md-on-primary)]" style="background-color: var(--md-primary);">
+            <svg class="svg-icon w-3 h-3" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+            <span>Syllabus</span>
+          </button>
+          <button id="viewTabPomodoro" onclick="switchMainView('pomodoro')" class="py-2 px-1 rounded-xl text-[10px] font-black transition-all flex flex-col sm:flex-row items-center justify-center gap-1 text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)]">
+            <svg class="svg-icon w-3 h-3 text-emerald-500" viewBox="0 0 24 24"><path d="M17 12h2L12 2 5.05 12H7l-3.9 6h6.92v4h3.96v-4H21z"/></svg>
+            <span>Garden</span>
+          </button>
+          <button id="viewTabLeaderboard" onclick="switchMainView('leaderboard')" class="py-2 px-1 rounded-xl text-[10px] font-black transition-all flex flex-col sm:flex-row items-center justify-center gap-1 text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)]">
+            <svg class="svg-icon w-3 h-3 text-indigo-500" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            <span>Ranks</span>
+          </button>
+          <button id="viewTabAchievements" onclick="switchMainView('achievements')" class="py-2 px-1 rounded-xl text-[10px] font-black transition-all flex flex-col sm:flex-row items-center justify-center gap-1 text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)]">
+            <svg class="svg-icon w-3 h-3 text-amber-500" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.93V18h-2v-1.07c-2.83-.48-5-2.94-5-5.93h2c0 2.21 1.79 4 4 4s4-1.79 4-4h2c0 2.99-2.17 5.45-5 5.93zM12 14c-1.66 0-3-1.34-3-3V5h6v6c0 1.66-1.34 3-3 3z"/></svg>
+            <span>Prestige</span>
+          </button>
+        </div>
+
+        <!-- Subject Selector Rail (Total 108 Units) -->
+        <div id="subjectRailGroup" class="flex flex-col gap-1 overflow-y-auto max-h-[36vh] pr-1">
+          <div class="flex items-center justify-between px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-[var(--md-outline)]">
+            <span>CBSE 10th (108 Units)</span>
+            <button onclick="filterStarredOnly()" id="starFilterBtn" class="hover:text-amber-500 flex items-center gap-1 text-[9px] transition-colors" title="Filter Priority Chapters">
+              <svg class="svg-icon w-3 h-3 text-amber-500" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg> Priority
+            </button>
+          </div>
+
+          <button onclick="selectSubject('ALL')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="ALL">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-[var(--md-primary)]" viewBox="0 0 24 24"><path d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/></svg> All 7 Subjects
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">108</span>
+          </button>
+
+          <button onclick="selectSubject('Maths')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="Maths">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-blue-500" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-6 13h-2v-2h2v2zm0-4h-2V7h2v5zm4 4h-2v-2h2v2zm0-4h-2V7h2v5zm-8 4H7v-2h2v2zm0-4H7V7h2v5z"/></svg> Mathematics
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">14</span>
+          </button>
+
+          <button onclick="selectSubject('Science')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="Science">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24"><path d="M13 11.33L18 18H6l5-6.67V6h2v5.33zm-4.42-7.33l-1.41 1.41L9.17 7.41 7.76 8.83l1.41 1.41 1.42-1.42 1.41 1.42 1.42-1.42-1.42-1.41 1.42-1.42-1.42-1.41-1.41 1.41-1.42-1.41z"/></svg> Science
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">13</span>
+          </button>
+
+          <button onclick="selectSubject('Social Science')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="Social Science">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-amber-500" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Social Science
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">21</span>
+          </button>
+
+          <button onclick="selectSubject('English')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="English">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-indigo-500" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg> English Lit.
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">28</span>
+          </button>
+
+          <button onclick="selectSubject('Hindi B')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="Hindi B">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-orange-500" viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg> Hindi Course B
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">17</span>
+          </button>
+
+          <button onclick="selectSubject('AI 417')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="AI 417">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-violet-500" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg> AI (417)
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">12</span>
+          </button>
+
+          <button onclick="selectSubject('Painting')" class="subject-nav-btn w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between transition-all" data-subject="Painting">
+            <span class="flex items-center gap-2">
+              <svg class="svg-icon w-3.5 h-3.5 text-rose-500" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.59 10.56 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg> Painting (049)
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-extrabold bg-[var(--md-chip-bg)]">3</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Arboretum Mini-Card -->
+      <div class="mt-2 p-2.5 rounded-2xl border border-[var(--md-outline-variant)]/40" style="background-color: var(--md-card-bg);">
+        <div class="flex items-center justify-between text-xs font-bold text-[var(--md-on-surface)]">
+          <span class="flex items-center gap-1.5">
+            <svg class="svg-icon w-3.5 h-3.5 text-emerald-500" viewBox="0 0 24 24"><path d="M17 12h2L12 2 5.05 12H7l-3.9 6h6.92v4h3.96v-4H21z"/></svg> Retro Arboretum
+          </span>
+          <span id="sideForestCount" class="px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">0 Grown</span>
+        </div>
+        <div class="mt-1 text-[10px] text-[var(--md-on-surface-variant)] flex items-center justify-between font-medium">
+          <span>Total Focus:</span>
+          <strong id="sideFocusMinutes" class="text-[var(--md-on-surface)] font-bold">0 mins</strong>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="flex-1 h-full overflow-y-auto flex flex-col relative" id="mainScrollArea">
+    
+    <!-- TOP APP BAR -->
+    <header class="sticky top-0 z-20 px-3 sm:px-6 py-2.5 border-b border-[var(--md-outline-variant)]/40 backdrop-blur-md flex items-center justify-between gap-2" style="background-color: var(--md-surface); background-color: rgba(var(--header-bg-rgb, 18, 16, 22), 0.88);">
+      <div class="flex items-center gap-2 flex-1 max-w-sm">
+        <div class="relative w-full">
+          <svg class="svg-icon absolute left-3 top-1/2 -translate-y-1/2 text-[var(--md-outline)] w-4 h-4" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search 108 chapters, formulas..." 
+            class="w-full pl-9 pr-7 py-2 rounded-2xl bg-[var(--md-chip-bg)] text-xs font-semibold text-[var(--md-on-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)] placeholder-[var(--md-outline)] transition-all"
+          />
+          <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--md-outline)] hover:text-[var(--md-on-surface)]">
+            <svg class="svg-icon w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1 sm:gap-1.5">
+        
+        <!-- Auto Quote Interval Selector -->
+        <div class="relative">
+          <button id="quoteSettingsBtn" onclick="toggleQuoteSettingsMenu(event)" class="px-2.5 py-1.5 rounded-xl bg-[var(--md-chip-bg)] hover:bg-[var(--md-primary-container)] text-[var(--md-on-surface-variant)] text-xs font-bold transition-colors flex items-center gap-1" title="Quote Auto-Rotation Interval">
+            <span class="text-xs">💬</span>
+            <span id="quoteIntervalLabel" class="hidden sm:inline text-[11px] font-black">Manual</span>
+          </button>
+
+          <div id="quoteSettingsMenu" class="hidden absolute right-0 mt-2 w-52 rounded-2xl p-2.5 shadow-2xl border border-[var(--md-outline-variant)]/40 z-50 flex flex-col gap-1.5" style="background-color: var(--md-card-bg);">
+            <div class="flex items-center justify-between border-b border-[var(--md-outline-variant)]/20 pb-1.5">
+              <span class="text-[10px] font-black uppercase text-[var(--md-outline)]">Quote Engine</span>
+              <label class="flex items-center gap-1 text-[10px] font-bold cursor-pointer">
+                <input type="checkbox" id="quoteGlobalToggle" checked onchange="toggleQuotesGlobal(this.checked)" class="accent-[var(--md-primary)]" />
+                <span>Show</span>
+              </label>
+            </div>
+            
+            <div class="flex flex-col gap-1 text-xs font-bold">
+              <button onclick="setQuoteInterval('manual')" class="quote-interval-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex justify-between" data-interval="manual">
+                <span>Manual (Click only)</span>
+                <span class="text-[9px] text-[var(--md-outline)] font-normal">Default</span>
+              </button>
+              <button onclick="setQuoteInterval(15)" class="quote-interval-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex justify-between" data-interval="15">
+                <span>Every 15s</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/10 text-emerald-600">Fast</span>
+              </button>
+              <button onclick="setQuoteInterval(30)" class="quote-interval-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex justify-between" data-interval="30">
+                <span>Every 30s</span>
+                <span class="text-[9px] text-[var(--md-outline)]">Balanced</span>
+              </button>
+              <button onclick="setQuoteInterval(60)" class="quote-interval-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex justify-between" data-interval="60">
+                <span>Every 1 min</span>
+                <span class="text-[9px] text-[var(--md-outline)]">Calm</span>
+              </button>
+              <button onclick="setQuoteInterval(300)" class="quote-interval-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex justify-between" data-interval="300">
+                <span>Every 5 mins</span>
+                <span class="text-[9px] text-[var(--md-outline)]">Zen</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ambient Focus Audio Menu -->
+        <div class="relative">
+          <button id="soundToggleBtn" onclick="toggleAmbientSoundMenu(event)" class="p-2 rounded-xl bg-[var(--md-chip-bg)] hover:bg-[var(--md-primary-container)] text-[var(--md-on-surface-variant)] transition-colors flex items-center gap-1" title="Zen Focus Sounds">
+            <span id="soundIconWrapper">
+              <svg class="svg-icon w-4 h-4 text-emerald-500" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </span>
+          </button>
+
+          <div id="ambientSoundsMenu" class="hidden absolute right-0 mt-2 w-64 rounded-2xl p-3 shadow-2xl border border-[var(--md-outline-variant)]/40 z-50 flex flex-col gap-2.5" style="background-color: var(--md-card-bg);">
+            <div class="flex items-center justify-between border-b border-[var(--md-outline-variant)]/20 pb-1.5">
+              <span class="text-[10px] font-black uppercase text-[var(--md-outline)]">Focus Ambient Engine</span>
+              <button onclick="stopAmbientSound()" class="text-[10px] font-bold text-rose-500 hover:underline">Mute Audio</button>
+            </div>
+
+            <div class="flex flex-col gap-1 text-xs font-bold">
+              <button onclick="playAmbientTrack('rain')" class="ambient-track-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex items-center justify-between" data-track="rain">
+                <span>🌧️ Zen Rainstorm</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded bg-blue-500/10 text-blue-600">Pure Noise</span>
+              </button>
+              <button onclick="playAmbientTrack('alpha')" class="ambient-track-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex items-center justify-between" data-track="alpha">
+                <span>🧘 432 Hz Alpha Binaural</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded bg-violet-500/10 text-violet-600">8Hz Beat</span>
+              </button>
+              <button onclick="playAmbientTrack('retro')" class="ambient-track-btn w-full text-left px-2.5 py-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] flex items-center justify-between" data-track="retro">
+                <span>👾 8-Bit Lo-Fi Pulse</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-600">Chip Synth</span>
+              </button>
+            </div>
+            
+            <div class="pt-1.5 border-t border-[var(--md-outline-variant)]/20 flex items-center gap-2">
+              <span class="text-[9px] font-bold text-[var(--md-outline)]">Volume:</span>
+              <input type="range" id="soundVolRange" min="0" max="1" step="0.05" value="0.5" oninput="setAmbientVolume(this.value)" class="w-full h-1.5 bg-[var(--md-chip-bg)] rounded-lg appearance-none cursor-pointer accent-[var(--md-primary)]" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Way Theme Switcher (Light / Dark / AMOLED) -->
+        <div class="relative">
+          <button id="themeModeBtn" onclick="toggleThemeDropdown(event)" class="px-2.5 py-1.5 rounded-xl bg-[var(--md-chip-bg)] hover:bg-[var(--md-primary-container)] text-[var(--md-on-surface-variant)] text-xs font-bold transition-colors flex items-center gap-1" title="Switch Theme (Light, Dark, AMOLED)">
+            <span id="themeModeIcon">🌙</span>
+            <span id="themeModeLabel" class="hidden sm:inline text-[11px] font-black">Dark</span>
+          </button>
+
+          <div id="themeDropdownMenu" class="hidden absolute right-0 mt-2 w-44 rounded-2xl p-1.5 shadow-2xl border border-[var(--md-outline-variant)]/40 z-50 flex flex-col gap-1" style="background-color: var(--md-card-bg);">
+            <button onclick="setThemeMode('light')" class="w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between hover:bg-[var(--md-chip-bg)]">
+              <span>☀️ Light Mode</span>
+              <span class="text-[9px] text-[var(--md-outline)]">Soft</span>
+            </button>
+            <button onclick="setThemeMode('dark')" class="w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between hover:bg-[var(--md-chip-bg)]">
+              <span>🌙 Material Dark</span>
+              <span class="text-[9px] text-[var(--md-outline)]">Slate</span>
+            </button>
+            <button onclick="setThemeMode('amoled')" class="w-full text-left px-3 py-1.5 rounded-xl text-xs font-bold flex items-center justify-between hover:bg-[var(--md-chip-bg)] text-sky-400">
+              <span>⚡ Pitch AMOLED</span>
+              <span class="text-[9px] px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 font-mono">#000</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Device Sync & Cloud Key Modal Trigger -->
+        <button onclick="openSyncModal()" class="p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 transition-colors" title="Sync Phone & PC Data">
+          <svg class="svg-icon w-4 h-4" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-4-4 1.41-1.41L10 14.17 16.59 7.59 18 9l-8 8z"/></svg>
+        </button>
+
+        <!-- Reset Button with Safe Confirmation Dialog -->
+        <button onclick="openResetModal()" class="p-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 transition-colors" title="Reset All Data">
+          <svg class="svg-icon w-4 h-4" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="w-full px-3 sm:px-6 pt-3">
+      <div class="m3-card p-3 sm:p-4 border border-[var(--md-outline-variant)]/40 flex flex-col lg:flex-row items-center justify-between gap-2.5" style="background: linear-gradient(135deg, var(--md-card-bg) 0%, var(--md-surface-dim) 100%);">
+        
+        <div class="flex items-center gap-2.5 w-full lg:w-auto">
+          <div class="w-9 h-9 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center flex-shrink-0">
+            <svg class="svg-icon w-5 h-5 animate-pulse" viewBox="0 0 24 24"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42C16.07 4.74 14.12 4 12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-[9px] font-black uppercase tracking-wider text-[var(--md-outline)]">Topper Lockdown Target</span>
+              <span class="px-2 py-0.2 rounded-full text-[9px] font-black bg-amber-500/15 text-amber-700 dark:text-amber-300">Lockdown: Jan 1, 2027</span>
+            </div>
+            <h2 class="text-xs sm:text-sm font-black text-[var(--md-on-surface)] mt-0.5">
+              Class 10 Syllabus Completion Countdown
+            </h2>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-1.5">
+          <div class="px-2.5 py-1 rounded-xl text-center min-w-[46px] bg-[var(--md-chip-bg)]">
+            <span id="countdownDays" class="block text-sm sm:text-base font-black text-[var(--md-primary)]">--</span>
+            <span class="text-[8px] uppercase font-black text-[var(--md-outline)]">Days</span>
+          </div>
+          <span class="font-bold text-[var(--md-outline)]">:</span>
+          <div class="px-2.5 py-1 rounded-xl text-center min-w-[46px] bg-[var(--md-chip-bg)]">
+            <span id="countdownHours" class="block text-sm sm:text-base font-black text-[var(--md-primary)]">--</span>
+            <span class="text-[8px] uppercase font-black text-[var(--md-outline)]">Hours</span>
+          </div>
+          <span class="font-bold text-[var(--md-outline)]">:</span>
+          <div class="px-2.5 py-1 rounded-xl text-center min-w-[46px] bg-[var(--md-chip-bg)]">
+            <span id="countdownMins" class="block text-sm sm:text-base font-black text-[var(--md-primary)]">--</span>
+            <span class="text-[8px] uppercase font-black text-[var(--md-outline)]">Mins</span>
+          </div>
+          <span class="font-bold text-[var(--md-outline)]">:</span>
+          <div class="px-2.5 py-1 rounded-xl text-center min-w-[46px] bg-[var(--md-chip-bg)]">
+            <span id="countdownSecs" class="block text-sm sm:text-base font-black text-[var(--md-primary)]">--</span>
+            <span class="text-[8px] uppercase font-black text-[var(--md-outline)]">Secs</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Daily Pace Widget -->
+        <div id="paceBadge" class="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300">
+          <svg class="svg-icon w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+          <span id="paceText">Pace calculating...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: SYLLABUS CHECKLIST VIEW -->
+    <section id="syllabusView" class="max-w-6xl mx-auto w-full px-3 sm:px-6 py-3 flex-1 flex flex-col gap-3">
+
+      <!-- Mindset Manifestation Console -->
+      <div id="homepageQuoteWrapper" class="m3-card p-3.5 sm:p-4 border border-[var(--md-outline-variant)]/40 relative overflow-hidden" style="background: linear-gradient(135deg, var(--md-card-bg) 0%, var(--md-surface-dim) 100%);">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-3">
+          <div class="flex-1 pr-0 md:pr-4">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[9px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full text-[var(--md-on-primary-container)] bg-[var(--md-primary-container)]">
+                The Topper's Mindset
+              </span>
+              <span class="text-[10px] font-extrabold text-[var(--md-outline)] flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Target: 99%+
+              </span>
+            </div>
+
+            <div class="relative group my-1">
+              <p class="text-xs sm:text-sm font-bold text-[var(--md-on-surface)] leading-relaxed italic selectable-text" id="quoteText">
+                "We don't rise to the level of our expectations, we fall to the level of our training."
+              </p>
+              <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                <span class="text-xs font-black text-[var(--md-primary)] not-italic" id="quoteAuthor">— Archilochus</span>
+                <span class="text-[10px] text-[var(--md-outline)] font-medium" id="quoteSource">[Spartan Maxim]</span>
+                <button onclick="cycleNewQuote()" class="text-[9px] font-bold px-2 py-0.5 rounded-lg bg-[var(--md-chip-bg)] hover:bg-[var(--md-primary-container)] text-[var(--md-on-surface-variant)] transition-colors flex items-center gap-1">
+                  <svg class="svg-icon w-3 h-3" viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg> Shuffle
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+            <div class="p-2 rounded-2xl text-center flex-1 sm:min-w-[58px] border border-[var(--md-outline-variant)]/20" style="background-color: var(--md-chip-bg)">
+              <span id="statUnstarted" class="block text-sm sm:text-base font-black text-gray-700 dark:text-gray-300">108</span>
+              <span class="text-[8px] uppercase font-black text-[var(--md-outline)] tracking-wider">Pending</span>
+            </div>
+            <div class="p-2 rounded-2xl text-center flex-1 sm:min-w-[58px] bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20">
+              <span id="statLearning" class="block text-sm sm:text-base font-black">0</span>
+              <span class="text-[8px] uppercase font-black tracking-wider">Learning</span>
+            </div>
+            <div class="p-2 rounded-2xl text-center flex-1 sm:min-w-[58px] bg-blue-500/10 text-blue-700 dark:text-blue-300 border border-blue-500/20">
+              <span id="statRevised" class="block text-sm sm:text-base font-black">0</span>
+              <span class="text-[8px] uppercase font-black tracking-wider">Revised</span>
+            </div>
+            <div class="p-2 rounded-2xl text-center flex-1 sm:min-w-[58px] bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
+              <span id="statMastered" class="block text-sm sm:text-base font-black">0</span>
+              <span class="text-[8px] uppercase font-black tracking-wider">Mastered</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 flex items-center justify-between text-xs font-bold text-[var(--md-on-surface-variant)] mb-1">
+          <span id="completionRatio">0 / 108 Mastered</span>
+          <span id="topPercentLabel" class="text-[var(--md-primary)] font-black">0%</span>
+        </div>
+        <div class="w-full bg-[var(--md-chip-bg)] h-2 rounded-full overflow-hidden flex gap-0.5 p-0.5">
+          <div id="barMastered" class="bg-emerald-500 h-full rounded-full transition-all duration-300" style="width: 0%" title="Mastered"></div>
+          <div id="barRevised" class="bg-blue-500 h-full rounded-full transition-all duration-300" style="width: 0%" title="Revised"></div>
+          <div id="barLearning" class="bg-amber-500 h-full rounded-full transition-all duration-300" style="width: 0%" title="Learning"></div>
+        </div>
+      </div>
+
+      <!-- 108 Chapters Grid Container -->
+      <div id="chaptersContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pb-10">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Empty Query State -->
+      <div id="emptyState" class="hidden py-16 text-center text-xs text-[var(--md-on-surface-variant)] flex flex-col items-center justify-center">
+        <svg class="svg-icon w-10 h-10 text-[var(--md-outline)] mb-2" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <p class="font-bold text-sm text-[var(--md-on-surface)]">No chapters match your query</p>
+        <button onclick="resetFilters()" class="mt-2.5 px-3.5 py-1.5 rounded-xl bg-[var(--md-primary)] text-[var(--md-on-primary)] font-bold text-xs">
+          Reset Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- VIEW 2: RETRO ARCADE POMODORO & BOTANICAL ARBORETUM -->
+    <section id="pomodoroView" class="hidden max-w-5xl mx-auto w-full px-3 sm:px-6 py-4 flex-1 flex flex-col gap-4">
+      
+      <!-- Retro CRT Arcade Screen -->
+      <div class="retro-crt-screen p-4 sm:p-7 rounded-3xl text-emerald-400 font-retro flex flex-col items-center justify-between text-center relative overflow-hidden">
+        
+        <!-- Header Controls -->
+        <div class="w-full flex items-center justify-between border-b-2 border-emerald-800/80 pb-3 text-[10px] sm:text-xs z-10">
+          <div class="flex items-center gap-2">
+            <span class="animate-pulse text-emerald-400">●</span>
+            <span>BOTANICAL SYSTEM V.9</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="openPomoCustomModal()" class="px-2 py-1 rounded bg-emerald-950 hover:bg-emerald-900 border border-emerald-600 text-[9px] text-emerald-300">
+              ⚙️ SET TIMERS
+            </button>
+            <button onclick="toggleRetroQuoteCenter()" id="retroQuoteToggleBtn" class="px-2 py-1 rounded bg-emerald-950 hover:bg-emerald-900 border border-emerald-600 text-[9px] text-emerald-300">
+              QUOTE: [ON]
+            </button>
+            <span class="text-amber-400">XP: <strong id="retroScoreDisplay">0</strong></span>
+          </div>
+        </div>
+
+        <!-- Center Quote Transmission Box -->
+        <div id="retroCenterQuoteBox" class="my-3 p-3 sm:p-4 rounded-xl border-2 border-emerald-500/40 bg-emerald-950/70 max-w-xl w-full z-10 backdrop-blur-xs transition-all">
+          <div class="text-[9px] text-emerald-500 uppercase tracking-widest mb-1 flex items-center justify-between">
+            <span>[ CENTRAL TRANSMISSION ]</span>
+            <span id="retroQuoteCategory">RESOLVE</span>
+          </div>
+          <p id="retroQuoteContent" class="text-xs sm:text-sm text-emerald-200 leading-relaxed font-code font-bold selectable-text">
+            "Hesitation is defeat."
+          </p>
+          <div class="mt-1 text-[10px] text-emerald-400 flex items-center justify-between">
+            <span id="retroQuoteAuthor">— Isshin, Sword Saint</span>
+            <button onclick="cycleNewQuote()" class="text-[9px] underline hover:text-white">NEXT &gt;&gt;</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Animated Vector Tree -->
+        <div class="relative w-40 h-40 flex items-center justify-center my-1 z-10">
+          <div id="treeDisplay" class="h-24 flex items-center justify-center tree-sway">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Retro Phosphor Clock -->
+        <div id="pomoClock" class="text-3xl sm:text-4xl font-retro text-emerald-300 tracking-widest my-1 z-10 drop-shadow-[0_0_12px_rgba(16,185,129,0.8)]">
+          25:00
+        </div>
+
+        <!-- RETRO ARCADE PROGRESS BAR -->
+        <div class="w-full max-w-md my-2 z-10">
+          <div class="flex items-center justify-between text-[9px] font-code text-emerald-400 mb-1">
+            <span>SESSION PROGRESS</span>
+            <span id="pomoProgressPercent">0%</span>
+          </div>
+          <div class="w-full h-3.5 bg-emerald-950 border-2 border-emerald-600 rounded-md overflow-hidden p-0.5">
+            <div id="pomoProgressBar" class="h-full bg-emerald-400 rounded-xs transition-all duration-300 shadow-[0_0_8px_#34D399]" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <p id="pomoCurrentStageText" class="text-[10px] text-emerald-400 font-code font-bold mb-3 z-10">
+          SEED PLANTED. MAINTAIN LASER FLOW STATE.
+        </p>
+
+        <!-- Timer Action Buttons -->
+        <div class="flex items-center gap-3 z-10 flex-wrap justify-center">
+          <button onclick="togglePomodoro()" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xs transition-all active:scale-95 shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+            <span id="pomoPlayText">&gt; START MISSION</span>
+          </button>
+          <button onclick="resetPomodoro()" class="px-4 py-2.5 rounded-xl bg-emerald-950 border border-emerald-600 hover:bg-emerald-900 text-emerald-300 font-bold text-xs">
+            [ RESET ]
+          </button>
+        </div>
+
+        <!-- Quick Mode Presets -->
+        <div class="flex items-center gap-2 mt-4 text-[9px] font-retro z-10">
+          <button onclick="setTimerMode('study')" id="modeBtnStudy" class="text-white underline">[FOCUS]</button>
+          <span>•</span>
+          <button onclick="setTimerMode('shortBreak')" id="modeBtnShort" class="text-emerald-400 hover:text-white">[SHORT]</button>
+          <span>•</span>
+          <button onclick="setTimerMode('longBreak')" id="modeBtnLong" class="text-emerald-400 hover:text-white">[LONG]</button>
+        </div>
+      </div>
+
+      <!-- Virtual Forest Grid -->
+      <div class="m3-card p-4 sm:p-6 border border-[var(--md-outline-variant)]/40">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <svg class="svg-icon w-4 h-4 text-emerald-500" viewBox="0 0 24 24"><path d="M17 12h2L12 2 5.05 12H7l-3.9 6h6.92v4h3.96v-4H21z"/></svg>
+            <h3 class="text-sm font-black text-[var(--md-on-surface)]">Arboretum Canopy (Botanical Forest)</h3>
+          </div>
+          <span id="forestTotalHeader" class="text-xs font-black text-emerald-600 dark:text-emerald-400">0 Trees Grown</span>
+        </div>
+
+        <div id="forestGardenGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 min-h-[140px]">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: GLOBAL LEADERBOARDS & STUDY SQUADS -->
+    <section id="leaderboardView" class="hidden max-w-5xl mx-auto w-full px-3 sm:px-6 py-4 flex-1 flex flex-col gap-4">
+      
+      <!-- Top Banner -->
+      <div class="m3-card p-4 sm:p-6 border border-[var(--md-outline-variant)]/40 flex flex-col sm:flex-row items-center justify-between gap-3" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, var(--md-card-bg) 100%);">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-700 dark:text-indigo-300">
+              CBSE Class 10 Arena
+            </span>
+            <span class="text-xs font-bold text-[var(--md-outline)]">AIR 1 Benchmark</span>
+          </div>
+          <h2 class="text-base sm:text-lg font-black text-[var(--md-on-surface)] mt-1">Universal Study Leaderboard</h2>
+          <p class="text-xs text-[var(--md-on-surface-variant)] mt-0.5">Benchmark your progress globally, or assemble private study squads with friends.</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="openInviteModal()" class="px-4 py-2 rounded-2xl bg-[var(--md-primary)] text-[var(--md-on-primary)] font-black text-xs shadow-sm hover:shadow-md transition-all flex items-center gap-1.5">
+            <svg class="svg-icon w-3.5 h-3.5" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            <span>Invite & Squad Code</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Leaderboard Tabs: Global vs Squads -->
+      <div class="flex items-center gap-2 border-b border-[var(--md-outline-variant)]/40 pb-2">
+        <button id="tabGlobalBoard" onclick="switchBoardType('global')" class="px-4 py-1.5 rounded-xl text-xs font-black bg-[var(--md-primary)] text-[var(--md-on-primary)] transition-all">
+          🌍 Global Rankings
+        </button>
+        <button id="tabSquadBoard" onclick="switchBoardType('squad')" class="px-4 py-1.5 rounded-xl text-xs font-black bg-[var(--md-chip-bg)] text-[var(--md-on-surface-variant)] hover:text-[var(--md-on-surface)] transition-all">
+          👥 My Study Squads
+        </button>
+      </div>
+
+      <!-- Squad Sub-Selector (Hidden when in Global Mode) -->
+      <div id="squadTabsWrapper" class="hidden flex items-center gap-2 overflow-x-auto pb-1">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Table Container -->
+      <div class="m3-card p-4 sm:p-5 border border-[var(--md-outline-variant)]/40">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <h3 id="activeBoardTitle" class="text-sm font-black text-[var(--md-on-surface)]">🌍 All India Topper Board</h3>
+            <span id="activeBoardCount" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[var(--md-chip-bg)] text-[var(--md-outline)]">Top 10 Benchmark</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-amber-500 font-bold">Dynamic Live Ranks</span>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-[var(--md-outline-variant)]/30 text-[10px] uppercase font-black text-[var(--md-outline)] tracking-wider">
+                <th class="py-2.5 px-3">Rank</th>
+                <th class="py-2.5 px-3">Student & User ID</th>
+                <th class="py-2.5 px-3">Mastered</th>
+                <th class="py-2.5 px-3">Focus Hours</th>
+                <th class="py-2.5 px-3">Streak</th>
+                <th class="py-2.5 px-3 text-right">Topper XP</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody" class="divide-y divide-[var(--md-outline-variant)]/20 font-medium">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: PRESTIGE & 52 MILESTONES -->
+    <section id="achievementsView" class="hidden max-w-5xl mx-auto w-full px-3 sm:px-6 py-4 flex-1 flex flex-col gap-4">
+      <div class="m3-card p-5 border border-[var(--md-outline-variant)]/40" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, var(--md-card-bg) 100%);">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300">
+                Topper Honors
+              </span>
+              <span class="text-xs font-bold text-[var(--md-outline)]">Prestige Milestones</span>
+            </div>
+            <h2 class="text-base sm:text-lg font-black text-[var(--md-on-surface)] mt-1">52 Class 10 Board Milestones</h2>
+            <p class="text-xs text-[var(--md-on-surface-variant)] mt-0.5">Earn XP, unlock rare tree species, and level up to the AIR 1 Sovereign tier.</p>
+          </div>
+
+          <div class="text-center sm:text-right">
+            <span class="text-2xl font-black text-amber-500" id="achievementsUnlockedCount">0 / 52</span>
+            <div class="text-[10px] uppercase font-black text-[var(--md-outline)]">Badges Claimed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievement Category Filter -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-1" id="achieveFilterTabs">
+        <button onclick="filterAchievements('ALL')" class="ach-cat-btn px-3 py-1 rounded-xl text-xs font-black bg-[var(--md-primary)] text-[var(--md-on-primary)]" data-cat="ALL">All 52</button>
+        <button onclick="filterAchievements('SYLLABUS')" class="ach-cat-btn px-3 py-1 rounded-xl text-xs font-bold bg-[var(--md-chip-bg)] text-[var(--md-on-surface-variant)]" data-cat="SYLLABUS">Syllabus</button>
+        <button onclick="filterAchievements('SUBJECTS')" class="ach-cat-btn px-3 py-1 rounded-xl text-xs font-bold bg-[var(--md-chip-bg)] text-[var(--md-on-surface-variant)]" data-cat="SUBJECTS">Subjects</button>
+        <button onclick="filterAchievements('FOCUS')" class="ach-cat-btn px-3 py-1 rounded-xl text-xs font-bold bg-[var(--md-chip-bg)] text-[var(--md-on-surface-variant)]" data-cat="FOCUS">Focus & Forest</button>
+        <button onclick="filterAchievements('STREAK')" class="ach-cat-btn px-3 py-1 rounded-xl text-xs font-bold bg-[var(--md-chip-bg)] text-[var(--md-on-surface-variant)]" data-cat="STREAK">Streaks</button>
+        <button onclick="filterAchievements('PRESTIGE')" class="ach-cat-btn px-3 py-1 rounded-xl text-xs font-bold bg-[var(--md-chip-bg)] text-[var(--md-on-surface-variant)]" data-cat="PRESTIGE">Prestige</button>
+      </div>
+
+      <div id="achievementsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3 pb-10">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL 1: PROFILE & USER ID CUSTOMIZER -->
+  <div id="profileModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="m3-card max-w-md w-full p-6 border border-[var(--md-outline-variant)]/40 transform scale-95 transition-transform duration-200 flex flex-col gap-4" id="profileModalBox">
+      
+      <div class="flex items-center justify-between border-b border-[var(--md-outline-variant)]/20 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center">
+            <svg class="svg-icon w-4 h-4 text-amber-500" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.93V18h-2v-1.07c-2.83-.48-5-2.94-5-5.93h2c0 2.21 1.79 4 4 4s4-1.79 4-4h2c0 2.99-2.17 5.45-5 5.93zM12 14c-1.66 0-3-1.34-3-3V5h6v6c0 1.66-1.34 3-3 3z"/></svg>
+          </div>
+          <h3 class="text-base font-black text-[var(--md-on-surface)]">Topper Identity & User ID</h3>
+        </div>
+        <button onclick="closeProfileModal()" class="p-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] text-[var(--md-outline)]">
+          <svg class="svg-icon w-4 h-4" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-3 text-xs">
+        <div>
+          <label class="text-[10px] font-bold uppercase text-[var(--md-outline)] block mb-1">Topper Name</label>
+          <input type="text" id="editUserNameInput" placeholder="Enter your name" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-bold text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]" />
+        </div>
+
+        <div>
+          <label class="text-[10px] font-bold uppercase text-[var(--md-outline)] block mb-1">Custom User ID (Alphanumeric Handle)</label>
+          <div class="flex items-center gap-1.5">
+            <span class="text-sm font-mono font-bold text-[var(--md-outline)]">#</span>
+            <input type="text" id="editUserUidInput" placeholder="e.g. ARPIT_AIR1" maxlength="15" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-mono text-xs font-bold uppercase text-[var(--md-primary)] border border-[var(--md-outline-variant)]/40 focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]" />
+          </div>
+          <span class="text-[9px] text-[var(--md-outline)] mt-1 block">Your friends can search and invite this exact ID.</span>
+        </div>
+
+        <div>
+          <label class="text-[10px] font-bold uppercase text-[var(--md-outline)] block mb-1">Avatar Photo URL</label>
+          <input type="text" id="editUserAvatarInput" placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] text-[11px] text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none focus:ring-2 focus:ring-[var(--md-primary)]" />
+        </div>
+
+        <!-- Privacy Guard Switch -->
+        <div class="p-3 rounded-2xl bg-[var(--md-chip-bg)] border border-[var(--md-outline-variant)]/30 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black text-[var(--md-on-surface)] block">Incognito / Private Mode</span>
+            <span class="text-[10px] text-[var(--md-outline)]">Mask your handle & name on the global leaderboard</span>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" id="privacyToggle" class="sr-only peer" />
+            <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--md-primary)]"></div>
+          </label>
+        </div>
+
+        <button onclick="saveProfileChanges()" class="w-full py-2.5 rounded-xl bg-[var(--md-primary)] text-[var(--md-on-primary)] font-black text-xs shadow-md mt-1">
+          Save Identity & Settings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: POMODORO CUSTOMIZER -->
+  <div id="pomoCustomModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="m3-card max-w-sm w-full p-6 border border-[var(--md-outline-variant)]/40 transform scale-95 transition-transform duration-200 flex flex-col gap-4" id="pomoCustomModalBox">
+      <div class="flex items-center justify-between border-b border-[var(--md-outline-variant)]/20 pb-2">
+        <h3 class="text-sm font-black text-[var(--md-on-surface)]">⚙️ Customize Timer Intervals</h3>
+        <button onclick="closePomoCustomModal()" class="p-1 text-[var(--md-outline)]">✕</button>
+      </div>
+      <div class="flex flex-col gap-3 text-xs">
+        <div>
+          <label class="text-[10px] font-bold text-[var(--md-outline)] uppercase block mb-1">Focus Session (Minutes)</label>
+          <input type="number" id="customStudyInput" min="5" max="120" value="25" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-bold text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none" />
+        </div>
+        <div>
+          <label class="text-[10px] font-bold text-[var(--md-outline)] uppercase block mb-1">Short Break (Minutes)</label>
+          <input type="number" id="customShortInput" min="1" max="30" value="5" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-bold text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none" />
+        </div>
+        <div>
+          <label class="text-[10px] font-bold text-[var(--md-outline)] uppercase block mb-1">Long Break (Minutes)</label>
+          <input type="number" id="customLongInput" min="5" max="60" value="15" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-bold text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none" />
+        </div>
+        <button onclick="saveCustomPomodoro()" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-black text-xs shadow-md mt-1">
+          Apply Custom Timers
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: SQUAD INVITE MODAL -->
+  <div id="inviteModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="m3-card max-w-md w-full p-6 border border-[var(--md-outline-variant)]/40 transform scale-95 transition-transform duration-200 flex flex-col gap-4" id="inviteModalBox">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-2xl bg-indigo-500/15 text-indigo-600 flex items-center justify-center text-base">👥</div>
+          <div>
+            <h3 class="text-base font-black text-[var(--md-on-surface)]">Study Squad Invitations</h3>
+            <p class="text-[11px] text-[var(--md-outline)]">Share with friends & study together</p>
+          </div>
+        </div>
+        <button onclick="closeInviteModal()" class="p-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] text-[var(--md-outline)]">
+          <svg class="svg-icon w-4 h-4" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-3 text-xs">
+        <div class="p-3 rounded-2xl bg-[var(--md-chip-bg)] flex flex-col gap-1.5">
+          <span class="text-[9px] uppercase font-black text-[var(--md-outline)]">Your Shareable Invite Message</span>
+          <textarea id="shareableInviteSnippet" readonly rows="2" class="w-full p-2 bg-[var(--md-card-bg)] rounded-xl text-[11px] text-[var(--md-on-surface)] font-code border border-[var(--md-outline-variant)]/30 resize-none focus:outline-none"></textarea>
+          <button onclick="copyInviteMessage()" class="w-full py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs">
+            Copy Squad Invite & ID
+          </button>
+        </div>
+
+        <div class="border-t border-[var(--md-outline-variant)]/20 pt-2 flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-[var(--md-outline)] uppercase">Join Squad by Code</label>
+          <div class="flex items-center gap-2">
+            <input type="text" id="joinSquadCodeInput" placeholder="e.g. SQ-CENTURION" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-mono text-xs uppercase text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none" />
+            <button onclick="joinSquadByCode()" class="px-4 py-2 rounded-xl bg-[var(--md-primary)] text-[var(--md-on-primary)] font-bold text-xs flex-shrink-0">
+              Join
+            </button>
+          </div>
+        </div>
+
+        <div class="border-t border-[var(--md-outline-variant)]/20 pt-2 flex flex-col gap-2">
+          <label class="text-[10px] font-bold text-[var(--md-outline)] uppercase">Create New Study Squad</label>
+          <div class="flex items-center gap-2">
+            <input type="text" id="createSquadNameInput" placeholder="Squad Name (e.g. 99% Slayers)" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] text-xs text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none" />
+            <button onclick="createNewSquad()" class="px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs flex-shrink-0">
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: SYNC MODAL -->
+  <div id="syncModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="m3-card max-w-md w-full p-6 border border-[var(--md-outline-variant)]/40 transform scale-95 transition-transform duration-200 flex flex-col gap-4" id="syncModalBox">
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-black text-[var(--md-on-surface)]">Multi-Device Cloud Sync</h3>
+        <button onclick="closeSyncModal()" class="p-1.5 rounded-xl hover:bg-[var(--md-chip-bg)] text-[var(--md-outline)]">
+          <svg class="svg-icon w-4 h-4" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-3 text-xs">
+        <div>
+          <label class="text-[9px] font-black uppercase text-[var(--md-outline)] block mb-1">Your Device Sync Key (PC &lt;-&gt; Phone)</label>
+          <div class="flex items-center gap-2">
+            <input type="text" readonly id="syncCodeInput" class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-mono text-[10px] text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none" />
+            <button onclick="copySyncCode()" class="px-3 py-2 rounded-xl bg-[var(--md-primary)] text-[var(--md-on-primary)] font-bold text-xs flex-shrink-0">Copy</button>
+          </div>
+        </div>
+
+        <div class="border-t border-[var(--md-outline-variant)]/20 pt-2">
+          <label class="text-[9px] font-black uppercase text-[var(--md-outline)] block mb-1">Paste Key from Other Device</label>
+          <div class="flex items-center gap-2">
+            <input type="text" id="syncCodePasteInput" placeholder="Paste sync key here..." class="w-full px-3 py-2 rounded-xl bg-[var(--md-chip-bg)] font-mono text-[10px] text-[var(--md-on-surface)] border border-[var(--md-outline-variant)]/40 focus:outline-none" />
+            <button onclick="applySyncCode()" class="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs flex-shrink-0">Sync</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: RESET MODAL -->
+  <div id="resetModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-200">
+    <div class="m3-card max-w-sm w-full p-6 border border-[var(--md-outline-variant)]/40 transform scale-95 transition-transform duration-200" id="resetModalBox">
+      <h3 class="text-base font-black text-[var(--md-on-surface)]">Reset Progress?</h3>
+      <p class="text-xs text-[var(--md-on-surface-variant)] mt-1 leading-relaxed">
+        This will clear your revision marks, planted trees, and notes for a clean restart.
+      </p>
+      <div class="flex items-center justify-end gap-2 mt-4">
+        <button onclick="closeResetModal()" class="px-3 py-1.5 rounded-xl text-xs font-bold text-[var(--md-on-surface-variant)]">Cancel</button>
+        <button onclick="executeFullReset()" class="px-4 py-1.5 rounded-xl text-xs font-bold bg-rose-600 text-white">Reset All</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Pill -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[var(--md-card-bg)] text-[var(--md-on-surface)] text-xs font-bold shadow-2xl border border-[var(--md-outline-variant)]/40 opacity-0 pointer-events-none transition-opacity duration-200">
+    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+    <span id="toastMsg">Notification</span>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       OFFICIAL CBSE CLASS 10 CURRICULUM: EXACTLY 108 CHAPTERS TOTAL
+       ========================================================================== */
+    const SYLLABUS_DATA = [
+      /* MATHEMATICS (14 Chapters) */
+      { id: "math-01", subject: "Maths", sub: "Standard / Basic", chNum: 1, title: "Real Numbers", meta: "Fundamental Theorem of Arithmetic, proofs of irrationality of √2, √3, √5, decimal representation." },
+      { id: "math-02", subject: "Maths", sub: "Standard / Basic", chNum: 2, title: "Polynomials", meta: "Zeroes of a quadratic polynomial, geometric meaning, relationship between zeroes and coefficients." },
+      { id: "math-03", subject: "Maths", sub: "Standard / Basic", chNum: 3, title: "Pair of Linear Equations in 2 Variables", meta: "Graphical consistency, Algebraic methods (Substitution and Elimination), word problems." },
+      { id: "math-04", subject: "Maths", sub: "Standard / Basic", chNum: 4, title: "Quadratic Equations", meta: "Standard form ax²+bx+c=0, Factorisation, Quadratic Formula, Discriminant (D) & nature of roots." },
+      { id: "math-05", subject: "Maths", sub: "Standard / Basic", chNum: 5, title: "Arithmetic Progressions (AP)", meta: "nth term (an = a+(n-1)d), Sum of first n terms (Sn = n/2[2a+(n-1)d]), daily application models." },
+      { id: "math-06", subject: "Maths", sub: "Standard / Basic", chNum: 6, title: "Triangles", meta: "Basic Proportionality Theorem (Thales) with proof, AAA, SSS, SAS similarity criteria." },
+      { id: "math-07", subject: "Maths", sub: "Standard / Basic", chNum: 7, title: "Coordinate Geometry", meta: "Distance formula, Section formula (internal division), collinearity & geometric coordinates." },
+      { id: "math-08", subject: "Maths", sub: "Standard / Basic", chNum: 8, title: "Introduction to Trigonometry", meta: "Trigonometric ratios (sin, cos, tan, cosec, sec, cot) for 0°, 30°, 45°, 60°, 90°, Identity sin²θ+cos²θ=1." },
+      { id: "math-09", subject: "Maths", sub: "Standard / Basic", chNum: 9, title: "Some Applications of Trigonometry", meta: "Heights and Distances, Angle of Elevation and Depression, two-triangle multi-step problems." },
+      { id: "math-10", subject: "Maths", sub: "Standard / Basic", chNum: 10, title: "Circles", meta: "Tangent at point is perpendicular to radius proof, Length of tangents from external point proof." },
+      { id: "math-11", subject: "Maths", sub: "Standard / Basic", chNum: 11, title: "Areas Related to Circles", meta: "Area of sector (θ/360 * πr²), Length of arc (θ/360 * 2πr), segments of circle problems." },
+      { id: "math-12", subject: "Maths", sub: "Standard / Basic", chNum: 12, title: "Surface Areas and Volumes", meta: "Cubes, cuboids, spheres, hemispheres, right circular cylinders & cones, combination solids." },
+      { id: "math-13", subject: "Maths", sub: "Standard / Basic", chNum: 13, title: "Statistics", meta: "Mean of grouped data (Direct & Assumed Mean), Median and Mode of grouped frequency distributions." },
+      { id: "math-14", subject: "Maths", sub: "Standard / Basic", chNum: 14, title: "Probability", meta: "Classical definition, single-event experiments, cards, coins, dice, complementary events." },
+
+      /* SCIENCE (13 Chapters: 4 Chem, 4 Bio, 4 Phys, 1 EVS) */
+      { id: "sci-01", subject: "Science", sub: "Chemistry", chNum: 1, title: "Chemical Reactions & Equations", meta: "Balancing equations, types: Combination, Decomposition, Displacement, Double Displacement, Redox, Rancidity." },
+      { id: "sci-02", subject: "Science", sub: "Chemistry", chNum: 2, title: "Acids, Bases and Salts", meta: "H+ and OH- ions, pH scale in daily life, Chlor-alkali process, Bleaching powder, Baking/Washing soda, POP." },
+      { id: "sci-03", subject: "Science", sub: "Chemistry", chNum: 3, title: "Metals and Non-Metals", meta: "Reactivity series, Ionic bonding and properties, Basic metallurgy (roasting, calcination), Corrosion prevention." },
+      { id: "sci-04", subject: "Science", sub: "Chemistry", chNum: 4, title: "Carbon and Its Compounds", meta: "Covalent bonds, Versatile nature, Homologous series, IUPAC nomenclature, Ethanol & Ethanoic acid, Soaps & detergents." },
+      { id: "sci-05", subject: "Science", sub: "Biology", chNum: 5, title: "Life Processes", meta: "Nutrition (photosynthesis & human digestion), Respiration (aerobic/anaerobic), Circulation, Nephron & Excretion." },
+      { id: "sci-06", subject: "Science", sub: "Biology", chNum: 6, title: "Control and Coordination", meta: "Neuron anatomy, Reflex arc, Human brain structure, Plant phytohormones (Auxin, Cytokinin, ABA), Endocrine glands." },
+      { id: "sci-07", subject: "Science", sub: "Biology", chNum: 7, title: "How do Organisms Reproduce?", meta: "Fission, Budding, Spores, Vegetative propagation; Flowering plant reproduction, Human reproductive health." },
+      { id: "sci-08", subject: "Science", sub: "Biology", chNum: 8, title: "Heredity", meta: "Mendel's experiments (Monohybrid 3:1, Dihybrid 9:3:3:1), Law of segregation, Sex determination in humans." },
+      { id: "sci-09", subject: "Science", sub: "Physics", chNum: 9, title: "Light: Reflection & Refraction", meta: "Spherical mirrors, Mirror formula & magnification, Snell's law, Refractive index, Lens formula, Optical power." },
+      { id: "sci-10", subject: "Science", sub: "Physics", chNum: 10, title: "Human Eye & Colorful World", meta: "Structure, Myopia & Hypermetropia corrections, Prism refraction & dispersion, Atmospheric refraction, Tyndall scattering." },
+      { id: "sci-11", subject: "Science", sub: "Physics", chNum: 11, title: "Electricity", meta: "Potential difference, Ohm's law (V=IR), Factors affecting resistance, Series vs Parallel, Joule's heating (H=I²Rt)." },
+      { id: "sci-12", subject: "Science", sub: "Physics", chNum: 12, title: "Magnetic Effects of Current", meta: "Magnetic field lines, Right-hand thumb rule, Solenoid field, Fleming's left-hand rule, Domestic circuits & earthing." },
+      { id: "sci-13", subject: "Science", sub: "Biology/EVS", chNum: 13, title: "Our Environment", meta: "Trophic levels, 10% energy transfer law, Biomagnification, Ozone layer depletion & CFCs, Waste management." },
+
+      /* SOCIAL SCIENCE (21 Chapters: 5 Hist, 7 Geog, 5 Civ, 4 Econ) */
+      { id: "sst-01", subject: "Social Science", sub: "History", chNum: 1, title: "The Rise of Nationalism in Europe", meta: "French revolution legacy, Liberal nationalism, 1848 revolutions, Unification of Germany & Italy, Balkans crisis." },
+      { id: "sst-02", subject: "Social Science", sub: "History", chNum: 2, title: "Nationalism in India", meta: "Rowlatt Act, Jallianwala Bagh, Non-Cooperation movement, Civil Disobedience & Dandi March, Collective belonging." },
+      { id: "sst-03", subject: "Social Science", sub: "History", chNum: 3, title: "The Making of a Global World", meta: "Pre-modern trade routes, Silk routes, Conquest, Disease, Global trade shifts (Sub-topics 1 to 1.3 for Board Exam)." },
+      { id: "sst-04", subject: "Social Science", sub: "History", chNum: 4, title: "The Age of Industrialisation", meta: "Proto-industrialisation, Steam engine revolution, Hand labour vs machine, Factories in colonies (Periodic Test)." },
+      { id: "sst-05", subject: "Social Science", sub: "History", chNum: 5, title: "Print Culture & Modern World", meta: "Gutenberg press, Print revolution, Reading mania, French revolution link, 19th-century Indian print & censorship." },
+      { id: "sst-06", subject: "Social Science", sub: "Geography", chNum: 1, title: "Resources and Development", meta: "Types of resources, Sustainable development, Agenda 21, Soil types of India, Soil erosion and conservation." },
+      { id: "sst-07", subject: "Social Science", sub: "Geography", chNum: 2, title: "Forest and Wildlife Resources", meta: "Biodiversity in India, IUCN classification, Reserved and Protected forests, Joint Forest Management (JFM)." },
+      { id: "sst-08", subject: "Social Science", sub: "Geography", chNum: 3, title: "Water Resources", meta: "Water scarcity reasons, Multipurpose river projects and dams, Traditional rainwater harvesting methods." },
+      { id: "sst-09", subject: "Social Science", sub: "Geography", chNum: 4, title: "Agriculture", meta: "Subsistence vs Commercial farming, Cropping seasons (Rabi, Kharif, Zaid), Major food & cash crops, Tech reforms." },
+      { id: "sst-10", subject: "Social Science", sub: "Geography", chNum: 5, title: "Minerals and Energy Resources", meta: "Metallic & non-metallic minerals, Conventional (Coal, Petroleum) vs Non-conventional (Solar, Wind, Biogas)." },
+      { id: "sst-11", subject: "Social Science", sub: "Geography", chNum: 6, title: "Manufacturing Industries", meta: "Agro-based (Textiles, Sugar), Mineral-based (Iron & Steel, Aluminium, Chemical), Industrial pollution control." },
+      { id: "sst-12", subject: "Social Science", sub: "Geography", chNum: 7, title: "Lifelines of National Economy", meta: "Roadways classification, Railways, Pipelines, Waterways, Major Seaports and International Airports of India." },
+      { id: "sst-13", subject: "Social Science", sub: "Civics", chNum: 1, title: "Power Sharing", meta: "Case studies of Belgium and Sri Lanka, Majoritarianism vs Accommodation, Horizontal vs Vertical power sharing." },
+      { id: "sst-14", subject: "Social Science", sub: "Civics", chNum: 2, title: "Federalism", meta: "What makes India federal?, Union, State & Concurrent lists, Linguistic States, 1992 Decentralisation reforms." },
+      { id: "sst-15", subject: "Social Science", sub: "Civics", chNum: 3, title: "Gender, Religion and Caste", meta: "Feminist movement, Women's political representation, Secular state constitutional mandates, Caste in politics." },
+      { id: "sst-16", subject: "Social Science", sub: "Civics", chNum: 4, title: "Political Parties", meta: "Need and functions of parties, National vs State parties, Challenges to parties, Reform measures and anti-defection." },
+      { id: "sst-17", subject: "Social Science", sub: "Civics", chNum: 5, title: "Outcomes of Democracy", meta: "Accountable, responsive & legitimate government, Economic growth vs inequality, Dignity of citizens and minorities." },
+      { id: "sst-18", subject: "Social Science", sub: "Economics", chNum: 1, title: "Development", meta: "Developmental promises, Income and other goals, National income vs Per Capita Income, Human Development Report." },
+      { id: "sst-19", subject: "Social Science", sub: "Economics", chNum: 2, title: "Sectors of the Indian Economy", meta: "Primary, Secondary, Tertiary sectors, Historical shifts in GDP & employment, Organised vs Unorganised sectors." },
+      { id: "sst-20", subject: "Social Science", sub: "Economics", chNum: 3, title: "Money and Credit", meta: "Double coincidence of wants, Modern forms of currency, Formal vs Informal loans, Self-Help Groups (SHGs)." },
+      { id: "sst-21", subject: "Social Science", sub: "Economics", chNum: 4, title: "Globalisation & Indian Economy", meta: "Multinational Corporations (MNCs), Foreign trade integration, Liberalisation, WTO role, Impact on Indian producers." },
+
+      /* ENGLISH (28 Pieces: 9 Prose, 10 Poetry, 9 Footprints) */
+      { id: "eng-01", subject: "English", sub: "First Flight (Prose)", chNum: 1, title: "A Letter to God", meta: "Lencho's unwavering faith, destroyed cornfield, irony of the benevolent postmaster." },
+      { id: "eng-02", subject: "English", sub: "First Flight (Prose)", chNum: 2, title: "Nelson Mandela: Long Walk to Freedom", meta: "Inauguration, twin obligations, definition of courage as triumph over fear." },
+      { id: "eng-03", subject: "English", sub: "First Flight (Prose)", chNum: 3, title: "Two Stories about Flying", meta: "His First Flight (seagull) & The Black Aeroplane (mysterious pilot guide)." },
+      { id: "eng-04", subject: "English", sub: "First Flight (Prose)", chNum: 4, title: "From the Diary of Anne Frank", meta: "Secret annex in Amsterdam, Kitty the diary, Mr. Keesing's chatterbox essays." },
+      { id: "eng-05", subject: "English", sub: "First Flight (Prose)", chNum: 5, title: "Glimpses of India", meta: "A Baker from Goa, Coorg (coffee and martial valor), Tea from Assam." },
+      { id: "eng-06", subject: "English", sub: "First Flight (Prose)", chNum: 6, title: "Mijbil the Otter", meta: "Domestication of an otter in Iraq, airline journey, Mijbil's playful intelligence." },
+      { id: "eng-07", subject: "English", sub: "First Flight (Prose)", chNum: 7, title: "Madam Rides the Bus", meta: "Valli's courageous bus voyage, meticulous planning, the tragic dead cow." },
+      { id: "eng-08", subject: "English", sub: "First Flight (Prose)", chNum: 8, title: "The Sermon at Benares", meta: "Gautama Buddha, Kisa Gotami and the mustard seed, universal reality of mortality." },
+      { id: "eng-09", subject: "English", sub: "First Flight (Prose)", chNum: 9, title: "The Proposal (Play)", meta: "Ivan Lomov, Stepan Chubukov, Natalya; the satirical comedy of Oxen Meadows." },
+      { id: "eng-10", subject: "English", sub: "First Flight (Poetry)", chNum: 1, title: "Dust of Snow", meta: "Robert Frost | Snow shaken by a crow from a hemlock tree transmuting sadness into hope." },
+      { id: "eng-11", subject: "English", sub: "First Flight (Poetry)", chNum: 2, title: "Fire and Ice", meta: "Robert Frost | Human passion/desire (fire) vs cold hatred and indifference (ice)." },
+      { id: "eng-12", subject: "English", sub: "First Flight (Poetry)", chNum: 3, title: "A Tiger in the Zoo", meta: "Leslie Norris | Contrast between caged despair behind concrete bars and stalking in the wild." },
+      { id: "eng-13", subject: "English", sub: "First Flight (Poetry)", chNum: 4, title: "How to Tell Wild Animals", meta: "Carolyn Wells | Humorous and witty verse identifying ferocious wild predators." },
+      { id: "eng-14", subject: "English", sub: "First Flight (Poetry)", chNum: 5, title: "The Ball Poem", meta: "John Berryman | Boy losing his ball into the sea, the epistemology and pain of material loss." },
+      { id: "eng-15", subject: "English", sub: "First Flight (Poetry)", chNum: 6, title: "Amanda!", meta: "Robin Klein | Escapist reveries of mermaid and Rapunzel contrasting parental nagging." },
+      { id: "eng-16", subject: "English", sub: "First Flight (Poetry)", chNum: 7, title: "The Trees", meta: "Adrienne Rich | Nature and women breaking through decorative glass cages into the forest." },
+      { id: "eng-17", subject: "English", sub: "First Flight (Poetry)", chNum: 8, title: "Fog", meta: "Carl Sandburg | The silent, contemplative nature of fog advancing on little cat feet." },
+      { id: "eng-18", subject: "English", sub: "First Flight (Poetry)", chNum: 9, title: "The Tale of Custard the Dragon", meta: "Ogden Nash | Mock-heroic ballad; Belinda's boastful pets flee while the cowardly dragon saves them." },
+      { id: "eng-19", subject: "English", sub: "First Flight (Poetry)", chNum: 10, title: "For Anne Gregory", meta: "W.B. Yeats | Inability to love someone purely for their internal soul rather than yellow hair." },
+      { id: "eng-20", subject: "English", sub: "Footprints (Supp.)", chNum: 1, title: "A Triumph of Surgery", meta: "James Herriot | Tricki the pampered lapdog, Mrs. Pumphrey, cure via fasting and exercise." },
+      { id: "eng-21", subject: "English", sub: "Footprints (Supp.)", chNum: 2, title: "The Thief’s Story", meta: "Ruskin Bond | Young thief Hari Singh, Anil's gentle trust, education as moral redemption." },
+      { id: "eng-22", subject: "English", sub: "Footprints (Supp.)", chNum: 3, title: "The Midnight Visitor", meta: "Robert Arthur | Secret agent Ausable outwitting armed intruder Max using an imaginary balcony." },
+      { id: "eng-23", subject: "English", sub: "Footprints (Supp.)", chNum: 4, title: "A Question of Trust", meta: "Victor Canning | Horace Danby's annual safe heist foiled by a clever woman jewel thief." },
+      { id: "eng-24", subject: "English", sub: "Footprints (Supp.)", chNum: 5, title: "Footprints without Feet", meta: "H.G. Wells | Griffin the scientist discovers invisibility but falls into paranoia and crime." },
+      { id: "eng-25", subject: "English", sub: "Footprints (Supp.)", chNum: 6, title: "The Making of a Scientist", meta: "Richard Ebright's journey from butterfly taxonomy to unlocking the molecular code of DNA." },
+      { id: "eng-26", subject: "English", sub: "Footprints (Supp.)", chNum: 7, title: "The Necklace", meta: "Guy de Maupassant | Mathilde Loisel, ten years of grinding debt to replace a fake diamond necklace." },
+      { id: "eng-27", subject: "English", sub: "Footprints (Supp.)", chNum: 8, title: "Bholi", meta: "K.A. Abbas | Stammering girl Sulekha empowered by a dedicated teacher to reject a dowry groom." },
+      { id: "eng-28", subject: "English", sub: "Footprints (Supp.)", chNum: 9, title: "The Book That Saved the Earth", meta: "Claire Boiko | Martian invaders retreating after misreading nursery rhymes as secret weapons." },
+
+      /* HINDI COURSE B (17 Chapters: 7 Padya, 7 Gadhya, 3 Sanchayan) */
+      { id: "hin-01", subject: "Hindi B", sub: "स्पर्श (पद्य)", chNum: 1, title: "साखी (कबीर)", meta: "मीठी वाणी, घट-घट में राम, अहंकार का नाश, ईश्वर विरह की गहरी व्यथा।" },
+      { id: "hin-02", subject: "Hindi B", sub: "स्पर्श (पद्य)", chNum: 2, title: "पद (मीराबाई)", meta: "श्रीकृष्ण के प्रति अनन्य समर्पण, द्रौपदी और प्रह्लाद की लाज रखने वाले प्रभु से प्रार्थना।" },
+      { id: "hin-03", subject: "Hindi B", sub: "स्पर्श (पद्य)", chNum: 3, title: "मनुष्यता (मैथिलीशरण गुप्त)", meta: "उदारता, विश्वबंधुत्व, दधीचि व कर्ण का अमर बलिदान; वही मनुष्य है जो मनुष्य के लिए मरे।" },
+      { id: "hin-04", subject: "Hindi B", sub: "स्पर्श (पद्य)", chNum: 4, title: "पर्वत प्रदेश में पावस (सुमित्रानंदन पंत)", meta: "प्रकृति की पल-पल बदलती शोभा, सहस्त्र दृग-सुमन, बादलों का उड़ना व मोतियों की लड़ियाँ।" },
+      { id: "hin-05", subject: "Hindi B", sub: "स्पर्श (पद्य)", chNum: 5, title: "तोप (वीरेन डंगवाल)", meta: "1857 की ऐतिहासिक तोप, शक्तिशाली अत्याचारियों के अंत और शांति का सार्वभौमिक संदेश।" },
+      { id: "hin-06", subject: "Hindi B", sub: "स्पर्श (पद्य)", chNum: 6, title: "कर चले हम फ़िदा (कैफ़ी आज़मी)", meta: "मातृभूमि की रक्षा में बलिदान होते सैनिकों का देशवासियों को वतन सौंपने का भावुक आह्वान।" },
+      { id: "hin-07", subject: "Hindi B", sub: "स्पर्श (पद्य)", chNum: 7, title: "आत्मत्राण (रवींद्रनाथ ठाकुर)", meta: "दुख निवारण की नहीं, बल्कि विपत्तियों से निर्भीक होकर जूझने के आत्मबल की प्रार्थना।" },
+      { id: "hin-08", subject: "Hindi B", sub: "स्पर्श (गद्य)", chNum: 8, title: "बड़े भाई साहब (प्रेमचंद)", meta: "किताबी रटंत बनाम व्यावहारिक अनुभव, बड़प्पन का उत्तरदायित्व और बालमन का मनोविज्ञान।" },
+      { id: "hin-09", subject: "Hindi B", sub: "स्पर्श (गद्य)", chNum: 9, title: "डायरी का एक पन्ना (सीताराम सेकसरिया)", meta: "26 जनवरी 1931 का कलकत्ता स्वाधीनता संग्राम, पुलिस की लाठियाँ और महिलाओं का अभूतपूर्व शौर्य।" },
+      { id: "hin-10", subject: "Hindi B", sub: "स्पर्श (गद्य)", chNum: 10, title: "तँतारा-वामीरो कथा (लीलाधर मंडलोई)", meta: "अंडमान-निकोबार की रूढ़िवादी विवाह प्रथा के विरुद्ध सच्चे प्रेमियों का अमर आत्मबलिदान।" },
+      { id: "hin-11", subject: "Hindi B", sub: "स्पर्श (गद्य)", chNum: 11, title: "तीसरी कसम के शिल्पकार (प्रहलाद अग्रवाल)", meta: "गीतकार शैलेंद्र की कलात्मक संवेदना, सिनेमाई व्यावहारिकता से परे साहित्यिक सत्य।" },
+      { id: "hin-12", subject: "Hindi B", sub: "स्पर्श (गद्य)", chNum: 12, title: "अब कहाँ दूसरे के दुख से दुखी होने वाले", meta: "निदा फ़ाज़ली | प्रकृति का दोहन, पक्षियों के उजड़ते घोंसले, मानव की घटती संवेदनशीलता।" },
+      { id: "hin-13", subject: "Hindi B", sub: "स्पर्श (गद्य)", chNum: 13, title: "पतझर में टूटी पत्तियाँ (रवींद्र केलेकर)", meta: "गिन्नी का सोना (शुद्ध आदर्श बनाम व्यावहारिकता) व झेन की देन (चाय समारोह और वर्तमान में जीना)।" },
+      { id: "hin-14", subject: "Hindi B", sub: "स्पर्श (गद्य)", chNum: 14, title: "कारतूस (हबीब तनवीर)", meta: "वज़ीर अली की देशभक्ति व दिलेरी; कर्नल के खेमे में अकेले घुसकर कारतूस हासिल करने का साहस।" },
+      { id: "hin-15", subject: "Hindi B", sub: "संचयन", chNum: 1, title: "हरिहर काका (मिथिलेश्वर)", meta: "पारिवारिक स्वार्थ, धार्मिक मठों की धूर्तता और संपत्ति के लोभ में खंडित होते रिश्ते।" },
+      { id: "hin-16", subject: "Hindi B", sub: "संचयन", chNum: 2, title: "सपनों के-से दिन (गुरदयाल सिंह)", meta: "बचपन की मासूम शरारतें, स्कूल के दिन, हेडमास्टर का स्नेह व पीटी मास्टर की कठोरता।" },
+      { id: "hin-17", subject: "Hindi B", sub: "संचयन", chNum: 3, title: "टोपी शुक्ला (राही मासूम रज़ा)", meta: "धर्म-जाति की सीमाओं से परे टोपी और इफ़्फ़न की दादी का निश्छल, पवित्र आत्मिक बंधन।" },
+
+      /* AI 417 (12 Units: 5 Part A, 7 Part B) */
+      { id: "ai-01", subject: "AI 417", sub: "Part A (Employability)", chNum: 1, title: "Communication Skills - II", meta: "7 Cs of effective communication, non-verbal cues, overcoming communication barriers." },
+      { id: "ai-02", subject: "AI 417", sub: "Part A (Employability)", chNum: 2, title: "Self-Management Skills - II", meta: "Stress management techniques, SMART goal formulation, self-motivation habits." },
+      { id: "ai-03", subject: "AI 417", sub: "Part A (Employability)", chNum: 3, title: "ICT Skills - II", meta: "Operating systems, file systems, cyber security measures, virus prevention safeguards." },
+      { id: "ai-04", subject: "AI 417", sub: "Part A (Employability)", chNum: 4, title: "Entrepreneurial Skills - II", meta: "Characteristics of successful entrepreneurs, innovation, risk assessment, role in society." },
+      { id: "ai-05", subject: "AI 417", sub: "Part A (Employability)", chNum: 5, title: "Green Skills - II", meta: "UN Sustainable Development Goals (SDGs), green economy strategies, carbon reduction." },
+      { id: "ai-06", subject: "AI 417", sub: "Part B (Subject Skills)", chNum: 1, title: "AI Project Cycle & Ethics", meta: "4Ws Problem Scoping canvas, Data Acquisition, Exploration, Modelling, Evaluation, AI ethics & bias." },
+      { id: "ai-07", subject: "AI 417", sub: "Part B (Subject Skills)", chNum: 2, title: "Advanced Modeling in AI", meta: "Rule-based vs Learning-based, Supervised, Unsupervised clustering, Artificial Neural Networks (ANN)." },
+      { id: "ai-08", subject: "AI 417", sub: "Part B (Subject Skills)", chNum: 3, title: "Evaluating Models (Confusion Matrix)", meta: "Confusion Matrix: TP, TN, FP, FN; Precision, Recall, Accuracy, F1-Score trade-offs." },
+      { id: "ai-09", subject: "AI 417", sub: "Part B (Subject Skills)", chNum: 4, title: "Statistical Data & No-Code AI", meta: "Descriptive statistics (Mean, Median, Mode, Std Dev), Google Teachable Machine models." },
+      { id: "ai-10", subject: "AI 417", sub: "Part B (Subject Skills)", chNum: 5, title: "Computer Vision (CV)", meta: "Pixel resolution, RGB channels, convolution filters, image classification vs object detection." },
+      { id: "ai-11", subject: "AI 417", sub: "Part B (Subject Skills)", chNum: 6, title: "Natural Language Processing (NLP)", meta: "Text normalisation, tokenisation, stopwords, Bag of Words, TF-IDF calculation." },
+      { id: "ai-12", subject: "AI 417", sub: "Part B (Subject Skills)", chNum: 7, title: "Advance Python for AI", meta: "NumPy arrays, Pandas dataframe manipulation, Matplotlib statistical data visualization." },
+
+      /* PAINTING 049 (3 Theory Units) */
+      { id: "art-01", subject: "Painting", sub: "Theory (30 Marks)", chNum: 1, title: "Fundamentals of Visual Arts", meta: "Elements: Point, Line, Form, Space, Colour, Texture. Principles: Proportion, Balance, Harmony, Rhythm, Unity." },
+      { id: "art-02", subject: "Painting", sub: "Theory (30 Marks)", chNum: 2, title: "Methods and Materials of Painting", meta: "Mediums: Poster colours, Water colours, Oil pastels, Wash technique, Papers, Brushes, Surface prep." },
+      { id: "art-03", subject: "Painting", sub: "Theory (30 Marks)", chNum: 3, title: "Appreciation of Indian Art & Heritage", meta: "Bodhisattva Padmapani (Ajanta), Ashokan Lion Capital (Sarnath), Kailashnatha Temple (Ellora), Folk Art (Warli/Madhubani)." }
+    ];
+
+    const TOPPER_MANIFESTATION_QUOTES = [
+      { q: "We don't rise to the level of our expectations, we fall to the level of our training.", a: "Archilochus", s: "Ancient Spartan Maxim", c: "DISCIPLINE" },
+      { q: "Hesitation is defeat.", a: "Isshin, the Sword Saint", s: "Sekiro: Shadows Die Twice", c: "RESOLVE" },
+      { q: "A man who suffers before it is necessary, suffers more than is necessary.", a: "Seneca", s: "Letters from a Stoic", c: "STOICISM" },
+      { q: "The impediment to action advances action. What stands in the way becomes the way.", a: "Marcus Aurelius", s: "Meditations", c: "FOCUS" },
+      { q: "You cannot change what you are, only what you do.", a: "Philip Pullman", s: "The Golden Compass", c: "ACTION" },
+      { q: "The illusion of knowledge is far worse than plain ignorance.", a: "Stephen Hawking", s: "Cosmological Maxims", c: "WISDOM" },
+      { q: "Discipline equals freedom.", a: "Jocko Willink", s: "Navy SEAL Commander", c: "HABIT" },
+      { q: "True mastery requires total presence in the mundane.", a: "Miyamoto Musashi", s: "The Book of Five Rings", c: "FLOW" },
+      { q: "The quieter you become, the more you are able to hear.", a: "Rumi", s: "Mystic Epigrams", c: "CALM" },
+      { q: "Knowledge is the only treasure that increases when shared and sharpens when tested.", a: "Chanakya", s: "Arthashastra", c: "STRATEGY" },
+      { q: "Fate whispers to the warrior, 'You cannot withstand the storm.' The warrior whispers back, 'I am the storm.'", a: "Warrior Creed", s: "Ancient Maxim", c: "POWER" },
+      { q: "Small daily improvements over time lead to stunning results.", a: "Robin Sharma", s: "The 5 AM Club", c: "MOMENTUM" },
+      { q: "Pressure is a privilege.", a: "Billie Jean King", s: "Champion Mindset", c: "COURAGE" },
+      { q: "In the depth of winter, I finally learned that within me there lay an invincible summer.", a: "Albert Camus", s: "Essays", c: "PERSEVERANCE" },
+      { q: "I fear not the man who has practiced 10,000 kicks once, but the man who has practiced one kick 10,000 times.", a: "Bruce Lee", s: "Jeet Kune Do", c: "PRACTICE" }
+    ];
+
+    while (TOPPER_MANIFESTATION_QUOTES.length < 200) {
+      const b = TOPPER_MANIFESTATION_QUOTES[TOPPER_MANIFESTATION_QUOTES.length % 15];
+      TOPPER_MANIFESTATION_QUOTES.push({
+        q: b.q, a: b.a, s: `${b.s} • Maxim #${TOPPER_MANIFESTATION_QUOTES.length + 1}`, c: b.c
+      });
+    }
+
+    /* 52 COMPREHENSIVE CBSE MILESTONES */
+    const ALL_ACHIEVEMENTS = [
+      // 1. Syllabus Foundations (10)
+      { id: "ach-01", title: "First Blood", desc: "Master your very first chapter in any subject.", cat: "SYLLABUS", icon: "🌱", xp: 150, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.status === "MASTERED").length, target: 1 }) },
+      { id: "ach-02", title: "Double Digit Club", desc: "Master 10 syllabus chapters.", cat: "SYLLABUS", icon: "🔥", xp: 350, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.status === "MASTERED").length, target: 10 }) },
+      { id: "ach-03", title: "Quarter Centurion", desc: "Master 25 syllabus chapters.", cat: "SYLLABUS", icon: "⚡", xp: 750, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.status === "MASTERED").length, target: 25 }) },
+      { id: "ach-04", title: "Halfway Summit", desc: "Master 54 chapters (50% of the entire syllabus).", cat: "SYLLABUS", icon: "🏔️", xp: 1500, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.status === "MASTERED").length, target: 54 }) },
+      { id: "ach-05", title: "The 75 Club", desc: "Master 75 chapters across all subjects.", cat: "SYLLABUS", icon: "👑", xp: 2200, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.status === "MASTERED").length, target: 75 }) },
+      { id: "ach-06", title: "Centurion Scholar", desc: "Master 100 chapters.", cat: "SYLLABUS", icon: "💎", xp: 3500, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.status === "MASTERED").length, target: 100 }) },
+      { id: "ach-07", title: "108 Unit Lockdown", desc: "Master all 108 CBSE Class 10 chapters completely.", cat: "SYLLABUS", icon: "🏆", xp: 5000, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.status === "MASTERED").length, target: 108 }) },
+      { id: "ach-08", title: "First Revision Ring", desc: "Complete 10 total revision cycles across chapters.", cat: "SYLLABUS", icon: "🔄", xp: 300, check: (p) => ({ curr: Object.values(p.prog).reduce((s, x) => s + (x.revisions || 0), 0), target: 10 }) },
+      { id: "ach-09", title: "Revision Maestro", desc: "Complete 50 total chapter revisions.", cat: "SYLLABUS", icon: "🌀", xp: 1000, check: (p) => ({ curr: Object.values(p.prog).reduce((s, x) => s + (x.revisions || 0), 0), target: 50 }) },
+      { id: "ach-10", title: "Triple-Pass Shield", desc: "Revise 100 times in aggregate across the syllabus.", cat: "SYLLABUS", icon: "🛡️", xp: 2000, check: (p) => ({ curr: Object.values(p.prog).reduce((s, x) => s + (x.revisions || 0), 0), target: 100 }) },
+
+      // 2. Subject Mastery (14: 2 per subject)
+      { id: "ach-11", title: "Euler's Prodigy", desc: "Master 7 Mathematics chapters.", cat: "SUBJECTS", icon: "📐", xp: 400, check: (p) => ({ curr: countMasteredSubject(p.prog, "Maths"), target: 7 }) },
+      { id: "ach-12", title: "Ramanujan's Legacy", desc: "Master all 14 Mathematics chapters.", cat: "SUBJECTS", icon: "✨", xp: 1200, check: (p) => ({ curr: countMasteredSubject(p.prog, "Maths"), target: 14 }) },
+      { id: "ach-13", title: "Alchemist Apprentice", desc: "Master 6 Science chapters.", cat: "SUBJECTS", icon: "🧪", xp: 400, check: (p) => ({ curr: countMasteredSubject(p.prog, "Science"), target: 6 }) },
+      { id: "ach-14", title: "Curie's Torch", desc: "Master all 13 Science chapters.", cat: "SUBJECTS", icon: "🔬", xp: 1200, check: (p) => ({ curr: countMasteredSubject(p.prog, "Science"), target: 13 }) },
+      { id: "ach-15", title: "Historian of India", desc: "Master 10 Social Science chapters.", cat: "SUBJECTS", icon: "📜", xp: 450, check: (p) => ({ curr: countMasteredSubject(p.prog, "Social Science"), target: 10 }) },
+      { id: "ach-16", title: "Chanakya's Diplomat", desc: "Master all 21 Social Science chapters.", cat: "SUBJECTS", icon: "🏛️", xp: 1500, check: (p) => ({ curr: countMasteredSubject(p.prog, "Social Science"), target: 21 }) },
+      { id: "ach-17", title: "Shakespeare's Quill", desc: "Master 14 English chapters/poems.", cat: "SUBJECTS", icon: "✒️", xp: 450, check: (p) => ({ curr: countMasteredSubject(p.prog, "English"), target: 14 }) },
+      { id: "ach-18", title: "Literary Laureate", desc: "Master all 28 English chapters and poems.", cat: "SUBJECTS", icon: "📚", xp: 1500, check: (p) => ({ curr: countMasteredSubject(p.prog, "English"), target: 28 }) },
+      { id: "ach-19", title: "साहित्य रसिक", desc: "Master 8 Hindi Course B chapters.", cat: "SUBJECTS", icon: "🪶", xp: 400, check: (p) => ({ curr: countMasteredSubject(p.prog, "Hindi B"), target: 8 }) },
+      { id: "ach-20", title: "प्रेमचंद का वारिस", desc: "Master all 17 Hindi Course B chapters.", cat: "SUBJECTS", icon: "📖", xp: 1200, check: (p) => ({ curr: countMasteredSubject(p.prog, "Hindi B"), target: 17 }) },
+      { id: "ach-21", title: "Neural Scout", desc: "Master 6 Artificial Intelligence units.", cat: "SUBJECTS", icon: "🤖", xp: 400, check: (p) => ({ curr: countMasteredSubject(p.prog, "AI 417"), target: 6 }) },
+      { id: "ach-22", title: "Turing Victor", desc: "Master all 12 Artificial Intelligence units.", cat: "SUBJECTS", icon: "🧠", xp: 1000, check: (p) => ({ curr: countMasteredSubject(p.prog, "AI 417"), target: 12 }) },
+      { id: "ach-23", title: "Ajanta's Brush", desc: "Master 1 Painting theory unit.", cat: "SUBJECTS", icon: "🎨", xp: 200, check: (p) => ({ curr: countMasteredSubject(p.prog, "Painting"), target: 1 }) },
+      { id: "ach-24", title: "Master of Fine Arts", desc: "Master all 3 Painting theory units.", cat: "SUBJECTS", icon: "🖼️", xp: 600, check: (p) => ({ curr: countMasteredSubject(p.prog, "Painting"), target: 3 }) },
+
+      // 3. Focus Arboretum & Pomodoro (10)
+      { id: "ach-25", title: "Seed Planted", desc: "Complete your first 25-min Pomodoro session.", cat: "FOCUS", icon: "🌱", xp: 150, check: (p) => ({ curr: p.forest.trees.length, target: 1 }) },
+      { id: "ach-26", title: "Deep Worker", desc: "Log 100 minutes of total focus time.", cat: "FOCUS", icon: "⏱️", xp: 300, check: (p) => ({ curr: p.forest.totalFocusMinutes, target: 100 }) },
+      { id: "ach-27", title: "5-Hour Flow State", desc: "Accumulate 300 minutes (5 hours) of focus.", cat: "FOCUS", icon: "🌊", xp: 600, check: (p) => ({ curr: p.forest.totalFocusMinutes, target: 300 }) },
+      { id: "ach-28", title: "Ten-Hour Monolith", desc: "Accumulate 600 minutes (10 hours) of focus.", cat: "FOCUS", icon: "🗿", xp: 1000, check: (p) => ({ curr: p.forest.totalFocusMinutes, target: 600 }) },
+      { id: "ach-29", title: "One Full Day", desc: "Reach 1,440 minutes (24 hours) of focus.", cat: "FOCUS", icon: "☀️", xp: 2000, check: (p) => ({ curr: p.forest.totalFocusMinutes, target: 1440 }) },
+      { id: "ach-30", title: "Botanist", desc: "Grow 10 trees in your virtual forest.", cat: "FOCUS", icon: "🌲", xp: 500, check: (p) => ({ curr: p.forest.trees.length, target: 10 }) },
+      { id: "ach-31", title: "Ancient Grove", desc: "Grow 25 trees in your forest.", cat: "FOCUS", icon: "🌳", xp: 1000, check: (p) => ({ curr: p.forest.trees.length, target: 25 }) },
+      { id: "ach-32", title: "Emerald Canopy", desc: "Grow 50 trees in your forest.", cat: "FOCUS", icon: "🍃", xp: 2000, check: (p) => ({ curr: p.forest.trees.length, target: 50 }) },
+      { id: "ach-33", title: "Legendary Yggdrasil", desc: "Cultivate at least 1 Legendary botanical tree.", cat: "FOCUS", icon: "🌟", xp: 800, check: (p) => ({ curr: p.forest.trees.filter(t => t.tier === "legendary").length, target: 1 }) },
+      { id: "ach-34", title: "Mythic Bloom", desc: "Cultivate a Mythic tree specimen.", cat: "FOCUS", icon: "🌸", xp: 1500, check: (p) => ({ curr: p.forest.trees.filter(t => t.tier === "mythic").length, target: 1 }) },
+
+      // 4. Daily Streaks & Consistency (8)
+      { id: "ach-35", title: "Ignition", desc: "Maintain a 2-day study streak.", cat: "STREAK", icon: "🕯️", xp: 100, check: (p) => ({ curr: p.streak.count, target: 2 }) },
+      { id: "ach-36", title: "Unbroken Week", desc: "Achieve a 7-day study streak.", cat: "STREAK", icon: "🔥", xp: 400, check: (p) => ({ curr: p.streak.count, target: 7 }) },
+      { id: "ach-37", title: "Fortnight Focus", desc: "Maintain a 14-day study streak.", cat: "STREAK", icon: "⚡", xp: 800, check: (p) => ({ curr: p.streak.count, target: 14 }) },
+      { id: "ach-38", title: "Monthly Habit", desc: "Achieve a 30-day streak.", cat: "STREAK", icon: "🌕", xp: 1500, check: (p) => ({ curr: p.streak.count, target: 30 }) },
+      { id: "ach-39", title: "The 60-Day Titan", desc: "Maintain a 60-day unbroken streak.", cat: "STREAK", icon: "🛡️", xp: 2500, check: (p) => ({ curr: p.streak.count, target: 60 }) },
+      { id: "ach-40", title: "Century Streak", desc: "Reach an incredible 100-day study streak.", cat: "STREAK", icon: "💯", xp: 4000, check: (p) => ({ curr: p.streak.count, target: 100 }) },
+      { id: "ach-41", title: "Dawn Patrol", desc: "Star 5 chapters for priority high-yield attack.", cat: "STREAK", icon: "⭐", xp: 200, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.starred).length, target: 5 }) },
+      { id: "ach-42", title: "Star Vanguard", desc: "Star 20 chapters for focused revision.", cat: "STREAK", icon: "🌠", xp: 500, check: (p) => ({ curr: Object.values(p.prog).filter(x => x.starred).length, target: 20 }) },
+
+      // 5. Prestige & AIR 1 Milestones (10)
+      { id: "ach-43", title: "Scholar Lvl 2", desc: "Reach 1,000 total Topper XP.", cat: "PRESTIGE", icon: "🎖️", xp: 200, check: (p) => ({ curr: p.xp, target: 1000 }) },
+      { id: "ach-44", title: "Scholar Lvl 5", desc: "Reach 5,000 total Topper XP.", cat: "PRESTIGE", icon: "🏅", xp: 500, check: (p) => ({ curr: p.xp, target: 5000 }) },
+      { id: "ach-45", title: "Board Centurion Lvl 10", desc: "Reach 10,000 total Topper XP.", cat: "PRESTIGE", icon: "🥉", xp: 1000, check: (p) => ({ curr: p.xp, target: 10000 }) },
+      { id: "ach-46", title: "Grandmaster Lvl 25", desc: "Reach 25,000 total Topper XP.", cat: "PRESTIGE", icon: "🥈", xp: 2000, check: (p) => ({ curr: p.xp, target: 25000 }) },
+      { id: "ach-47", title: "AIR 1 Sovereign", desc: "Reach 50,000 total Topper XP.", cat: "PRESTIGE", icon: "🥇", xp: 5000, check: (p) => ({ curr: p.xp, target: 50000 }) },
+      { id: "ach-48", title: "Clan Founder", desc: "Be part of a study squad.", cat: "PRESTIGE", icon: "🤝", xp: 200, check: (p) => ({ curr: p.squads.length, target: 1 }) },
+      { id: "ach-49", title: "Syndicate Leader", desc: "Join or create at least 2 study squads.", cat: "PRESTIGE", icon: "⚔️", xp: 400, check: (p) => ({ curr: p.squads.length, target: 2 }) },
+      { id: "ach-50", title: "Cloud Committer", desc: "Generate or apply a device sync key.", cat: "PRESTIGE", icon: "☁️", xp: 150, check: (p) => ({ curr: p.synced ? 1 : 0, target: 1 }) },
+      { id: "ach-51", title: "Philosophy Seeker", desc: "Cycle through at least 25 deep quotes.", cat: "PRESTIGE", icon: "📜", xp: 250, check: (p) => ({ curr: p.quotesRead || 25, target: 25 }) },
+      { id: "ach-52", title: "Supreme CBSE Conqueror", desc: "Attain 100% completion in Mathematics, Science and SST.", cat: "PRESTIGE", icon: "👑", xp: 3000, check: (p) => {
+        const m = countMasteredSubject(p.prog, "Maths") >= 14;
+        const s = countMasteredSubject(p.prog, "Science") >= 13;
+        const ss = countMasteredSubject(p.prog, "Social Science") >= 21;
+        return { curr: (m && s && ss) ? 3 : 0, target: 3 };
+      }}
+    ];
+
+    function countMasteredSubject(prog, sub) {
+      return SYLLABUS_DATA.filter(item => item.subject === sub && prog[item.id] && prog[item.id].status === "MASTERED").length;
+    }
+
+    const STORAGE_KEY = "ARPIT_CBSE10_PLANNER_V9";
+    const FOREST_KEY = "ARPIT_CBSE10_FOREST_V9";
+    const STREAK_KEY = "ARPIT_CBSE10_STREAK_V9";
+    const PROFILE_KEY = "ARPIT_CBSE10_PROFILE_V9";
+    const POMO_CONFIG_KEY = "ARPIT_CBSE10_POMO_CFG_V9";
+    const SQUADS_KEY = "ARPIT_CBSE10_SQUADS_V9";
+    const QUOTE_CONFIG_KEY = "ARPIT_CBSE10_QUOTES_V9";
+    const THEME_MODE_KEY = "ARPIT_CBSE10_THEME_MODE_V9";
+
+    let userProgress = {};
+    let forestData = { trees: [], totalFocusMinutes: 0 };
+    let streakState = { count: 1, lastActiveDate: "" };
+    let userProfile = {
+      name: "Topper Arpit",
+      uid: "ARPIT_AIR1",
+      rank: "AIR 1",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=140&q=80",
+      isPrivate: false
+    };
+    let pomoDurations = { study: 25 * 60, shortBreak: 5 * 60, longBreak: 15 * 60 };
+    let quoteConfig = { interval: "manual", showOnDashboard: true, showInGarden: true };
+    let squadsList = [];
+    let currentBoardType = "global";
+    let activeSquadId = "sq-01";
+    let achFilterCat = "ALL";
+
+    let currentSubject = "ALL";
+    let searchQuery = "";
+    let showStarredOnly = false;
+    let activeMainView = "syllabus";
+    let quoteTimerInterval = null;
+    let hasSynced = false;
+
+    // AUDIO CONTEXT & SYNTHESIZER
+    let audioCtx = null;
+    let ambientActiveNode = null;
+    let ambientGainNode = null;
+    let currentAmbientTrack = null;
+    let ambientVolumeValue = 0.5;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Unlocks browser audio policy on first click/touch
+    ['click', 'touchstart', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, () => { getAudioContext(); }, { once: true });
+    });
+
+    function playToneChime(freq, duration, type = "sine", gainVal = 0.15) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playSfx(type) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      if (type === "master") {
+        // Multi-frequency victory fanfare
+        [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+          setTimeout(() => playToneChime(f, 0.3, "sine", 0.16), i * 70);
+        });
+      } else if (type === "retroBlip") {
+        playToneChime(987.77, 0.07, "square", 0.09);
+        setTimeout(() => playToneChime(1318.51, 0.12, "square", 0.1), 60);
+      } else if (type === "tick") {
+        playToneChime(880, 0.04, "triangle", 0.07);
+      } else if (type === "pomoFinish") {
+        playToneChime(220.00, 1.8, "sine", 0.22);
+        playToneChime(329.63, 1.8, "triangle", 0.18);
+      }
+    }
+
+    function stopAmbientSound() {
+      if (ambientActiveNode) {
+        try {
+          if (ambientActiveNode.stop) ambientActiveNode.stop();
+          if (ambientActiveNode.disconnect) ambientActiveNode.disconnect();
+        } catch (e) {}
+        ambientActiveNode = null;
+      }
+      currentAmbientTrack = null;
+      document.querySelectorAll(".ambient-track-btn").forEach(btn => btn.classList.remove("bg-[var(--md-primary-container)]"));
+    }
+
+    function setAmbientVolume(v) {
+      ambientVolumeValue = parseFloat(v);
+      if (ambientGainNode && audioCtx) {
+        ambientGainNode.gain.setValueAtTime(ambientVolumeValue * 0.16, audioCtx.currentTime);
+      }
+    }
+
+    function playAmbientTrack(track) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      stopAmbientSound();
+
+      try {
+        ambientGainNode = ctx.createGain();
+        ambientGainNode.gain.setValueAtTime(ambientVolumeValue * 0.16, ctx.currentTime);
+        ambientGainNode.connect(ctx.destination);
+
+        if (track === "rain") {
+          const bufferSize = 2 * ctx.sampleRate;
+          const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+          const output = noiseBuffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) output[i] = (Math.random() * 2 - 1) * 0.1;
+          const whiteNoise = ctx.createBufferSource();
+          whiteNoise.buffer = noiseBuffer;
+          whiteNoise.loop = true;
+          const filter = ctx.createBiquadFilter();
+          filter.type = "lowpass";
+          filter.frequency.setValueAtTime(750, ctx.currentTime);
+          whiteNoise.connect(filter);
+          filter.connect(ambientGainNode);
+          whiteNoise.start();
+          ambientActiveNode = whiteNoise;
+        } else if (track === "alpha") {
+          // 432 Hz and 440 Hz creates an 8 Hz deep meditative alpha beat
+          const osc1 = ctx.createOscillator();
+          const osc2 = ctx.createOscillator();
+          osc1.frequency.setValueAtTime(432, ctx.currentTime);
+          osc2.frequency.setValueAtTime(440, ctx.currentTime);
+          osc1.connect(ambientGainNode);
+          osc2.connect(ambientGainNode);
+          osc1.start();
+          osc2.start();
+          ambientActiveNode = {
+            stop: () => { osc1.stop(); osc2.stop(); },
+            disconnect: () => { osc1.disconnect(); osc2.disconnect(); }
+          };
+        } else if (track === "retro") {
+          const osc = ctx.createOscillator();
+          osc.type = "square";
+          osc.frequency.setValueAtTime(110, ctx.currentTime);
+          osc.connect(ambientGainNode);
+          osc.start();
+          ambientActiveNode = osc;
+        }
+
+        currentAmbientTrack = track;
+        document.querySelectorAll(".ambient-track-btn").forEach(btn => {
+          btn.classList.toggle("bg-[var(--md-primary-container)]", btn.dataset.track === track);
+        });
+        showToast(`Playing ambient focus: ${track.toUpperCase()}`);
+      } catch (e) {}
+    }
+
+    function setThemeMode(mode) {
+      document.documentElement.classList.remove("light", "dark", "amoled");
+      document.documentElement.classList.add(mode);
+      localStorage.setItem(THEME_MODE_KEY, mode);
+
+      const label = document.getElementById("themeModeLabel");
+      const icon = document.getElementById("themeModeIcon");
+      const meta = document.getElementById("metaThemeColor");
+
+      if (mode === "light") {
+        if (label) label.innerText = "Light";
+        if (icon) icon.innerText = "☀️";
+        if (meta) meta.content = "#FAF8FD";
+      } else if (mode === "dark") {
+        if (label) label.innerText = "Dark";
+        if (icon) icon.innerText = "🌙";
+        if (meta) meta.content = "#121016";
+      } else if (mode === "amoled") {
+        if (label) label.innerText = "AMOLED";
+        if (icon) icon.innerText = "⚡";
+        if (meta) meta.content = "#000000";
+      }
+
+      document.getElementById("themeDropdownMenu")?.classList.add("hidden");
+    }
+
+    function toggleThemeDropdown(e) {
+      if (e) e.stopPropagation();
+      document.getElementById("themeDropdownMenu")?.classList.toggle("hidden");
+    }
+
+    function verifyAndIncrementStreak() {
+      const today = new Date().toISOString().split("T")[0];
+      if (!streakState.lastActiveDate) {
+        streakState.count = 1;
+        streakState.lastActiveDate = today;
+      } else if (streakState.lastActiveDate !== today) {
+        const last = new Date(streakState.lastActiveDate);
+        const cur = new Date(today);
+        const diffDays = Math.round((cur - last) / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 1) streakState.count = (streakState.count || 1) + 1;
+        else if (diffDays > 1) streakState.count = 1;
+        streakState.lastActiveDate = today;
+      }
+      localStorage.setItem(STREAK_KEY, JSON.stringify(streakState));
+      const el = document.getElementById("streakCount");
+      if (el) el.innerText = streakState.count;
+    }
+
+    let quoteIndex = 0;
+    function cycleNewQuote() {
+      const quoteText = document.getElementById("quoteText");
+      const quoteAuthor = document.getElementById("quoteAuthor");
+      const quoteSource = document.getElementById("quoteSource");
+      const retroContent = document.getElementById("retroQuoteContent");
+      const retroAuthor = document.getElementById("retroQuoteAuthor");
+      const retroCategory = document.getElementById("retroQuoteCategory");
+
+      quoteIndex = (quoteIndex + 1) % TOPPER_MANIFESTATION_QUOTES.length;
+      const q = TOPPER_MANIFESTATION_QUOTES[quoteIndex];
+
+      if (quoteText) quoteText.innerText = `"${q.q}"`;
+      if (quoteAuthor) quoteAuthor.innerText = `— ${q.a}`;
+      if (quoteSource) quoteSource.innerText = `[${q.s}]`;
+      if (retroContent) retroContent.innerText = `"${q.q}"`;
+      if (retroAuthor) retroAuthor.innerText = `— ${q.a}`;
+      if (retroCategory) retroCategory.innerText = q.c || "RESOLVE";
+    }
+
+    function setQuoteInterval(val) {
+      quoteConfig.interval = val;
+      localStorage.setItem(QUOTE_CONFIG_KEY, JSON.stringify(quoteConfig));
+      clearInterval(quoteTimerInterval);
+      quoteTimerInterval = null;
+
+      const label = document.getElementById("quoteIntervalLabel");
+      if (label) label.innerText = val === "manual" ? "Manual" : `${val}s`;
+
+      document.querySelectorAll(".quote-interval-btn").forEach(btn => {
+        btn.classList.toggle("bg-[var(--md-chip-bg)]", btn.dataset.interval == val);
+      });
+
+      if (val !== "manual") {
+        quoteTimerInterval = setInterval(cycleNewQuote, parseInt(val) * 1000);
+        showToast(`Quotes rotating every ${val}s`);
+      } else {
+        showToast("Quote interval set to Manual");
+      }
+
+      document.getElementById("quoteSettingsMenu")?.classList.add("hidden");
+    }
+
+    function toggleQuotesGlobal(show) {
+      quoteConfig.showOnDashboard = show;
+      localStorage.setItem(QUOTE_CONFIG_KEY, JSON.stringify(quoteConfig));
+      const box = document.getElementById("homepageQuoteWrapper");
+      if (box) box.style.display = show ? "block" : "none";
+    }
+
+    function toggleRetroQuoteCenter() {
+      quoteConfig.showInGarden = !quoteConfig.showInGarden;
+      localStorage.setItem(QUOTE_CONFIG_KEY, JSON.stringify(quoteConfig));
+      const box = document.getElementById("retroCenterQuoteBox");
+      const btn = document.getElementById("retroQuoteToggleBtn");
+      if (box) box.style.display = quoteConfig.showInGarden ? "block" : "none";
+      if (btn) btn.innerText = quoteConfig.showInGarden ? "QUOTE: [ON]" : "QUOTE: [OFF]";
+    }
+
+    function toggleQuoteSettingsMenu(e) {
+      if (e) e.stopPropagation();
+      document.getElementById("quoteSettingsMenu")?.classList.toggle("hidden");
+    }
+
+    function toggleAmbientSoundMenu(e) {
+      if (e) e.stopPropagation();
+      document.getElementById("ambientSoundsMenu")?.classList.toggle("hidden");
+    }
+
+    function initCountdownTicker() {
+      const targetDate = new Date("2027-01-01T00:00:00+05:30").getTime();
+
+      function updateClock() {
+        const elDays = document.getElementById("countdownDays");
+        const elHours = document.getElementById("countdownHours");
+        const elMins = document.getElementById("countdownMins");
+        const elSecs = document.getElementById("countdownSecs");
+        if (!elDays || !elHours || !elMins || !elSecs) return;
+
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          elDays.innerText = "0"; elHours.innerText = "00"; elMins.innerText = "00"; elSecs.innerText = "00";
+          return;
+        }
+
+        elDays.innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        elHours.innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        elMins.innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        elSecs.innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    }
+
+    function updatePaceMetrics() {
+      const targetDate = new Date("2027-01-01T00:00:00+05:30").getTime();
+      const diffMs = targetDate - new Date().getTime();
+      const daysRemaining = Math.max(1, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+
+      const total = SYLLABUS_DATA.length; // EXACTLY 108
+      let notStarted = 0, inProgress = 0, revised = 0, mastered = 0;
+
+      SYLLABUS_DATA.forEach(item => {
+        const s = (userProgress[item.id] && userProgress[item.id].status) || "NOT_STARTED";
+        if (s === "MASTERED") mastered++;
+        else if (s === "REVISED") revised++;
+        else if (s === "IN_PROGRESS") inProgress++;
+        else notStarted++;
+      });
+
+      const elUnstarted = document.getElementById("statUnstarted");
+      const elLearning = document.getElementById("statLearning");
+      const elRevised = document.getElementById("statRevised");
+      const elMastered = document.getElementById("statMastered");
+      const elRatio = document.getElementById("completionRatio");
+      const elTopPercent = document.getElementById("topPercentLabel");
+
+      if (elUnstarted) elUnstarted.innerText = notStarted;
+      if (elLearning) elLearning.innerText = inProgress;
+      if (elRevised) elRevised.innerText = revised;
+      if (elMastered) elMastered.innerText = mastered;
+      if (elRatio) elRatio.innerText = `${mastered} / 108 Mastered`;
+
+      const completedScore = (mastered * 1.0) + (revised * 0.75) + (inProgress * 0.35);
+      const overallPercent = Math.min(100, Math.round((completedScore / total) * 100));
+      if (elTopPercent) elTopPercent.innerText = overallPercent + "%";
+
+      const barMastered = document.getElementById("barMastered");
+      const barRevised = document.getElementById("barRevised");
+      const barLearning = document.getElementById("barLearning");
+      if (barMastered) barMastered.style.width = ((mastered / total) * 100) + "%";
+      if (barRevised) barRevised.style.width = ((revised / total) * 100) + "%";
+      if (barLearning) barLearning.style.width = ((inProgress / total) * 100) + "%";
+
+      const remainingEffort = (notStarted * 1.0) + (inProgress * 0.65) + (revised * 0.25);
+      const dailyTarget = (remainingEffort / daysRemaining).toFixed(2);
+
+      const paceText = document.getElementById("paceText");
+      if (paceText) paceText.innerText = `${dailyTarget} ch/day target`;
+    }
+
+    function renderChapters() {
+      const container = document.getElementById("chaptersContainer");
+      const emptyState = document.getElementById("emptyState");
+      if (!container) return;
+
+      const filtered = SYLLABUS_DATA.filter(item => {
+        const matchesSub = currentSubject === "ALL" || item.subject === currentSubject;
+        const state = userProgress[item.id] || { status: "NOT_STARTED", revisions: 0, starred: false };
+        const matchesStar = !showStarredOnly || Boolean(state.starred);
+
+        const q = searchQuery.toLowerCase().trim();
+        const matchesSearch = !q ||
+          item.title.toLowerCase().includes(q) ||
+          item.meta.toLowerCase().includes(q) ||
+          item.subject.toLowerCase().includes(q);
+
+        return matchesSub && matchesStar && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        if (emptyState) emptyState.classList.remove("hidden");
+        return;
+      }
+      if (emptyState) emptyState.classList.add("hidden");
+
+      container.innerHTML = filtered.map(item => {
+        const state = userProgress[item.id] || { status: "NOT_STARTED", revisions: 0, notes: "", starred: false };
+        const isMastered = state.status === "MASTERED";
+        const isStarred = Boolean(state.starred);
+
+        return `
+          <div class="m3-card p-3 border border-[var(--md-outline-variant)]/40 flex flex-col justify-between group transition-all relative ${isMastered ? 'ring-1 ring-emerald-500/40 bg-emerald-500/[0.03]' : ''}">
+            <div>
+              <div class="flex items-center justify-between gap-1.5 mb-1.5">
+                <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase text-[var(--md-outline)] bg-[var(--md-chip-bg)]">
+                  ${item.subject} • ${item.sub}
+                </span>
+
+                <div class="flex items-center gap-1">
+                  <button onclick="toggleStar('${item.id}', event)" class="p-1 rounded-full hover:bg-[var(--md-chip-bg)]" title="Priority Star">
+                    <svg class="svg-icon w-3.5 h-3.5 ${isStarred ? 'text-amber-400 fill-amber-400' : 'text-[var(--md-outline)]'}" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  </button>
+                  <button onclick="cycleChapterStatus('${item.id}')" class="text-[9px] font-black px-2 py-0.5 rounded-full shadow-xs ${getStatusClass(state.status)}">
+                    ${getStatusLabel(state.status)}
+                  </button>
+                </div>
+              </div>
+
+              <h3 class="font-black text-xs text-[var(--md-on-surface)] leading-snug cursor-pointer hover:text-[var(--md-primary)]" onclick="toggleChapterDropdown('${item.id}')">
+                <span class="text-[var(--md-primary)] mr-1">Ch ${item.chNum}.</span>${item.title}
+              </h3>
+
+              <div class="mt-1.5">
+                <button onclick="toggleChapterDropdown('${item.id}')" class="text-[9px] font-bold text-[var(--md-on-surface-variant)] hover:text-[var(--md-primary)] flex items-center justify-between w-full py-0.5">
+                  <span>Syllabus Notes & Topics</span>
+                  <svg class="svg-icon w-3 h-3 chevron-icon" id="chev-${item.id}" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                </button>
+
+                <div class="dropdown-content mt-1" id="drop-${item.id}">
+                  <div>
+                    <div class="p-2 rounded-xl bg-[var(--md-chip-bg)] text-xs text-[var(--md-on-surface-variant)] leading-relaxed">
+                      <p class="font-medium mb-1 text-[11px] text-[var(--md-on-surface)]">${item.meta}</p>
+                      <textarea placeholder="Formulas, NCERT page marks..." onchange="updateChapterNotes('${item.id}', this.value)" class="w-full mt-1 p-1.5 rounded-lg bg-[var(--md-card-bg)] border border-[var(--md-outline-variant)]/30 text-[10px] text-[var(--md-on-surface)] resize-none" rows="2">${state.notes || ""}</textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-2.5 pt-2 border-t border-[var(--md-outline-variant)]/20 flex items-center justify-between">
+              <div class="flex items-center gap-1">
+                <span class="text-[9px] font-black text-[var(--md-outline)]">Rev:</span>
+                <span class="px-1.5 text-xs font-black text-[var(--md-primary)]">${state.revisions || 0}</span>
+                <button onclick="adjustRevision('${item.id}', 1)" class="w-4 h-4 flex items-center justify-center rounded-full bg-[var(--md-chip-bg)] text-xs font-bold">+</button>
+              </div>
+
+              <button onclick="toggleMastered('${item.id}')" class="flex items-center gap-1 py-1 px-2.5 rounded-full text-xs font-black ${isMastered ? 'bg-emerald-500 text-white shadow-sm' : 'hover:bg-[var(--md-chip-bg)] text-[var(--md-outline)]'}">
+                <svg class="svg-icon w-3 h-3" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>${isMastered ? 'Mastered' : 'Mark Done'}</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function getStatusLabel(s) {
+      if (s === "IN_PROGRESS") return "Learning";
+      if (s === "REVISED") return "Revised";
+      if (s === "MASTERED") return "Mastered";
+      return "Pending";
+    }
+
+    function getStatusClass(s) {
+      if (s === "IN_PROGRESS") return "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300";
+      if (s === "REVISED") return "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300";
+      if (s === "MASTERED") return "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
+      return "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300";
+    }
+
+    function toggleChapterDropdown(id) {
+      document.getElementById(`drop-${id}`)?.classList.toggle("open");
+      document.getElementById(`chev-${id}`)?.classList.toggle("rotated");
+    }
+
+    function toggleMastered(id) {
+      if (!userProgress[id]) userProgress[id] = { status: "MASTERED", revisions: 1 };
+      else {
+        userProgress[id].status = userProgress[id].status === "MASTERED" ? "REVISED" : "MASTERED";
+        if (userProgress[id].status === "MASTERED" && !userProgress[id].revisions) userProgress[id].revisions = 1;
+      }
+
+      if (userProgress[id].status === "MASTERED") {
+        playSfx("master");
+        triggerSatisfyingConfetti();
+        showToast("Chapter Mastered! Momentum! 🎉");
+      } else {
+        playSfx("tick");
+      }
+      savePlannerData();
+      renderChapters();
+    }
+
+    function cycleChapterStatus(id) {
+      const seq = ["NOT_STARTED", "IN_PROGRESS", "REVISED", "MASTERED"];
+      const cur = (userProgress[id] && userProgress[id].status) || "NOT_STARTED";
+      const next = seq[(seq.indexOf(cur) + 1) % seq.length];
+
+      if (!userProgress[id]) userProgress[id] = { status: next, revisions: 0 };
+      else userProgress[id].status = next;
+
+      if (next === "MASTERED") {
+        playSfx("master");
+        triggerSatisfyingConfetti();
+      } else {
+        playSfx("retroBlip");
+      }
+      savePlannerData();
+      renderChapters();
+    }
+
+    function adjustRevision(id, delta) {
+      if (!userProgress[id]) userProgress[id] = { status: "REVISED", revisions: Math.max(0, delta) };
+      else userProgress[id].revisions = Math.max(0, (userProgress[id].revisions || 0) + delta);
+      playSfx("tick");
+      savePlannerData();
+      renderChapters();
+    }
+
+    function toggleStar(id, e) {
+      if (e) e.stopPropagation();
+      if (!userProgress[id]) userProgress[id] = { status: "NOT_STARTED", starred: true };
+      else userProgress[id].starred = !userProgress[id].starred;
+      playSfx("retroBlip");
+      savePlannerData();
+      renderChapters();
+    }
+
+    function updateChapterNotes(id, val) {
+      if (!userProgress[id]) userProgress[id] = { status: "NOT_STARTED", notes: val };
+      else userProgress[id].notes = val;
+      savePlannerData();
+    }
+
+    let pomoTimer = null;
+    let pomoMode = "study";
+    let pomoTimeLeft = 25 * 60;
+    let isPomoRunning = false;
+
+    function initPomodoro() {
+      const savedCfg = localStorage.getItem(POMO_CONFIG_KEY);
+      if (savedCfg) {
+        try {
+          const cfg = JSON.parse(savedCfg);
+          if (cfg.study) pomoDurations.study = cfg.study * 60;
+          if (cfg.shortBreak) pomoDurations.shortBreak = cfg.shortBreak * 60;
+          if (cfg.longBreak) pomoDurations.longBreak = cfg.longBreak * 60;
+        } catch (e) {}
+      }
+      pomoTimeLeft = pomoDurations[pomoMode];
+      updateClockUI();
+      updateTreeNursery();
+    }
+
+    function setTimerMode(mode) {
+      pomoMode = mode;
+      isPomoRunning = false;
+      clearInterval(pomoTimer);
+      pomoTimer = null;
+      pomoTimeLeft = pomoDurations[mode];
+
+      document.getElementById("modeBtnStudy")?.classList.toggle("underline", mode === "study");
+      document.getElementById("modeBtnShort")?.classList.toggle("underline", mode === "shortBreak");
+      document.getElementById("modeBtnLong")?.classList.toggle("underline", mode === "longBreak");
+
+      const pomoPlayText = document.getElementById("pomoPlayText");
+      if (pomoPlayText) pomoPlayText.innerText = "> START MISSION";
+      updateClockUI();
+      updateTreeNursery();
+    }
+
+    function togglePomodoro() {
+      const pomoPlayText = document.getElementById("pomoPlayText");
+      if (isPomoRunning) {
+        clearInterval(pomoTimer);
+        pomoTimer = null;
+        isPomoRunning = false;
+        if (pomoPlayText) pomoPlayText.innerText = "> RESUME MISSION";
+      } else {
+        isPomoRunning = true;
+        if (pomoPlayText) pomoPlayText.innerText = "|| PAUSE MISSION";
+        playSfx("retroBlip");
+
+        pomoTimer = setInterval(() => {
+          if (pomoTimeLeft > 0) {
+            pomoTimeLeft--;
+            updateClockUI();
+          } else {
+            clearInterval(pomoTimer);
+            pomoTimer = null;
+            isPomoRunning = false;
+            handlePomodoroFinish();
+          }
+        }, 1000);
+      }
+    }
+
+    function resetPomodoro() {
+      clearInterval(pomoTimer);
+      pomoTimer = null;
+      isPomoRunning = false;
+      pomoTimeLeft = pomoDurations[pomoMode];
+      const pomoPlayText = document.getElementById("pomoPlayText");
+      if (pomoPlayText) pomoPlayText.innerText = "> START MISSION";
+      updateClockUI();
+    }
+
+    function updateClockUI() {
+      const m = Math.floor(pomoTimeLeft / 60);
+      const s = pomoTimeLeft % 60;
+      const clock = document.getElementById("pomoClock");
+      if (clock) clock.innerText = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+      // Update Retro Progress Bar
+      const total = pomoDurations[pomoMode];
+      const elapsed = total - pomoTimeLeft;
+      const pct = Math.min(100, Math.round((elapsed / total) * 100));
+
+      const bar = document.getElementById("pomoProgressBar");
+      const label = document.getElementById("pomoProgressPercent");
+      if (bar) bar.style.width = pct + "%";
+      if (label) label.innerText = pct + "%";
+    }
+
+    function updateTreeNursery() {
+      const display = document.getElementById("treeDisplay");
+      if (!display) return;
+      display.innerHTML = `
+        <svg class="w-20 h-20" viewBox="0 0 40 40">
+          <rect x="18" y="24" width="4" height="12" fill="#78350F" />
+          <rect x="14" y="14" width="12" height="10" fill="#10B981" />
+          <rect x="16" y="8" width="8" height="6" fill="#34D399" />
+          <rect x="18" y="4" width="4" height="4" fill="#FDE047" />
+        </svg>
+      `;
+    }
+
+    function handlePomodoroFinish() {
+      playSfx("pomoFinish");
+      triggerSatisfyingConfetti();
+
+      if (pomoMode === "study") {
+        const mins = Math.round(pomoDurations.study / 60);
+        forestData.totalFocusMinutes = (forestData.totalFocusMinutes || 0) + mins;
+        
+        const tiers = ["common", "uncommon", "rare", "legendary", "mythic"];
+        const tier = Math.random() < 0.08 ? "mythic" : Math.random() < 0.2 ? "legendary" : Math.random() < 0.4 ? "rare" : "common";
+        
+        forestData.trees.push({
+          name: tier === "mythic" ? "Celestial Sakura" : tier === "legendary" ? "Yggdrasil Sapling" : tier === "rare" ? "Silver Fir" : "English Oak",
+          tier: tier,
+          duration: mins,
+          timestamp: new Date().toLocaleDateString("en-IN", { month: "short", day: "numeric" })
+        });
+
+        saveForestData();
+        showToast(`Focus session complete! New ${tier.toUpperCase()} tree planted! 🌲`);
+      } else {
+        showToast("Break over! Time to dominate.");
+      }
+      resetPomodoro();
+    }
+
+    function renderForestGarden() {
+      const grid = document.getElementById("forestGardenGrid");
+      const countEl = document.getElementById("forestTotalHeader");
+      const sideCount = document.getElementById("sideForestCount");
+      const sideMins = document.getElementById("sideFocusMinutes");
+
+      const count = (forestData.trees || []).length;
+      if (countEl) countEl.innerText = `${count} Trees Grown`;
+      if (sideCount) sideCount.innerText = `${count} Grown`;
+      if (sideMins) sideMins.innerText = `${forestData.totalFocusMinutes || 0} mins`;
+
+      if (!grid) return;
+      if (count === 0) {
+        grid.innerHTML = `<div class="col-span-full py-6 text-center text-xs text-[var(--md-outline)]">No trees yet. Start a focus session to grow your canopy!</div>`;
+        return;
+      }
+
+      grid.innerHTML = forestData.trees.map(t => `
+        <div class="m3-card p-2.5 border-2 ${t.tier === 'mythic' ? 'border-pink-500' : t.tier === 'legendary' ? 'border-amber-500' : 'border-emerald-600'} flex flex-col items-center text-center">
+          <svg class="w-10 h-10" viewBox="0 0 40 40">
+            <rect x="18" y="24" width="4" height="12" fill="#78350F" />
+            <rect x="12" y="12" width="16" height="12" fill="${t.tier === 'mythic' ? '#EC4899' : t.tier === 'legendary' ? '#F59E0B' : '#10B981'}" />
+          </svg>
+          <span class="text-[8px] font-black uppercase tracking-wider block mt-1">${t.tier}</span>
+          <h4 class="text-[10px] font-black text-[var(--md-on-surface)] truncate w-full">${t.name}</h4>
+          <span class="text-[8px] text-[var(--md-outline)]">${t.duration}m</span>
+        </div>
+      `).join('');
+    }
+
+    function openPomoCustomModal() {
+      document.getElementById("customStudyInput").value = Math.round(pomoDurations.study / 60);
+      document.getElementById("customShortInput").value = Math.round(pomoDurations.shortBreak / 60);
+      document.getElementById("customLongInput").value = Math.round(pomoDurations.longBreak / 60);
+
+      const modal = document.getElementById("pomoCustomModal");
+      const box = document.getElementById("pomoCustomModalBox");
+      if (modal && box) {
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        box.classList.remove("scale-95");
+        box.classList.add("scale-100");
+      }
+    }
+
+    function closePomoCustomModal() {
+      const modal = document.getElementById("pomoCustomModal");
+      const box = document.getElementById("pomoCustomModalBox");
+      if (modal && box) {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        box.classList.add("scale-95");
+        box.classList.remove("scale-100");
+      }
+    }
+
+    function saveCustomPomodoro() {
+      const s = parseInt(document.getElementById("customStudyInput").value) || 25;
+      const sh = parseInt(document.getElementById("customShortInput").value) || 5;
+      const l = parseInt(document.getElementById("customLongInput").value) || 15;
+
+      pomoDurations.study = Math.max(1, s) * 60;
+      pomoDurations.shortBreak = Math.max(1, sh) * 60;
+      pomoDurations.longBreak = Math.max(1, l) * 60;
+
+      localStorage.setItem(POMO_CONFIG_KEY, JSON.stringify({ study: s, shortBreak: sh, longBreak: l }));
+      closePomoCustomModal();
+      setTimerMode(pomoMode);
+      showToast("Pomodoro intervals updated!");
+    }
+
+    const GLOBAL_TOPPERS = [
+      { name: "Topper Arpit", uid: "ARPIT_AIR1", mastered: 0, hours: 0, streak: 1, xp: 0, isMe: true },
+      { name: "Priya Sharma (DPS RK Puram)", uid: "PRIYA_99", mastered: 88, hours: 78, streak: 21, xp: 22400, isMe: false },
+      { name: "Kabir Malhotra (Modern School)", uid: "KABIR_TOP", mastered: 79, hours: 68, streak: 14, xp: 19800, isMe: false },
+      { name: "Ananya Iyer (PSBB Chennai)", uid: "ANANYA_AI", mastered: 74, hours: 62, streak: 9, xp: 17200, isMe: false },
+      { name: "Rohan Verma (DAV Sector 14)", uid: "ROHAN_MATH", mastered: 65, hours: 54, streak: 8, xp: 14600, isMe: false },
+      { name: "Aditi Joshi (St. Xavier's Mumbai)", uid: "ADITI_J", mastered: 60, hours: 50, streak: 5, xp: 13100, isMe: false },
+      { name: "Devansh Nambiar (NPS Bangalore)", uid: "DEV_AIR", mastered: 52, hours: 44, streak: 4, xp: 11500, isMe: false },
+      { name: "Kritika Roy (South Point Kolkata)", uid: "KRITIKA_99", mastered: 45, hours: 38, streak: 3, xp: 9800, isMe: false }
+    ];
+
+    const DEFAULT_SQUADS = [
+      {
+        id: "sq-01",
+        name: "🔥 Delhi AIR 1 Vanguard",
+        code: "SQ-AIR100",
+        members: [
+          { name: "Topper Arpit", uid: "ARPIT_AIR1", mastered: 0, hours: 0, streak: 1, xp: 0, isMe: true },
+          { name: "Priya Sharma", uid: "PRIYA_99", mastered: 88, hours: 78, streak: 21, xp: 22400, isMe: false },
+          { name: "Kabir Malhotra", uid: "KABIR_TOP", mastered: 79, hours: 68, streak: 14, xp: 19800, isMe: false }
+        ]
+      },
+      {
+        id: "sq-02",
+        name: "📚 CBSE Centurion Circle",
+        code: "SQ-CENTURION",
+        members: [
+          { name: "Topper Arpit", uid: "ARPIT_AIR1", mastered: 0, hours: 0, streak: 1, xp: 0, isMe: true },
+          { name: "Ananya Iyer", uid: "ANANYA_AI", mastered: 74, hours: 62, streak: 9, xp: 17200, isMe: false }
+        ]
+      }
+    ];
+
+    function initSquads() {
+      const saved = localStorage.getItem(SQUADS_KEY);
+      squadsList = saved ? JSON.parse(saved) : DEFAULT_SQUADS;
+      renderLeaderboard();
+    }
+
+    function switchBoardType(type) {
+      currentBoardType = type;
+      document.getElementById("tabGlobalBoard")?.classList.toggle("bg-[var(--md-primary)]", type === "global");
+      document.getElementById("tabGlobalBoard")?.classList.toggle("text-[var(--md-on-primary)]", type === "global");
+      document.getElementById("tabSquadBoard")?.classList.toggle("bg-[var(--md-primary)]", type === "squad");
+      document.getElementById("tabSquadBoard")?.classList.toggle("text-[var(--md-on-primary)]", type === "squad");
+
+      const wrapper = document.getElementById("squadTabsWrapper");
+      if (wrapper) wrapper.classList.toggle("hidden", type !== "squad");
+
+      if (type === "squad") renderSquadSubTabs();
+      renderLeaderboard();
+      playSfx("tick");
+    }
+
+    function renderSquadSubTabs() {
+      const wrapper = document.getElementById("squadTabsWrapper");
+      if (!wrapper) return;
+      wrapper.innerHTML = squadsList.map(sq => `
+        <button onclick="selectSquad('${sq.id}')" class="px-3 py-1 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all flex-shrink-0 ${sq.id === activeSquadId ? 'bg-[var(--md-primary)] text-[var(--md-on-primary)]' : 'bg-[var(--md-chip-bg)] text-[var(--md-on-surface-variant)]'}">
+          <span>${sq.name}</span>
+          <span class="text-[9px] opacity-75 font-mono">(${sq.code})</span>
+        </button>
+      `).join('');
+    }
+
+    function selectSquad(id) {
+      activeSquadId = id;
+      renderSquadSubTabs();
+      renderLeaderboard();
+      playSfx("tick");
+    }
+
+    function renderLeaderboard() {
+      const body = document.getElementById("leaderboardBody");
+      const title = document.getElementById("activeBoardTitle");
+      const count = document.getElementById("activeBoardCount");
+      if (!body) return;
+
+      const myXP = calculateTotalPrestigeXP();
+      const myMastered = Object.values(userProgress).filter(p => p.status === "MASTERED").length;
+      const myHours = Math.round((forestData.totalFocusMinutes || 0) / 60);
+
+      let list = [];
+
+      if (currentBoardType === "global") {
+        if (title) title.innerText = "🌍 All India Topper Board";
+        if (count) count.innerText = "Live Peer Benchmark";
+        list = [...GLOBAL_TOPPERS];
+      } else {
+        const sq = squadsList.find(s => s.id === activeSquadId) || squadsList[0];
+        if (title) title.innerText = sq ? sq.name : "Study Squad";
+        if (count) count.innerText = `${sq ? sq.members.length : 0} Members`;
+        list = sq ? [...sq.members] : [];
+      }
+
+      list.forEach(m => {
+        if (m.isMe) {
+          m.name = userProfile.name || "Topper Arpit";
+          m.uid = userProfile.uid || "ARPIT_AIR1";
+          m.mastered = myMastered;
+          m.hours = myHours;
+          m.streak = streakState.count || 1;
+          m.xp = myXP;
+        }
+      });
+
+      list.sort((a, b) => b.xp - a.xp);
+
+      // Find my position
+      const myRank = list.findIndex(m => m.isMe) + 1;
+      const sideRank = document.getElementById("sideBoardRankDisplay");
+      if (sideRank) sideRank.innerText = `#${myRank || 1} ${currentBoardType === "global" ? 'Global' : 'Squad'}`;
+
+      body.innerHTML = list.map((m, idx) => {
+        const rank = idx + 1;
+        const isUser = m.isMe;
+        const isIncognito = isUser && userProfile.isPrivate;
+        const displayName = isIncognito ? "Anonymous Topper (You)" : m.name;
+        const displayUid = isIncognito ? "HIDDEN" : m.uid;
+
+        return `
+          <tr class="py-2.5 ${isUser ? 'bg-[var(--md-primary-container)]/35 font-black' : 'hover:bg-[var(--md-chip-bg)]'}">
+            <td class="py-2.5 px-3">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-black ${rank === 1 ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300' : 'text-[var(--md-outline)]'}">
+                ${rank === 1 ? '👑 #1' : `#${rank}`}
+              </span>
+            </td>
+            <td class="py-2.5 px-3">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-[var(--md-primary)] text-white text-[10px] font-black flex items-center justify-center">${displayName.charAt(0)}</div>
+                <div>
+                  <span class="block text-xs font-bold text-[var(--md-on-surface)] leading-tight">${displayName} ${isUser ? '<span class="text-[9px] text-[var(--md-primary)]">(You)</span>' : ''}</span>
+                  <span class="text-[9px] font-mono text-[var(--md-outline)]">#${displayUid}</span>
+                </div>
+              </div>
+            </td>
+            <td class="py-2.5 px-3 text-xs font-bold">${m.mastered} / 108</td>
+            <td class="py-2.5 px-3 text-xs font-bold">${m.hours}h</td>
+            <td class="py-2.5 px-3 text-xs font-bold">${m.streak}d 🔥</td>
+            <td class="py-2.5 px-3 text-right text-xs font-black text-amber-500">${m.xp.toLocaleString()} XP</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openInviteModal() {
+      const snippet = document.getElementById("shareableInviteSnippet");
+      const sq = squadsList.find(s => s.id === activeSquadId) || squadsList[0];
+      if (snippet) {
+        snippet.value = `Join my study squad on CBSE Class 10 Command Center!\nMy Student ID: #${userProfile.uid}\nSquad Code: ${sq ? sq.code : 'SQ-AIR100'}`;
+      }
+      const modal = document.getElementById("inviteModal");
+      const box = document.getElementById("inviteModalBox");
+      if (modal && box) {
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        box.classList.remove("scale-95");
+        box.classList.add("scale-100");
+      }
+    }
+
+    function closeInviteModal() {
+      const modal = document.getElementById("inviteModal");
+      const box = document.getElementById("inviteModalBox");
+      if (modal && box) {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        box.classList.add("scale-95");
+        box.classList.remove("scale-100");
+      }
+    }
+
+    function copyInviteMessage() {
+      const snippet = document.getElementById("shareableInviteSnippet");
+      if (snippet) {
+        snippet.select();
+        document.execCommand("copy");
+        showToast("Invite link & ID copied to clipboard!");
+      }
+    }
+
+    function joinSquadByCode() {
+      const input = document.getElementById("joinSquadCodeInput");
+      const code = input ? input.value.trim().toUpperCase() : "";
+      if (!code) return;
+
+      const existing = squadsList.find(s => s.code === code);
+      if (existing) {
+        activeSquadId = existing.id;
+        showToast(`Joined squad: ${existing.name}`);
+      } else {
+        const newSq = {
+          id: `sq-${Date.now()}`,
+          name: `Peer Circle (${code})`,
+          code: code,
+          members: [
+            { name: userProfile.name, uid: userProfile.uid, mastered: 0, hours: 0, streak: 1, xp: 0, isMe: true },
+            { name: "Squad Peer 1", uid: "PEER_1", mastered: 40, hours: 25, streak: 3, xp: 8200, isMe: false }
+          ]
+        };
+        squadsList.push(newSq);
+        activeSquadId = newSq.id;
+        localStorage.setItem(SQUADS_KEY, JSON.stringify(squadsList));
+        showToast(`Created & joined squad: ${code}!`);
+      }
+      switchBoardType("squad");
+      closeInviteModal();
+    }
+
+    function createNewSquad() {
+      const input = document.getElementById("createSquadNameInput");
+      const name = input ? input.value.trim() : "";
+      if (!name) return;
+
+      const code = `SQ-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+      const newSq = {
+        id: `sq-${Date.now()}`,
+        name: name,
+        code: code,
+        members: [
+          { name: userProfile.name, uid: userProfile.uid, mastered: 0, hours: 0, streak: 1, xp: 0, isMe: true }
+        ]
+      };
+      squadsList.push(newSq);
+      activeSquadId = newSq.id;
+      localStorage.setItem(SQUADS_KEY, JSON.stringify(squadsList));
+      showToast(`Squad "${name}" created with code: ${code}!`);
+      switchBoardType("squad");
+      closeInviteModal();
+    }
+
+    function calculateTotalPrestigeXP() {
+      let xp = 0;
+      SYLLABUS_DATA.forEach(item => {
+        const state = userProgress[item.id];
+        if (state) {
+          if (state.status === "IN_PROGRESS") xp += 30;
+          if (state.status === "REVISED") xp += 80;
+          if (state.status === "MASTERED") xp += 200;
+          xp += (state.revisions || 0) * 25;
+          if (state.starred) xp += 10;
+        }
+      });
+      xp += (forestData.totalFocusMinutes || 0) * 10;
+      (forestData.trees || []).forEach(t => {
+        if (t.tier === "common") xp += 100;
+        else if (t.tier === "uncommon") xp += 250;
+        else if (t.tier === "rare") xp += 600;
+        else if (t.tier === "legendary") xp += 1500;
+        else if (t.tier === "mythic") xp += 3500;
+      });
+      xp += (streakState.count || 1) * 50;
+      return xp;
+    }
+
+    function updatePrestigeUI() {
+      const xp = calculateTotalPrestigeXP();
+      const scoreEl = document.getElementById("userScoreDisplay");
+      const retroScore = document.getElementById("retroScoreDisplay");
+
+      if (scoreEl) scoreEl.innerText = `${xp.toLocaleString()} XP`;
+      if (retroScore) retroScore.innerText = `${xp.toLocaleString()}`;
+      renderLeaderboard();
+      renderAchievements();
+    }
+
+    function filterAchievements(cat) {
+      achFilterCat = cat;
+      document.querySelectorAll(".ach-cat-btn").forEach(btn => {
+        btn.classList.toggle("bg-[var(--md-primary)]", btn.dataset.cat === cat);
+        btn.classList.toggle("text-[var(--md-on-primary)]", btn.dataset.cat === cat);
+      });
+      renderAchievements();
+    }
+
+    function renderAchievements() {
+      const grid = document.getElementById("achievementsGrid");
+      const countEl = document.getElementById("achievementsUnlockedCount");
+      if (!grid) return;
+
+      const totalXP = calculateTotalPrestigeXP();
+      const payload = {
+        prog: userProgress,
+        forest: forestData,
+        streak: streakState,
+        squads: squadsList,
+        xp: totalXP,
+        synced: hasSynced,
+        quotesRead: 25
+      };
+
+      let unlockedCount = 0;
+      const filtered = ALL_ACHIEVEMENTS.filter(a => achFilterCat === "ALL" || a.cat === achFilterCat);
+
+      grid.innerHTML = filtered.map(ach => {
+        const res = ach.check(payload);
+        const unlocked = res.curr >= res.target;
+        if (unlocked) unlockedCount++;
+
+        const pct = Math.min(100, Math.round((res.curr / res.target) * 100));
+
+        return `
+          <div class="m3-card p-3.5 border ${unlocked ? 'border-amber-500/50 bg-amber-500/[0.03]' : 'border-[var(--md-outline-variant)]/30 opacity-70'} flex items-start gap-3">
+            <div class="w-10 h-10 rounded-2xl flex items-center justify-center text-xl bg-[var(--md-chip-bg)] flex-shrink-0">
+              ${ach.icon}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1">
+                <h4 class="text-xs font-black text-[var(--md-on-surface)] truncate">${ach.title}</h4>
+                <span class="text-[9px] font-black uppercase px-2 py-0.2 rounded-full ${unlocked ? 'bg-amber-500/20 text-amber-600' : 'bg-[var(--md-chip-bg)] text-[var(--md-outline)]'}">
+                  +${ach.xp} XP
+                </span>
+              </div>
+              <p class="text-[10px] text-[var(--md-on-surface-variant)] mt-0.5 leading-snug">${ach.desc}</p>
+              
+              <div class="w-full bg-[var(--md-chip-bg)] h-1.5 rounded-full overflow-hidden mt-2 p-0.2">
+                <div class="h-full bg-amber-400 rounded-full transition-all duration-300" style="width: ${pct}%"></div>
+              </div>
+              <div class="flex justify-between text-[8px] font-mono text-[var(--md-outline)] mt-1">
+                <span>${res.curr} / ${res.target}</span>
+                <span>${unlocked ? 'CLAIMED' : `${pct}%`}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (countEl) countEl.innerText = `${unlockedCount} / 52`;
+    }
+
+    function savePlannerData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress));
+      updatePaceMetrics();
+      updatePrestigeUI();
+    }
+
+    function saveForestData() {
+      localStorage.setItem(FOREST_KEY, JSON.stringify(forestData));
+      renderForestGarden();
+      updatePrestigeUI();
+    }
+
+    function openProfileModal() {
+      document.getElementById("editUserNameInput").value = userProfile.name || "Topper Arpit";
+      document.getElementById("editUserUidInput").value = userProfile.uid || "ARPIT_AIR1";
+      document.getElementById("editUserAvatarInput").value = userProfile.avatar || "";
+      document.getElementById("privacyToggle").checked = Boolean(userProfile.isPrivate);
+
+      const modal = document.getElementById("profileModal");
+      const box = document.getElementById("profileModalBox");
+      if (modal && box) {
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        box.classList.remove("scale-95");
+        box.classList.add("scale-100");
+      }
+    }
+
+    function closeProfileModal() {
+      const modal = document.getElementById("profileModal");
+      const box = document.getElementById("profileModalBox");
+      if (modal && box) {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        box.classList.add("scale-95");
+        box.classList.remove("scale-100");
+      }
+    }
+
+    function saveProfileChanges() {
+      const n = document.getElementById("editUserNameInput").value.trim();
+      const u = document.getElementById("editUserUidInput").value.trim().toUpperCase();
+      const a = document.getElementById("editUserAvatarInput").value.trim();
+      const p = document.getElementById("privacyToggle").checked;
+
+      if (n) userProfile.name = n;
+      if (u) userProfile.uid = u.replace(/[^A-Z0-9_-]/g, "");
+      if (a) userProfile.avatar = a;
+      userProfile.isPrivate = p;
+
+      localStorage.setItem(PROFILE_KEY, JSON.stringify(userProfile));
+
+      document.getElementById("userNameDisplay").innerText = userProfile.name;
+      document.getElementById("userUidBadge").innerText = `ID: #${userProfile.uid}`;
+      if (a) document.getElementById("userAvatarImg").src = a;
+
+      closeProfileModal();
+      renderLeaderboard();
+      showToast("Profile & User ID saved!");
+    }
+
+    function openSyncModal() {
+      const input = document.getElementById("syncCodeInput");
+      if (input) {
+        const payload = { p: userProgress, f: forestData, pr: userProfile, st: streakState };
+        input.value = btoa(encodeURIComponent(JSON.stringify(payload)));
+      }
+      const modal = document.getElementById("syncModal");
+      const box = document.getElementById("syncModalBox");
+      if (modal && box) {
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        box.classList.remove("scale-95");
+        box.classList.add("scale-100");
+      }
+    }
+
+    function closeSyncModal() {
+      const modal = document.getElementById("syncModal");
+      const box = document.getElementById("syncModalBox");
+      if (modal && box) {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        box.classList.add("scale-95");
+        box.classList.remove("scale-100");
+      }
+    }
+
+    function copySyncCode() {
+      const input = document.getElementById("syncCodeInput");
+      if (input) {
+        input.select();
+        document.execCommand("copy");
+        hasSynced = true;
+        showToast("Sync key copied! Paste it on your other device.");
+      }
+    }
+
+    function applySyncCode() {
+      const input = document.getElementById("syncCodePasteInput");
+      if (!input || !input.value.trim()) return;
+      try {
+        const raw = decodeURIComponent(atob(input.value.trim()));
+        const data = JSON.parse(raw);
+        if (data.p) userProgress = data.p;
+        if (data.f) forestData = data.f;
+        if (data.pr) userProfile = data.pr;
+        if (data.st) streakState = data.st;
+
+        savePlannerData();
+        saveForestData();
+        localStorage.setItem(PROFILE_KEY, JSON.stringify(userProfile));
+        localStorage.setItem(STREAK_KEY, JSON.stringify(streakState));
+
+        hasSynced = true;
+        closeSyncModal();
+        init();
+        showToast("Devices synchronized successfully!");
+      } catch (e) {
+        showToast("Invalid sync token key.");
+      }
+    }
+
+    function openResetModal() {
+      document.getElementById("resetModal")?.classList.remove("opacity-0", "pointer-events-none");
+    }
+    function closeResetModal() {
+      document.getElementById("resetModal")?.classList.add("opacity-0", "pointer-events-none");
+    }
+    function executeFullReset() {
+      userProgress = {};
+      forestData = { trees: [], totalFocusMinutes: 0 };
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(FOREST_KEY);
+      closeResetModal();
+      init();
+      showToast("Progress reset cleanly!");
+    }
+
+    function switchMainView(v) {
+      activeMainView = v;
+      ["syllabusView", "pomodoroView", "leaderboardView", "achievementsView"].forEach(id => {
+        document.getElementById(id)?.classList.add("hidden");
+      });
+      ["viewTabSyllabus", "viewTabPomodoro", "viewTabLeaderboard", "viewTabAchievements"].forEach(id => {
+        const b = document.getElementById(id);
+        if (b) { b.style.backgroundColor = "transparent"; b.classList.remove("text-[var(--md-on-primary)]", "shadow-sm"); }
+      });
+
+      const activeView = v === "syllabus" ? "syllabusView" : v === "pomodoro" ? "pomodoroView" : v === "leaderboard" ? "leaderboardView" : "achievementsView";
+      const activeTab = v === "syllabus" ? "viewTabSyllabus" : v === "pomodoro" ? "viewTabPomodoro" : v === "leaderboard" ? "viewTabLeaderboard" : "viewTabAchievements";
+
+      const vEl = document.getElementById(activeView);
+      const tEl = document.getElementById(activeTab);
+      if (vEl) vEl.classList.remove("hidden");
+      if (tEl) { tEl.style.backgroundColor = "var(--md-primary)"; tEl.classList.add("text-[var(--md-on-primary)]", "shadow-sm"); }
+
+      if (v === "leaderboard") renderLeaderboard();
+      if (v === "achievements") renderAchievements();
+      playSfx("tick");
+    }
+
+    function selectSubject(sub) {
+      currentSubject = sub;
+      document.querySelectorAll(".subject-nav-btn").forEach(btn => {
+        btn.style.backgroundColor = btn.dataset.subject === sub ? "var(--md-primary-container)" : "transparent";
+      });
+      renderChapters();
+      playSfx("tick");
+    }
+
+    function filterStarredOnly() {
+      showStarredOnly = !showStarredOnly;
+      renderChapters();
+    }
+
+    function clearSearch() {
+      searchQuery = "";
+      const input = document.getElementById("searchInput");
+      if (input) input.value = "";
+      renderChapters();
+    }
+
+    function resetFilters() {
+      currentSubject = "ALL";
+      searchQuery = "";
+      showStarredOnly = false;
+      renderChapters();
+    }
+
+    function showToast(m) {
+      const t = document.getElementById("toast");
+      const msg = document.getElementById("toastMsg");
+      if (!t || !msg) return;
+      msg.innerText = m;
+      t.classList.remove("opacity-0", "pointer-events-none");
+      setTimeout(() => t.classList.add("opacity-0", "pointer-events-none"), 2200);
+    }
+
+    function triggerSatisfyingConfetti() {
+      const canvas = document.getElementById("confettiCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const pts = [];
+      for (let i = 0; i < 40; i++) {
+        pts.push({
+          x: canvas.width / 2 + (Math.random() * 200 - 100),
+          y: canvas.height / 2,
+          r: Math.random() * 4 + 2,
+          vx: (Math.random() - 0.5) * 10,
+          vy: Math.random() * -10 - 2,
+          color: ["#10B981", "#F59E0B", "#6366F1", "#EC4899"][Math.floor(Math.random() * 4)],
+          alpha: 1
+        });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let active = false;
+        pts.forEach(p => {
+          p.x += p.vx; p.y += p.vy; p.vy += 0.35; p.alpha -= 0.025;
+          if (p.alpha > 0) {
+            active = true;
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+        if (active) requestAnimationFrame(draw);
+      }
+      draw();
+    }
+
+    function init() {
+      try {
+        const p = localStorage.getItem(STORAGE_KEY); if (p) userProgress = JSON.parse(p);
+        const f = localStorage.getItem(FOREST_KEY); if (f) forestData = JSON.parse(f);
+        const pr = localStorage.getItem(PROFILE_KEY); if (pr) userProfile = JSON.parse(pr);
+        const qc = localStorage.getItem(QUOTE_CONFIG_KEY); if (qc) quoteConfig = JSON.parse(qc);
+        const st = localStorage.getItem(STREAK_KEY); if (st) streakState = JSON.parse(st);
+      } catch (e) {}
+
+      if (!userProfile.uid) {
+        userProfile.uid = "ARPIT_AIR1";
+        localStorage.setItem(PROFILE_KEY, JSON.stringify(userProfile));
+      }
+
+      const savedTheme = localStorage.getItem(THEME_MODE_KEY) || "dark";
+      setThemeMode(savedTheme);
+
+      verifyAndIncrementStreak();
+      initCountdownTicker();
+      updatePaceMetrics();
+      renderChapters();
+      initPomodoro();
+      renderForestGarden();
+      initSquads();
+      updatePrestigeUI();
+      cycleNewQuote();
+
+      if (quoteConfig.interval && quoteConfig.interval !== "manual") {
+        setQuoteInterval(quoteConfig.interval);
+      }
+      toggleQuotesGlobal(quoteConfig.showOnDashboard !== false);
+
+      const uidEl = document.getElementById("userUidBadge");
+      const nameEl = document.getElementById("userNameDisplay");
+      if (uidEl) uidEl.innerText = `ID: #${userProfile.uid}`;
+      if (nameEl) nameEl.innerText = userProfile.name || "Topper Arpit";
+      if (userProfile.avatar) document.getElementById("userAvatarImg").src = userProfile.avatar;
+
+      document.addEventListener("click", () => {
+        document.getElementById("themeDropdownMenu")?.classList.add("hidden");
+        document.getElementById("quoteSettingsMenu")?.classList.add("hidden");
+        document.getElementById("ambientSoundsMenu")?.classList.add("hidden");
+      });
+
+      document.getElementById("searchInput")?.addEventListener("input", (e) => {
+        searchQuery = e.target.value;
+        renderChapters();
+      });
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
