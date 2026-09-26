@@ -1,377 +1,530 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CBSE 10 Topper Command Center</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CBSE 10 Syllabus Logger</title>
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
           colors: {
-            amoled: '#000000',
-            retroGreen: '#00FF66',
-            retroAmber: '#FFB000',
+            m3: {
+              surface: 'var(--md-surface)',
+              surfaceDim: 'var(--md-surface-dim)',
+              surfaceContainer: 'var(--md-surface-container)',
+              surfaceContainerHigh: 'var(--md-surface-container-high)',
+              outline: 'var(--md-outline)',
+              primary: 'var(--md-primary)',
+              primaryContainer: 'var(--md-primary-container)',
+              onPrimaryContainer: 'var(--md-on-primary-container)',
+            }
           }
         }
       }
-    }
+    };
   </script>
 
-  <!-- Firebase Compat SDKs (Ensures zero bundle setup & global window access) -->
+  <!-- Google Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Firebase Compat SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
   <style>
     :root {
-      --bg-color: #0b0f19;
-      --card-bg: #151d30;
-      --card-border: #1e293b;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      /* M3 Dynamic Theme Default: Lavender / Indigo */
+      --md-primary: #6366f1;
+      --md-primary-container: rgba(99, 102, 241, 0.12);
+      --md-on-primary-container: #818cf8;
+      
+      /* Light Tokens */
+      --md-surface: #f8fafc;
+      --md-surface-dim: #f1f5f9;
+      --md-surface-container: #ffffff;
+      --md-surface-container-high: #f8fafc;
+      --md-outline: #e2e8f0;
+      --md-outline-variant: #cbd5e1;
+      --md-text-primary: #0f172a;
+      --md-text-secondary: #64748b;
     }
-    .light-mode {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --card-border: #e2e8f0;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
+
+    html.dark {
+      --md-surface: #0f1117;
+      --md-surface-dim: #090a0f;
+      --md-surface-container: #161922;
+      --md-surface-container-high: #1e222e;
+      --md-outline: #272c3d;
+      --md-outline-variant: #353b50;
+      --md-text-primary: #f1f5f9;
+      --md-text-secondary: #94a3b8;
     }
-    .amoled-mode {
-      --bg-color: #000000 !important;
-      --card-bg: #050505 !important;
-      --card-border: #161616 !important;
-      --text-main: #ffffff !important;
-      --text-muted: #737373 !important;
+
+    html.amoled {
+      --md-surface: #000000;
+      --md-surface-dim: #000000;
+      --md-surface-container: #080808;
+      --md-surface-container-high: #121212;
+      --md-outline: #1c1c1c;
+      --md-outline-variant: #282828;
+      --md-text-primary: #ffffff;
+      --md-text-secondary: #737373;
     }
+
+    /* Dynamic Accent Palettes */
+    html[data-palette="lavender"] {
+      --md-primary: #6366f1;
+      --md-primary-container: rgba(99, 102, 241, 0.15);
+      --md-on-primary-container: #818cf8;
+    }
+    html[data-palette="botanical"] {
+      --md-primary: #10b981;
+      --md-primary-container: rgba(16, 185, 129, 0.15);
+      --md-on-primary-container: #34d399;
+    }
+    html[data-palette="sunset"] {
+      --md-primary: #f59e0b;
+      --md-primary-container: rgba(245, 158, 11, 0.15);
+      --md-on-primary-container: #fbbf24;
+    }
+    html[data-palette="ocean"] {
+      --md-primary: #0284c7;
+      --md-primary-container: rgba(2, 132, 199, 0.15);
+      --md-on-primary-container: #38bdf8;
+    }
+
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      transition: background-color 0.2s ease;
+      background-color: var(--md-surface);
+      color: var(--md-text-primary);
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.2s ease, color 0.2s ease;
+      -webkit-font-smoothing: antialiased;
     }
-    .theme-card {
-      background-color: var(--card-bg);
-      border-color: var(--card-border);
+
+    .m3-card {
+      background-color: var(--md-surface-container);
+      border: 1px solid var(--md-outline);
+      transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
     }
-    .retro-terminal {
-      background-color: #020b05;
-      border: 2px solid #00FF66;
-      box-shadow: 0 0 15px rgba(0,255,102,0.15), inset 0 0 15px rgba(0,255,102,0.08);
-      font-family: 'Courier New', Courier, monospace;
+    .m3-card:hover {
+      border-color: var(--md-outline-variant);
     }
-    /* Scrollbar styling */
+
+    .m3-btn-primary {
+      background-color: var(--md-primary);
+      color: #ffffff;
+      transition: filter 0.15s ease, transform 0.1s ease;
+    }
+    .m3-btn-primary:hover {
+      filter: brightness(1.1);
+    }
+    .m3-btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .details-drawer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease;
+      opacity: 0;
+    }
+    .details-drawer.open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .details-drawer > div {
+      overflow: hidden;
+    }
+
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--md-outline); border-radius: 9999px; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col md:flex-row antialiased selection:bg-indigo-500 selection:text-white">
 
-  <!-- ================= SIDEBAR NAVIGATION ================= -->
-  <aside class="w-full md:w-64 bg-slate-900/90 border-r border-slate-800 p-4 flex flex-col justify-between shrink-0 theme-card">
-    <div>
-      <!-- Brand & Status -->
-      <div class="flex items-center justify-between mb-5 px-1">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-500 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-indigo-500/25">
-            10
+<body class="min-h-screen flex flex-col selection:bg-indigo-500/20 selection:text-indigo-400">
+
+  <header class="m3-card border-x-0 border-t-0 sticky top-0 z-30 px-4 sm:px-6 py-2.5 backdrop-blur-md bg-opacity-90">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Brand & Telemetry -->
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl flex items-center justify-center font-mono font-bold text-xs shadow-inner" style="background-color: var(--md-primary-container); color: var(--md-on-primary-container);">
+          10
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-xs font-bold tracking-tight font-mono uppercase">Syllabus Logger</h1>
+            <span class="text-[10px] text-zinc-500 font-mono hidden sm:inline">CBSE 2026–27</span>
           </div>
-          <div>
-            <h1 class="font-bold text-base tracking-tight leading-tight">TOPPER AIR 1</h1>
-            <p class="text-[11px] text-indigo-400 font-semibold tracking-wider uppercase">CBSE 2026–27</p>
+          <!-- Live Realtime Telemetry Indicator -->
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span id="telemetryDot" class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="telemetryLabel" class="text-[10px] font-mono text-zinc-400">Connecting...</span>
           </div>
         </div>
-      </div>
-
-      <!-- Cloud Realtime Sync Indicator -->
-      <div id="syncIndicator" class="mb-5 p-2.5 rounded-xl border border-emerald-500/25 bg-emerald-500/10 text-emerald-400 text-xs flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="font-medium" id="syncStatusLabel">Firebase Live</span>
-        </div>
-        <span class="text-[10px] uppercase font-bold tracking-widest bg-emerald-500/20 px-2 py-0.5 rounded">Synced</span>
       </div>
 
       <!-- Navigation Tabs -->
-      <nav class="space-y-1.5 text-sm font-medium">
-        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30 transition">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-          Syllabus (108 Units)
+      <nav class="flex items-center gap-1 p-1 rounded-2xl border text-xs font-medium" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+        <button onclick="switchTab('checklist')" id="tabBtn-checklist" class="px-3.5 py-1.5 rounded-xl font-semibold m3-btn-primary transition">
+          Checklist
         </button>
-        <button onclick="switchTab('retro')" id="nav-retro" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Retro Focus & Garden
+        <button onclick="switchTab('focus')" id="tabBtn-focus" class="px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-zinc-200 transition">
+          Focus
         </button>
-        <button onclick="switchTab('leaderboard')" id="nav-leaderboard" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          Live Leaderboard
-        </button>
-        <button onclick="switchTab('achievements')" id="nav-achievements" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-          Milestones & Badges
+        <button onclick="switchTab('others')" id="tabBtn-others" class="px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-zinc-200 transition">
+          Others
         </button>
       </nav>
 
-      <!-- Sound Engine Controls -->
-      <div class="mt-6 pt-4 border-t border-slate-800">
-        <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
-          <span class="font-semibold uppercase tracking-wider text-[10px]">Ambient Generator</span>
-          <button onclick="toggleAmbientSound()" id="soundToggleBtn" class="text-indigo-400 hover:underline">Play Rain</button>
+      <!-- Account Settings & Avatar Button -->
+      <button onclick="openProfileDrawer()" class="flex items-center gap-2 p-1.5 rounded-2xl border transition" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);" title="Account & Settings">
+        <div id="navAvatarMonogram" class="w-6 h-6 rounded-xl font-mono text-xs font-bold flex items-center justify-center overflow-hidden" style="background-color: var(--md-primary-container); color: var(--md-on-primary-container);">
+          A
         </div>
-        <input type="range" min="0" max="100" value="30" oninput="setAudioVolume(this.value)" class="w-full accent-indigo-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
-      </div>
-    </div>
-
-    <!-- User Profile & Theme Switcher -->
-    <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-      <div class="cursor-pointer" onclick="openProfileModal()">
-        <p id="sidebarUsername" class="font-bold text-sm tracking-tight hover:text-indigo-400 transition">Arpit (AIR 1)</p>
-        <p id="sidebarUserId" class="text-xs text-slate-500 font-mono">#ARPIT_2027</p>
-      </div>
-      <button onclick="cycleTheme()" id="themeBtn" title="Toggle Theme" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 transition">
-        🌓 AMOLED
+        <span id="navUsername" class="text-xs font-medium pr-1.5 hidden sm:inline">Arpit</span>
       </button>
+
     </div>
-  </aside>
+  </header>
 
-  <!-- ================= MAIN DISPLAY ================= -->
-  <main class="flex-1 p-4 md:p-8 overflow-y-auto max-w-6xl mx-auto w-full">
-
-    <!-- VIEW 1: SYLLABUS TRACKER -->
-    <section id="view-dashboard" class="space-y-6">
+  <section class="border-b px-4 sm:px-6 py-4" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-5">
       
-      <!-- Urgency Banner & Jan 1st Deadline -->
-      <div class="theme-card border rounded-2xl p-6 relative overflow-hidden bg-gradient-to-br from-indigo-950/40 via-purple-950/20 to-slate-900">
-        <div class="flex flex-col md:flex-row justify-between md:items-center gap-6">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/10 border border-rose-500/30 text-rose-400 mb-2">
-              <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-              Syllabus Lockdown: January 1, 2027
-            </div>
-            <h2 class="text-2xl md:text-3xl font-black tracking-tight">Focus Protocol Active</h2>
-            <div class="mt-2 flex items-center gap-3">
-              <p class="text-xs md:text-sm text-slate-400 italic" id="quoteDashboard">"Hesitation is defeat." — Isshin Ashina</p>
-              <button onclick="rotateRandomQuote()" class="text-slate-500 hover:text-slate-300 text-xs transition" title="Shuffle quote">⟳</button>
-            </div>
-          </div>
+      <!-- Progress Bar & Unit Count -->
+      <div class="flex-1 max-w-md">
+        <div class="flex justify-between items-baseline text-xs mb-1.5 font-mono">
+          <span class="text-zinc-400">Total Curriculum Conquered</span>
+          <span class="font-bold"><span id="metricCompleted">0</span> / 108 Units (<span id="metricPercent">0%</span>)</span>
+        </div>
+        <div class="w-full h-2 rounded-full overflow-hidden" style="background-color: var(--md-outline);">
+          <div id="metricProgressBar" class="h-full rounded-full transition-all duration-300" style="width: 0%; background-color: var(--md-primary);"></div>
+        </div>
+      </div>
 
-          <!-- Digital Clock Countdown -->
-          <div class="flex gap-2.5 font-mono text-center shrink-0">
-            <div class="theme-card border px-3.5 py-2.5 rounded-xl min-w-[65px]">
-              <span id="clockDays" class="text-2xl md:text-3xl font-black text-indigo-400">00</span>
-              <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold mt-0.5">Days</p>
-            </div>
-            <div class="theme-card border px-3.5 py-2.5 rounded-xl min-w-[65px]">
-              <span id="clockHours" class="text-2xl md:text-3xl font-black text-indigo-400">00</span>
-              <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold mt-0.5">Hours</p>
-            </div>
-            <div class="theme-card border px-3.5 py-2.5 rounded-xl min-w-[65px]">
-              <span id="clockMins" class="text-2xl md:text-3xl font-black text-indigo-400">00</span>
-              <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold mt-0.5">Mins</p>
-            </div>
-            <div class="theme-card border px-3.5 py-2.5 rounded-xl min-w-[65px]">
-              <span id="clockSecs" class="text-2xl md:text-3xl font-black text-purple-400">00</span>
-              <p class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold mt-0.5">Secs</p>
-            </div>
+      <!-- Realtime Lockdown Countdown Clock (Jan 1, 2027) -->
+      <div class="flex items-center gap-2 font-mono">
+        <div class="m3-card px-2.5 py-1.5 rounded-xl text-center min-w-[55px]">
+          <span id="clockDays" class="text-base sm:text-lg font-black block leading-none" style="color: var(--md-primary);">--</span>
+          <span class="text-[9px] text-zinc-500 uppercase font-semibold">Days</span>
+        </div>
+        <span class="text-zinc-600 font-bold">:</span>
+        <div class="m3-card px-2.5 py-1.5 rounded-xl text-center min-w-[55px]">
+          <span id="clockHours" class="text-base sm:text-lg font-black block leading-none" style="color: var(--md-primary);">--</span>
+          <span class="text-[9px] text-zinc-500 uppercase font-semibold">Hours</span>
+        </div>
+        <span class="text-zinc-600 font-bold">:</span>
+        <div class="m3-card px-2.5 py-1.5 rounded-xl text-center min-w-[55px]">
+          <span id="clockMins" class="text-base sm:text-lg font-black block leading-none" style="color: var(--md-primary);">--</span>
+          <span class="text-[9px] text-zinc-500 uppercase font-semibold">Mins</span>
+        </div>
+        <span class="text-zinc-600 font-bold">:</span>
+        <div class="m3-card px-2.5 py-1.5 rounded-xl text-center min-w-[55px]">
+          <span id="clockSecs" class="text-base sm:text-lg font-black block leading-none text-rose-400">--</span>
+          <span class="text-[9px] text-zinc-500 uppercase font-semibold">Secs</span>
+        </div>
+
+        <!-- Target Pace Badge -->
+        <div class="border-l pl-3 ml-2 text-right hidden sm:block" style="border-color: var(--md-outline);">
+          <span class="text-[9px] text-zinc-500 uppercase font-mono block">Required Pace</span>
+          <span id="metricPace" class="text-xs font-bold font-mono text-emerald-400">-- units/day</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Realtime Database Rules Notification Banner (if permission denied) -->
+  <div id="firebaseRuleAlert" class="hidden max-w-6xl mx-auto mt-4 px-4 sm:px-6">
+    <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono flex items-start gap-2.5">
+      <span class="text-base leading-none">⚠️</span>
+      <div>
+        <p class="font-bold">Firebase Database Permission Locked:</p>
+        <p class="text-[11px] text-amber-300/80 mt-0.5">
+          Your Firebase rules are currently blocking reads and writes. Open <b>Firebase Console &gt; Realtime Database &gt; Rules</b> and update them to:
+          <code class="bg-black/40 px-1 py-0.5 rounded text-amber-200">{ "rules": { ".read": true, ".write": true } }</code> then click <b>Publish</b>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 sm:p-6">
+
+    <!-- VIEW 1: SYLLABUS CHECKLIST -->
+    <section id="view-checklist" class="space-y-4">
+      
+      <!-- Toolbar: Dynamic Pills + Search -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        
+        <!-- Subject Pills -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs font-mono" id="subjectFilterRow">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative min-w-[240px]">
+          <svg class="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input 
+            type="text" 
+            id="chapterSearchInput" 
+            oninput="handleSearch(this.value)" 
+            placeholder="Search chapters or topics..." 
+            class="w-full rounded-2xl pl-8 pr-3 py-1.5 text-xs focus:outline-none transition"
+            style="background-color: var(--md-surface-container); border: 1px solid var(--md-outline);"
+          />
+        </div>
+      </div>
+
+      <!-- Chapter Cards Container -->
+      <div id="chaptersContainer" class="space-y-2">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: FOCUS ENGINE (CLEAN CIRCULAR TIMER) -->
+    <section id="view-focus" class="hidden max-w-xl mx-auto py-6">
+      <div class="m3-card p-6 sm:p-8 rounded-3xl text-center space-y-6 shadow-xl">
+        
+        <!-- Interval Presets -->
+        <div class="inline-flex p-1 rounded-2xl border text-xs font-mono" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+          <button onclick="setFocusPreset(25)" id="btnPreset25" class="px-3.5 py-1.5 rounded-xl font-medium m3-btn-primary">25m Focus</button>
+          <button onclick="setFocusPreset(50)" id="btnPreset50" class="px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-white">50m Deep</button>
+          <button onclick="setFocusPreset(5)" id="btnPreset5" class="px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-white">5m Break</button>
+        </div>
+
+        <!-- M3 Circular Clock -->
+        <div class="relative w-48 h-48 mx-auto flex items-center justify-center">
+          <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="4" fill="none" class="text-zinc-800" />
+            <circle id="timerProgressRing" cx="50" cy="50" r="44" stroke="currentColor" stroke-width="4" fill="none" class="transition-all duration-300" style="color: var(--md-primary);" stroke-dasharray="276.46" stroke-dashoffset="0" stroke-linecap="round" />
+          </svg>
+          <div class="absolute inset-0 flex flex-col items-center justify-center">
+            <span id="focusTimeDigits" class="text-4xl font-bold font-mono tracking-tight">25:00</span>
+            <span id="focusStatusLabel" class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mt-1">Ready</span>
           </div>
+        </div>
+
+        <!-- Timer Controls -->
+        <div class="flex items-center justify-center gap-3 font-mono text-xs">
+          <button onclick="toggleFocusTimer()" id="focusToggleBtn" class="px-6 py-2.5 rounded-2xl m3-btn-primary font-semibold shadow-md transition">
+            Start Focus
+          </button>
+          <button onclick="resetFocusTimer()" class="px-4 py-2.5 rounded-2xl border text-zinc-400 hover:text-zinc-200 transition" style="border-color: var(--md-outline);">
+            Reset
+          </button>
         </div>
 
         <!-- Metric Strips -->
-        <div class="mt-6 pt-5 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="pt-6 border-t flex items-center justify-around text-xs font-mono text-zinc-400" style="border-color: var(--md-outline);">
           <div>
-            <p class="text-xs text-slate-500 font-medium">Mastered Chapters</p>
-            <p id="statMastered" class="text-2xl font-black text-emerald-400 mt-0.5">0 / 108</p>
+            <span class="block text-[10px] text-zinc-500 uppercase">Sessions Completed</span>
+            <span id="metricFocusSessions" class="text-base font-bold text-zinc-200">0</span>
           </div>
-          <div>
-            <p class="text-xs text-slate-500 font-medium">Daily Target Pace</p>
-            <p id="statPace" class="text-2xl font-black text-purple-400 mt-0.5">1.2 Units/Day</p>
-          </div>
-          <div>
-            <p class="text-xs text-slate-500 font-medium">Study Streak</p>
-            <p id="statStreak" class="text-2xl font-black text-amber-400 mt-0.5">🔥 1 Day</p>
-          </div>
-          <div>
-            <p class="text-xs text-slate-500 font-medium">Live Topper XP</p>
-            <p id="statXP" class="text-2xl font-black text-indigo-400 mt-0.5">0 XP</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Subject Tab Selectors -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" id="subjectPills">
-        <!-- Rendered via JS -->
-      </div>
-
-      <!-- Search & Filters -->
-      <div class="flex items-center gap-3">
-        <input type="text" id="chapterSearch" oninput="renderChapters()" placeholder="Search chapters across this subject..." class="theme-card flex-1 border px-4 py-2 rounded-xl text-sm focus:outline-none focus:border-indigo-500 transition">
-        <select id="statusFilter" onchange="renderChapters()" class="theme-card border px-3 py-2 rounded-xl text-xs font-semibold focus:outline-none">
-          <option value="all">All Chapters</option>
-          <option value="mastered">Mastered Only</option>
-          <option value="learning">In Progress</option>
-          <option value="unstarted">Not Started</option>
-        </select>
-      </div>
-
-      <!-- Chapters List -->
-      <div id="chaptersContainer" class="space-y-2">
-        <!-- Rendered via JS -->
-      </div>
-    </section>
-
-    <!-- VIEW 2: RETRO POMODORO GARDEN -->
-    <section id="view-retro" class="hidden">
-      <div class="retro-terminal p-6 md:p-8 rounded-2xl text-retroGreen">
-        
-        <div class="flex flex-wrap justify-between items-center border-b border-retroGreen/30 pb-3 mb-6 gap-3">
-          <span class="text-xs uppercase tracking-widest font-bold">SYSTEM: FOCUS_OS // VINTAGE PROTOCOL</span>
-          
-          <div class="flex items-center gap-3">
-            <span class="text-xs">CYCLE:</span>
-            <select id="pomoPreset" onchange="changePomoPreset(this.value)" class="bg-black text-retroGreen border border-retroGreen text-xs px-2 py-1 focus:outline-none font-mono">
-              <option value="25">25m Study / 5m Rest</option>
-              <option value="50">50m Study / 10m Rest</option>
-              <option value="90">90m Deep Work</option>
-            </select>
-            <button onclick="toggleRetroQuote()" id="retroQuoteBtn" class="px-2 py-1 border border-retroGreen text-xs hover:bg-retroGreen hover:text-black transition">
-              QUOTE: [ON]
-            </button>
-          </div>
-        </div>
-
-        <!-- Central Quote Screen -->
-        <div id="retroQuoteBox" class="p-4 my-2 border border-dashed border-retroGreen/40 rounded text-center">
-          <p id="retroQuoteText" class="text-base md:text-lg font-mono">"No man is free who is not master of himself."</p>
-          <p id="retroQuoteAuthor" class="text-xs text-retroAmber font-mono mt-1">— Epictetus</p>
-        </div>
-
-        <!-- Giant Arcade Clock -->
-        <div class="text-center py-8">
-          <div id="retroTimer" class="text-7xl md:text-9xl font-black font-mono tracking-wider text-retroGreen drop-shadow-[0_0_20px_rgba(0,255,102,0.4)]">25:00</div>
-          <p id="retroStatusText" class="text-xs uppercase tracking-widest text-retroAmber mt-2 font-mono">STATUS: READY_FOR_SESSION</p>
-          
-          <!-- Phosphor Progress Bar -->
-          <div class="w-full max-w-xl mx-auto bg-black border border-retroGreen/50 h-5 rounded mt-6 overflow-hidden p-0.5">
-            <div id="retroBar" class="h-full bg-retroGreen transition-all duration-300" style="width: 0%"></div>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="flex justify-center gap-3 mt-2">
-          <button onclick="startPomodoro()" class="px-6 py-2.5 bg-retroGreen text-black font-bold font-mono hover:opacity-90 transition active:scale-95">START</button>
-          <button onclick="pausePomodoro()" class="px-6 py-2.5 border border-retroGreen text-retroGreen font-bold font-mono hover:bg-retroGreen/10 transition active:scale-95">PAUSE</button>
-          <button onclick="resetPomodoro()" class="px-4 py-2.5 border border-retroGreen/40 text-retroGreen/60 font-mono text-xs hover:text-retroGreen transition">RESET</button>
-        </div>
-
-        <!-- Virtual Forest Grid -->
-        <div class="mt-10 pt-6 border-t border-retroGreen/30">
-          <div class="flex justify-between items-center mb-3">
-            <span class="text-xs font-mono">VIRTUAL ORCHARD (<span id="forestCount">0</span> TREES PLANTED):</span>
-            <span class="text-[10px] text-retroAmber font-mono">+25 XP PER TREE</span>
-          </div>
-          <div id="forestTrees" class="flex flex-wrap gap-2 text-2xl min-h-[50px] bg-black/60 p-3 rounded border border-retroGreen/20">
-            <!-- Trees grow here dynamically -->
+          <div class="border-l pl-6" style="border-color: var(--md-outline);">
+            <span class="block text-[10px] text-zinc-500 uppercase">Total Focus Logged</span>
+            <span id="metricFocusMinutes" class="text-base font-bold text-zinc-200">0 mins</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- VIEW 3: LIVE CLOUD LEADERBOARD & SQUADS -->
-    <section id="view-leaderboard" class="hidden space-y-6">
+    <!-- VIEW 3: OTHERS (GLOBAL DIRECTORY & GROUPS) -->
+    <section id="view-others" class="hidden space-y-4">
       
-      <div class="theme-card border p-6 rounded-2xl flex flex-col md:flex-row justify-between md:items-center gap-4">
+      <!-- Sub-view switcher: Global vs My Squad/Group -->
+      <div class="m3-card p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h2 class="text-xl font-bold">Realtime Firebase Leaderboard</h2>
-          <p class="text-xs text-slate-400">Live synchronization powered by your connected database.</p>
+          <h2 class="text-sm font-semibold">Peer Directory</h2>
+          <p class="text-xs text-zinc-400">Live peers connected to your Firebase Realtime Database.</p>
         </div>
-        <div class="flex gap-2">
-          <button onclick="switchLeaderboardView('global')" id="btn-lead-global" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white">Global Toppers</button>
-          <button onclick="switchLeaderboardView('squad')" id="btn-lead-squad" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-400 hover:text-white">My Squad</button>
-        </div>
-      </div>
 
-      <!-- Squad Management Strip -->
-      <div id="squadBar" class="hidden theme-card border p-4 rounded-xl flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-2">
-          <span class="text-xs text-slate-400">Active Squad Code:</span>
-          <span id="activeSquadDisplay" class="font-bold text-indigo-400 font-mono">None</span>
+          <div class="flex p-1 rounded-2xl border text-xs font-mono" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+            <button onclick="switchOthersSubTab('global')" id="subTabBtn-global" class="px-3.5 py-1 rounded-xl m3-btn-primary font-medium">Global</button>
+            <button onclick="switchOthersSubTab('group')" id="subTabBtn-group" class="px-3.5 py-1 rounded-xl text-zinc-400 hover:text-white">My Group</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group Join Strip (Visible in group mode) -->
+      <div id="groupControlStrip" class="hidden m3-card p-3 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-400">Current Group:</span>
+          <span id="currentGroupCodeDisplay" class="font-bold" style="color: var(--md-primary);">None</span>
         </div>
         <div class="flex items-center gap-2">
-          <input type="text" id="squadJoinInput" placeholder="Squad Code (e.g. AIR100)" class="bg-slate-950 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-mono uppercase focus:outline-none focus:border-indigo-500">
-          <button onclick="joinSquadCode()" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-xs font-bold rounded-lg transition">Join / Create</button>
+          <input type="text" id="groupJoinInput" placeholder="Enter group code..." class="rounded-xl px-3 py-1 text-xs uppercase focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline);" />
+          <button onclick="joinGroup()" class="px-3.5 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 rounded-xl font-medium transition">Join / Create</button>
         </div>
       </div>
 
-      <!-- Leaderboard Table -->
-      <div class="theme-card border rounded-2xl overflow-hidden shadow-xl">
-        <div class="grid grid-cols-12 px-4 py-3 bg-slate-800/40 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800">
-          <div class="col-span-1 text-center">Rank</div>
-          <div class="col-span-5">Topper</div>
-          <div class="col-span-2 text-center">Mastered</div>
-          <div class="col-span-2 text-center">Streak</div>
-          <div class="col-span-2 text-right">Topper XP</div>
+      <!-- Live Directory Table -->
+      <div class="m3-card rounded-2xl overflow-hidden shadow-lg">
+        <div class="grid grid-cols-12 px-4 py-2.5 border-b text-[10px] font-mono uppercase tracking-wider text-zinc-500 font-semibold" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+          <div class="col-span-5">Student</div>
+          <div class="col-span-2 text-center">Group</div>
+          <div class="col-span-2 text-center">Completed</div>
+          <div class="col-span-3 text-right">Last Synced</div>
         </div>
-        <div id="leaderboardList" class="divide-y divide-slate-800 text-sm">
-          <!-- Dynamic live list populated from Firebase -->
-          <div class="p-8 text-center text-slate-500">Connecting to Realtime Database...</div>
+        <div id="othersDirectoryList" class="divide-y text-xs font-mono" style="border-color: var(--md-outline);">
+          <div class="p-8 text-center text-zinc-500">Connecting to cloud peer nodes...</div>
         </div>
-      </div>
-    </section>
-
-    <!-- VIEW 4: ACHIEVEMENTS & MILESTONES -->
-    <section id="view-achievements" class="hidden space-y-4">
-      <div class="theme-card border p-6 rounded-2xl">
-        <h2 class="text-xl font-bold">Topper Milestones & Badges</h2>
-        <p class="text-xs text-slate-400">Unlock prestige rank as you conquer all 108 chapters.</p>
-      </div>
-      <div id="achievementsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        <!-- Rendered via JS -->
       </div>
     </section>
 
   </main>
 
-  <!-- ================= PROFILE MODAL ================= -->
-  <div id="profileModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-    <div class="theme-card border border-slate-700 rounded-2xl p-6 max-w-md w-full shadow-2xl">
-      <h3 class="text-lg font-bold mb-4">Topper Profile Settings</h3>
+  <div id="profileDrawerBackdrop" onclick="closeProfileDrawer()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-40 transition-opacity"></div>
+  <aside id="profileDrawer" class="fixed top-0 right-0 h-full w-full max-w-sm m3-card border-y-0 border-r-0 z-50 p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-200 shadow-2xl">
+    <div class="space-y-6">
       
-      <div class="space-y-4">
-        <div>
-          <label class="block text-xs text-slate-400 mb-1 font-medium">Display Name</label>
-          <input type="text" id="inputUsername" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-sm focus:border-indigo-500 focus:outline-none">
-        </div>
-        <div>
-          <label class="block text-xs text-slate-400 mb-1 font-medium">Unique User ID (Shared with Friends)</label>
-          <input type="text" id="inputUserId" class="w-full bg-slate-950 border border-slate-700 p-2.5 rounded-xl text-sm font-mono text-indigo-400 focus:border-indigo-500 focus:outline-none">
-        </div>
-        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-          <div>
-            <p class="text-sm font-medium">Private / Incognito Mode</p>
-            <p class="text-xs text-slate-500">Hide my handle on the global board</p>
-          </div>
-          <input type="checkbox" id="inputIncognito" class="w-4 h-4 rounded text-indigo-600 accent-indigo-600">
-        </div>
+      <div class="flex items-center justify-between pb-3 border-b" style="border-color: var(--md-outline);">
+        <h2 class="text-sm font-semibold">Account & Settings</h2>
+        <button onclick="closeProfileDrawer()" class="text-zinc-500 hover:text-zinc-300 text-xs font-mono">Close</button>
       </div>
 
-      <div class="flex justify-end gap-2 mt-6">
-        <button onclick="closeProfileModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-xs text-slate-300 hover:bg-slate-700 transition">Cancel</button>
-        <button onclick="saveProfile()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white transition">Save & Sync</button>
+      <!-- Profile Form -->
+      <div class="space-y-4 text-xs font-mono">
+        <div>
+          <label class="text-[11px] text-zinc-400 block mb-1">Full Name</label>
+          <input type="text" id="settingNameInput" class="w-full rounded-xl p-2.5 text-zinc-200 focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline);" />
+        </div>
+
+        <div>
+          <label class="text-[11px] text-zinc-400 block mb-1">Unique User ID (Cloud Handle)</label>
+          <div class="flex items-center">
+            <span class="px-2.5 py-2.5 rounded-l-xl text-zinc-500 border border-r-0" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">@</span>
+            <input type="text" id="settingUidInput" class="w-full rounded-r-xl p-2.5 font-bold uppercase focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline); color: var(--md-primary);" />
+          </div>
+        </div>
+
+        <div>
+          <label class="text-[11px] text-zinc-400 block mb-1">Password</label>
+          <input type="password" id="settingPassInput" placeholder="••••••••" class="w-full rounded-xl p-2.5 text-zinc-200 focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline);" />
+        </div>
+
+        <div>
+          <label class="text-[11px] text-zinc-400 block mb-1">Group / Cohort Code (Optional)</label>
+          <input type="text" id="settingGroupInput" placeholder="Leave empty or enter code..." class="w-full rounded-xl p-2.5 text-zinc-200 uppercase focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline);" />
+        </div>
+
+        <div class="flex items-center justify-between p-3 rounded-2xl border" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+          <div>
+            <span class="block font-medium text-zinc-200">Incognito Mode</span>
+            <span class="text-[10px] text-zinc-500">Hide handle in Others directory</span>
+          </div>
+          <input type="checkbox" id="settingIncognitoInput" class="rounded border-zinc-700 text-indigo-600 focus:ring-0" />
+        </div>
+
+        <!-- Material You Color Accent Switcher -->
+        <div>
+          <label class="text-[11px] text-zinc-400 block mb-1.5">Material You Accent Palette</label>
+          <div class="grid grid-cols-4 gap-2">
+            <button onclick="setPalette('lavender')" class="p-2 rounded-xl border flex items-center justify-center gap-1.5 text-[10px]" style="border-color: #6366f1;">
+              <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+              <span>Indigo</span>
+            </button>
+            <button onclick="setPalette('botanical')" class="p-2 rounded-xl border flex items-center justify-center gap-1.5 text-[10px]" style="border-color: #10b981;">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>Sage</span>
+            </button>
+            <button onclick="setPalette('sunset')" class="p-2 rounded-xl border flex items-center justify-center gap-1.5 text-[10px]" style="border-color: #f59e0b;">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span>Sunset</span>
+            </button>
+            <button onclick="setPalette('ocean')" class="p-2 rounded-xl border flex items-center justify-center gap-1.5 text-[10px]" style="border-color: #0284c7;">
+              <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+              <span>Ocean</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Mode Switcher -->
+        <div>
+          <label class="text-[11px] text-zinc-400 block mb-1">Theme Surface</label>
+          <div class="grid grid-cols-3 gap-1.5 p-1 rounded-2xl border text-center" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+            <button onclick="setAppTheme('dark')" id="themeBtn-dark" class="py-1 rounded-xl text-zinc-300">Dark</button>
+            <button onclick="setAppTheme('amoled')" id="themeBtn-amoled" class="py-1 rounded-xl text-zinc-300">AMOLED</button>
+            <button onclick="setAppTheme('light')" id="themeBtn-light" class="py-1 rounded-xl text-zinc-300">Light</button>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="pt-4 border-t space-y-2" style="border-color: var(--md-outline);">
+      <button onclick="saveProfileSettings()" class="w-full py-2.5 rounded-2xl m3-btn-primary text-xs font-semibold font-mono shadow-md transition">
+        Save & Sync
+      </button>
+      <button onclick="exportDataJson()" class="w-full py-2 rounded-2xl border text-zinc-400 hover:text-zinc-200 text-xs font-mono transition" style="border-color: var(--md-outline);">
+        Export Backup JSON
+      </button>
+    </div>
+  </aside>
+
+  <div id="onboardingModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="m3-card max-w-sm w-full p-6 sm:p-7 rounded-3xl space-y-5 border shadow-2xl">
+      <div class="space-y-1 text-center">
+        <div class="w-10 h-10 rounded-2xl mx-auto flex items-center justify-center font-mono font-bold text-sm mb-2 shadow-inner" style="background-color: var(--md-primary-container); color: var(--md-on-primary-container);">
+          10
+        </div>
+        <h3 class="text-sm font-bold tracking-tight">CBSE 10 Syllabus Logger</h3>
+        <p class="text-xs text-zinc-400">Initialize your cloud profile to sync your 108 curriculum units across all devices.</p>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="flex p-1 rounded-2xl border text-xs font-mono" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+        <button onclick="switchOnboardingMode('create')" id="onboardTab-create" class="flex-1 py-1.5 rounded-xl m3-btn-primary font-medium">Create User</button>
+        <button onclick="switchOnboardingMode('login')" id="onboardTab-login" class="flex-1 py-1.5 rounded-xl text-zinc-400 hover:text-white">Existing ID</button>
+      </div>
+
+      <form id="onboardForm" onsubmit="handleOnboardSubmit(event)" class="space-y-3.5 text-xs font-mono">
+        <div id="onboardNameField">
+          <label class="block text-zinc-400 mb-1 text-[11px]">Full Name</label>
+          <input type="text" id="onboardNameInput" required placeholder="Arpit" class="w-full rounded-xl p-2.5 text-zinc-200 focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline);" />
+        </div>
+
+        <div>
+          <label class="block text-zinc-400 mb-1 text-[11px]">Unique User ID (Cloud Handle)</label>
+          <div class="flex items-center">
+            <span class="px-2.5 py-2.5 rounded-l-xl text-zinc-500 border border-r-0" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">@</span>
+            <input type="text" id="onboardUidInput" required placeholder="ARPIT_AIR1" class="w-full rounded-r-xl p-2.5 font-bold uppercase focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline); color: var(--md-primary);" />
+          </div>
+          <span class="text-[10px] text-zinc-500 mt-1 block">A–Z, 0–9, and underscores only.</span>
+        </div>
+
+        <div>
+          <label class="block text-zinc-400 mb-1 text-[11px]">Password</label>
+          <input type="password" id="onboardPassInput" required placeholder="••••••••" class="w-full rounded-xl p-2.5 text-zinc-200 focus:outline-none" style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline);" />
+        </div>
+
+        <div id="onboardError" class="hidden text-[11px] text-rose-400 p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30"></div>
+
+        <button type="submit" id="onboardSubmitBtn" class="w-full py-2.5 rounded-2xl m3-btn-primary font-semibold shadow-lg transition">
+          Create & Enter
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- ================= JAVASCRIPT ENGINE ================= -->
+  <!-- In-App Notification Toast -->
+  <div id="toastNotification" class="fixed bottom-4 right-4 z-50 m3-card px-4 py-2.5 rounded-2xl text-xs font-mono shadow-2xl transform translate-y-12 opacity-0 pointer-events-none transition-all duration-200"></div>
+
   <script>
-    // --- 1. FIREBASE INITIALIZATION WITH YOUR EXACT CREDENTIALS ---
+    // --- 1. FIREBASE CONFIGURATION (Direct & Hardcoded) ---
     const firebaseConfig = {
       apiKey: "AIzaSyCJ5z-puudIMgVw1xAiGrX5K_XprAOJZC0",
       authDomain: "cbse-topper-tracker.firebaseapp.com",
@@ -384,649 +537,951 @@
 
     let firebaseDb = null;
     try {
-      firebase.initializeApp(firebaseConfig);
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
       firebaseDb = firebase.database();
-    } catch(e) {
-      console.error("Firebase init failed:", e);
+    } catch(err) {
+      console.warn("Firebase initialization warning:", err);
     }
 
-    // --- 2. EXACT 108 CHAPTERS DATASET ---
-    const SYLLABUS = {
-      maths: {
-        title: "Mathematics",
-        chapters: [
-          "Real Numbers", "Polynomials", "Pair of Linear Equations in Two Variables",
-          "Quadratic Equations", "Arithmetic Progressions", "Triangles",
-          "Coordinate Geometry", "Introduction to Trigonometry", "Some Applications of Trigonometry",
-          "Circles", "Areas Related to Circles", "Surface Areas and Volumes",
-          "Statistics", "Probability"
-        ]
-      },
-      science: {
-        title: "Science",
-        chapters: [
-          "Chemical Reactions and Equations", "Acids, Bases and Salts", "Metals and Non-Metals",
-          "Carbon and Its Compounds", "Life Processes", "Control and Coordination",
-          "How do Organisms Reproduce?", "Heredity", "Light – Reflection and Refraction",
-          "The Human Eye and Colourful World", "Electricity", "Magnetic Effects of Electric Current",
-          "Our Environment"
-        ]
-      },
-      sst: {
-        title: "Social Science",
-        chapters: [
-          "Rise of Nationalism in Europe", "Nationalism in India", "The Making of a Global World",
-          "The Age of Industrialisation", "Print Culture and Modern World", "Resources and Development",
-          "Forest and Wildlife Resources", "Water Resources", "Agriculture",
-          "Minerals and Energy Resources", "Manufacturing Industries", "Lifelines of National Economy",
-          "Power Sharing", "Federalism", "Gender, Religion and Caste",
-          "Political Parties", "Outcomes of Democracy", "Development",
-          "Sectors of the Indian Economy", "Money and Credit", "Globalisation and the Indian Economy"
-        ]
-      },
-      english: {
-        title: "English",
-        chapters: [
-          "A Letter to God", "Nelson Mandela: Long Walk to Freedom", "Two Stories about Flying",
-          "From the Diary of Anne Frank", "Glimpses of India", "Mijbil the Otter",
-          "Madam Rides the Bus", "The Sermon at Benares", "The Proposal",
-          "Dust of Snow (Poem)", "Fire and Ice (Poem)", "A Tiger in the Zoo (Poem)",
-          "How to Tell Wild Animals (Poem)", "The Ball Poem (Poem)", "Amanda! (Poem)",
-          "The Trees (Poem)", "Fog (Poem)", "The Tale of Custard the Dragon (Poem)",
-          "For Anne Gregory (Poem)", "A Triumph of Surgery", "The Thief’s Story",
-          "The Midnight Visitor", "A Question of Trust", "Footprints Without Feet",
-          "The Making of a Scientist", "The Necklace", "Bholi", "The Book That Saved the Earth"
-        ]
-      },
-      hindi: {
-        title: "Hindi Course B",
-        chapters: [
-          "साखी (कबीर)", "पद (मीरा)", "मनुष्यता", "पर्वत प्रदेश में पावस",
-          "तोप", "कर चले हम फ़िदा", "आत्मत्राण", "बड़े भाई साहब",
-          "डायरी का एक पन्ना", "तँतारा-वामीरो कथा", "तीसरी कसम के शिल्पकार",
-          "अब कहाँ दूसरे के दुख से दुखी होने वाले", "पतझर में टूटी पत्तियाँ", "कारतूस",
-          "हरिहर काका", "सपनों के-से दिन", "टोपी शुक्ला"
-        ]
-      },
-      ai: {
-        title: "Artificial Intelligence (417)",
-        chapters: [
-          "Communication Skills-II", "Self-Management Skills-II", "ICT Skills-II",
-          "Entrepreneurial Skills-II", "Green Skills-II", "AI Project Cycle & Ethics",
-          "Advanced Modeling in AI", "Evaluating Models", "Statistical Data",
-          "Computer Vision (CV)", "Natural Language Processing (NLP)", "Advance Python"
-        ]
-      },
-      art: {
-        title: "Painting (049)",
-        chapters: [
-          "Fundamentals of Visual Arts",
-          "Methods and Materials of Painting",
-          "Appreciation of Indian Art"
-        ]
-      }
-    };
+    // --- 2. EXACT 108 CBSE CLASS 10 CURRICULUM DATASET ---
+    const SYLLABUS = [
+      // Mathematics (14)
+      { id: "m-01", sub: "Maths", ch: 1, title: "Real Numbers", meta: "Fundamental Theorem of Arithmetic, proof of irrationality." },
+      { id: "m-02", sub: "Maths", ch: 2, title: "Polynomials", meta: "Zeroes of quadratic polynomials, relationship between zeroes and coefficients." },
+      { id: "m-03", sub: "Maths", ch: 3, title: "Pair of Linear Equations in Two Variables", meta: "Substitution and elimination methods, graphical conditions." },
+      { id: "m-04", sub: "Maths", ch: 4, title: "Quadratic Equations", meta: "Standard form, factorisation, quadratic formula, nature of roots." },
+      { id: "m-05", sub: "Maths", ch: 5, title: "Arithmetic Progressions", meta: "nth term (an = a+(n-1)d), sum of first n terms (Sn)." },
+      { id: "m-06", sub: "Maths", ch: 6, title: "Triangles", meta: "Basic Proportionality Theorem, similarity criteria (AAA, SSS, SAS)." },
+      { id: "m-07", sub: "Maths", ch: 7, title: "Coordinate Geometry", meta: "Distance formula, internal section formula." },
+      { id: "m-08", sub: "Maths", ch: 8, title: "Introduction to Trigonometry", meta: "Values for standard angles (0°–90°), sin²θ + cos²θ = 1." },
+      { id: "m-09", sub: "Maths", ch: 9, title: "Some Applications of Trigonometry", meta: "Heights and distances, angles of elevation and depression." },
+      { id: "m-10", sub: "Maths", ch: 10, title: "Circles", meta: "Tangent at any point, lengths of tangents from an external point." },
+      { id: "m-11", sub: "Maths", ch: 11, title: "Areas Related to Circles", meta: "Area of sectors and segments of circles." },
+      { id: "m-12", sub: "Maths", ch: 12, title: "Surface Areas and Volumes", meta: "Combination of cubes, cuboids, spheres, cylinders, cones." },
+      { id: "m-13", sub: "Maths", ch: 13, title: "Statistics", meta: "Mean, median, and mode of grouped data." },
+      { id: "m-14", sub: "Maths", ch: 14, title: "Probability", meta: "Theoretical probability of single and combined events." },
 
-    // --- 3. STATE & STORAGE ---
-    let userState = {
-      profile: {
-        name: "Arpit (AIR 1)",
-        id: "ARPIT_2027",
+      // Science (13)
+      { id: "s-01", sub: "Science", ch: 1, title: "Chemical Reactions and Equations", meta: "Types of reactions, oxidation-reduction, corrosion, rancidity." },
+      { id: "s-02", sub: "Science", ch: 2, title: "Acids, Bases and Salts", meta: "pH scale, neutralization, chlor-alkali process, bleaching powder." },
+      { id: "s-03", sub: "Science", ch: 3, title: "Metals and Non-Metals", meta: "Properties, reactivity series, formation of ionic compounds, metallurgy." },
+      { id: "s-04", sub: "Science", ch: 4, title: "Carbon and Its Compounds", meta: "Covalent bonds, homologous series, functional groups, soaps." },
+      { id: "s-05", sub: "Science", ch: 5, title: "Life Processes", meta: "Nutrition, respiration, human circulatory system, nephron excretion." },
+      { id: "s-06", sub: "Science", ch: 6, title: "Control and Coordination", meta: "Tropic plant movements, nervous system, reflex arc, endocrine hormones." },
+      { id: "s-07", sub: "Science", ch: 7, title: "How do Organisms Reproduce?", meta: "Asexual vs sexual reproduction, reproductive health, flower parts." },
+      { id: "s-08", sub: "Science", ch: 8, title: "Heredity", meta: "Mendelian inheritance, monohybrid and dihybrid ratios, sex determination." },
+      { id: "s-09", sub: "Science", ch: 9, title: "Light: Reflection and Refraction", meta: "Spherical mirrors, Snell's law, lens formula, power of a lens." },
+      { id: "s-10", sub: "Science", ch: 10, title: "The Human Eye and Colourful World", meta: "Vision defects (myopia, hypermetropia), prism dispersion, atmospheric refraction." },
+      { id: "s-11", sub: "Science", ch: 11, title: "Electricity", meta: "Ohm's law, series/parallel combinations, Joule's heating." },
+      { id: "s-12", sub: "Science", ch: 12, title: "Magnetic Effects of Electric Current", meta: "Magnetic field lines, solenoid, Fleming's left-hand rule." },
+      { id: "s-13", sub: "Science", ch: 13, title: "Our Environment", meta: "Ecosystems, 10% trophic transfer law, ozone depletion." },
+
+      // Social Science (21)
+      { id: "sst-01", sub: "Social Science", ch: 1, title: "The Rise of Nationalism in Europe", meta: "French Revolution legacy, liberalism, German/Italian unification." },
+      { id: "sst-02", sub: "Social Science", ch: 2, title: "Nationalism in India", meta: "Non-Cooperation, Civil Disobedience, Simon Commission, collective belonging." },
+      { id: "sst-03", sub: "Social Science", ch: 3, title: "The Making of a Global World", meta: "Pre-modern trade, 19th-century economy, conquest, disease." },
+      { id: "sst-04", sub: "Social Science", ch: 4, title: "The Age of Industrialisation", meta: "Proto-industrialization, factories, colonial Indian textile mills." },
+      { id: "sst-05", sub: "Social Science", ch: 5, title: "Print Culture and the Modern World", meta: "Gutenberg press, religious reformations, Indian print growth." },
+      { id: "sst-06", sub: "Social Science", ch: 6, title: "Resources and Development", meta: "Resource classification, planning, soil degradation and types in India." },
+      { id: "sst-07", sub: "Social Science", ch: 7, title: "Forest and Wildlife Resources", meta: "Flora and fauna conservation, community initiatives." },
+      { id: "sst-08", sub: "Social Science", ch: 8, title: "Water Resources", meta: "Water scarcity reasons, multi-purpose river valley dams, rainwater harvesting." },
+      { id: "sst-09", sub: "Social Science", ch: 9, title: "Agriculture", meta: "Cropping patterns (Rabi, Kharif, Zaid), major crops, institutional reforms." },
+      { id: "sst-10", sub: "Social Science", ch: 10, title: "Minerals and Energy Resources", meta: "Ferrous/non-ferrous minerals, conventional and renewable energy." },
+      { id: "sst-11", sub: "Social Science", ch: 11, title: "Manufacturing Industries", meta: "Location factors, agro vs mineral industries, pollution control." },
+      { id: "sst-12", sub: "Social Science", ch: 12, title: "Lifelines of National Economy", meta: "Roadways, golden quadrilateral, ports and pipeline corridors." },
+      { id: "sst-13", sub: "Social Science", ch: 13, title: "Power Sharing", meta: "Belgium and Sri Lanka case studies, horizontal vs vertical sharing." },
+      { id: "sst-14", sub: "Social Science", ch: 14, title: "Federalism", meta: "Union/state/concurrent lists, 1992 constitutional decentralization." },
+      { id: "sst-15", sub: "Social Science", ch: 15, title: "Gender, Religion and Caste", meta: "Feminist movements, secularism principles, caste in Indian democracy." },
+      { id: "sst-16", sub: "Social Science", ch: 16, title: "Political Parties", meta: "Functions, national/regional recognition criteria, party reforms." },
+      { id: "sst-17", sub: "Social Science", ch: 17, title: "Outcomes of Democracy", meta: "Accountability, transparency, economic equality, accommodation of diversity." },
+      { id: "sst-18", sub: "Social Science", ch: 18, title: "Development", meta: "National income vs per-capita income, HDI indicators, sustainability." },
+      { id: "sst-19", sub: "Social Science", ch: 19, title: "Sectors of the Indian Economy", meta: "Primary, secondary, tertiary sectors, organized vs unorganized." },
+      { id: "sst-20", sub: "Social Science", ch: 20, title: "Money and Credit", meta: "Evolution of currency, modern banking, formal vs informal credit." },
+      { id: "sst-21", sub: "Social Science", ch: 21, title: "Globalisation and the Indian Economy", meta: "MNC operations, trade liberalization, WTO." },
+
+      // English Language & Literature (28)
+      { id: "eng-01", sub: "English", ch: 1, title: "A Letter to God", meta: "Lencho's letter, devastating hailstorm, irony of faith." },
+      { id: "eng-02", sub: "English", ch: 2, title: "Nelson Mandela: Long Walk to Freedom", meta: "Inauguration speech, overcoming apartheid, meaning of courage." },
+      { id: "eng-03", sub: "English", ch: 3, title: "Two Stories about Flying", meta: "His First Flight and The Black Aeroplane." },
+      { id: "eng-04", sub: "English", ch: 4, title: "From the Diary of Anne Frank", meta: "Life in the secret annex, relationship with Mr. Keesing." },
+      { id: "eng-05", sub: "English", ch: 5, title: "Glimpses of India", meta: "A Baker from Goa, Coorg coffee estates, Tea from Assam." },
+      { id: "eng-06", sub: "English", ch: 6, title: "Mijbil the Otter", meta: "Gavin Maxwell's pet otter in Iraq and London travel." },
+      { id: "eng-07", sub: "English", ch: 7, title: "Madam Rides the Bus", meta: "Valli's first bus expedition, encounter with life and death." },
+      { id: "eng-08", sub: "English", ch: 8, title: "The Sermon at Benares", meta: "Buddha's teaching on mortality to Kisa Gotami." },
+      { id: "eng-09", sub: "English", ch: 9, title: "The Proposal", meta: "Chekhov's one-act farce involving Lomov, Natalya, Chubukov." },
+      { id: "eng-10", sub: "English", ch: 10, title: "Dust of Snow (Poem)", meta: "Robert Frost: small natural event shifting mental state." },
+      { id: "eng-11", sub: "English", ch: 11, title: "Fire and Ice (Poem)", meta: "Robert Frost: passion vs cold hatred leading to destruction." },
+      { id: "eng-12", sub: "English", ch: 12, title: "A Tiger in the Zoo (Poem)", meta: "Leslie Norris: caged captivity versus natural jungle freedom." },
+      { id: "eng-13", sub: "English", ch: 13, title: "How to Tell Wild Animals (Poem)", meta: "Carolyn Wells: humorous identification of predators." },
+      { id: "eng-14", sub: "English", ch: 14, title: "The Ball Poem (Poem)", meta: "John Berryman: loss of childhood possession, understanding grief." },
+      { id: "eng-15", sub: "English", ch: 15, title: "Amanda! (Poem)", meta: "Robin Klein: parental nagging versus inner escapism." },
+      { id: "eng-16", sub: "English", ch: 16, title: "The Trees (Poem)", meta: "Adrienne Rich: domestic decorative trees moving to the forest." },
+      { id: "eng-17", sub: "English", ch: 17, title: "Fog (Poem)", meta: "Carl Sandburg: silent arrival and departure of fog over harbour." },
+      { id: "eng-18", sub: "English", ch: 18, title: "The Tale of Custard the Dragon (Poem)", meta: "Ogden Nash: mock-heroic ballad of cowardly dragon saving the day." },
+      { id: "eng-19", sub: "English", ch: 19, title: "For Anne Gregory (Poem)", meta: "W.B. Yeats: physical appearance versus true inner spiritual love." },
+      { id: "eng-20", sub: "English", ch: 20, title: "A Triumph of Surgery", meta: "James Herriot: treating the pampered dog Tricki." },
+      { id: "eng-21", sub: "English", ch: 21, title: "The Thief's Story", meta: "Ruskin Bond: Hari Singh, Anil's kindness and moral reform." },
+      { id: "eng-22", sub: "English", ch: 22, title: "The Midnight Visitor", meta: "Ausable outwitting intruder Max with an imagined balcony." },
+      { id: "eng-23", sub: "English", ch: 23, title: "A Question of Trust", meta: "Horace Danby tricked by a clever fellow thief." },
+      { id: "eng-24", sub: "English", ch: 24, title: "Footprints without Feet", meta: "H.G. Wells: scientist Griffin misusing invisibility formula." },
+      { id: "eng-25", sub: "English", ch: 25, title: "The Making of a Scientist", meta: "Richard Ebright's journey from butterflies to DNA research." },
+      { id: "eng-26", sub: "English", ch: 26, title: "The Necklace", meta: "Guy de Maupassant: Mathilde Loisel losing borrowed necklace." },
+      { id: "eng-27", sub: "English", ch: 27, title: "Bholi", meta: "K.A. Abbas: quiet girl finding education and rejecting dowry." },
+      { id: "eng-28", sub: "English", ch: 28, title: "The Book That Saved the Earth", meta: "Martian invader Think-Tank misinterpreting nursery rhymes." },
+
+      // Hindi Course B (17)
+      { id: "hin-01", sub: "Hindi B", ch: 1, title: "साखी (कबीर)", meta: "सद्गुरु की महिमा, अहंकार त्याग, कस्तूरी कुंडल बसे।" },
+      { id: "hin-02", sub: "Hindi B", ch: 2, title: "पद (मीराबाई)", meta: "कृष्ण प्रेम में निमग्नता, भक्त उद्धार प्रार्थना।" },
+      { id: "hin-03", sub: "Hindi B", ch: 3, title: "मनुष्यता (मैथिलीशरण गुप्त)", meta: "परोपकार, दधीचि व कर्ण का त्याग, विश्व-बंधुत्व।" },
+      { id: "hin-04", sub: "Hindi B", ch: 4, title: "पर्वत प्रदेश में पावस (सुमित्रानंदन पंत)", meta: "वर्षा ऋतु में पहाड़ों का सम्मोहन, झरनों का संगीत।" },
+      { id: "hin-05", sub: "Hindi B", ch: 5, title: "तोप (वीरेन डंगवाल)", meta: "1857 की ऐतिहासिक तोप, शक्तिशाली ताकतों की नश्वरता।" },
+      { id: "hin-06", sub: "Hindi B", ch: 6, title: "कर चले हम फ़िदा (कैफ़ी आज़मी)", meta: "देश के लिए प्राण न्योछावर करने वाले सैनिकों की पुकार।" },
+      { id: "hin-07", sub: "Hindi B", ch: 7, title: "आत्मत्राण (रवींद्रनाथ ठाकुर)", meta: "संकटों से जूझने की शक्ति की प्रार्थना।" },
+      { id: "hin-08", sub: "Hindi B", ch: 8, title: "बड़े भाई साहब (प्रेमचंद)", meta: "अनुभव का महत्व बनाम केवल किताबी शिक्षा।" },
+      { id: "hin-09", sub: "Hindi B", ch: 9, title: "डायरी का एक पन्ना (सीताराम सेकसरिया)", meta: "26 जनवरी 1931 कलकत्ता स्वाधीनता संग्राम का प्रत्यक्ष विवरण।" },
+      { id: "hin-10", sub: "Hindi B", ch: 10, title: "तँतारा-वामीरो कथा (लीलाधर मंडलोई)", meta: "अंडमान द्वीपसमूह की पारंपरिक लोककथा, रूढ़ियों पर प्रहार।" },
+      { id: "hin-11", sub: "Hindi B", ch: 11, title: "तीसरी कसम के शिल्पकार (प्रहलाद अग्रवाल)", meta: "कवि शैलेंद्र का साहित्यिक सिनेमाई योगदान।" },
+      { id: "hin-12", sub: "Hindi B", ch: 12, title: "अब कहाँ दूसरे के दुख से दुखी होने वाले", meta: "निदा फ़ाज़ली: प्रकृति असंतुलन, मानवीय संवेदना।" },
+      { id: "hin-13", sub: "Hindi B", ch: 13, title: "पतझर में टूटी पत्तियाँ (रवींद्र केलेकर)", meta: "गिन्नी का सोना (व्यावहारिकता vs आदर्श) और झेन की देन।" },
+      { id: "hin-14", sub: "Hindi B", ch: 14, title: "कारतूस (हबीब तनवीर)", meta: "वज़ीर अली का जांबाज साहस और ब्रिटिश हुकूमत को चुनौती।" },
+      { id: "hin-15", sub: "Hindi B", ch: 15, title: "हरिहर काका (मिथिलेश्वर)", meta: "पारिवारिक स्वार्थ, संपत्ति लोभ और वृद्धों की उपेक्षा।" },
+      { id: "hin-16", sub: "Hindi B", ch: 16, title: "सपनों के-से दिन (गुरदयाल सिंह)", meta: "बचपन की निश्छल स्मृतियां, विद्यालय जीवन।" },
+      { id: "hin-17", sub: "Hindi B", ch: 17, title: "टोपी शुक्ला (राही मासूम रज़ा)", meta: "बाल मन की मित्रता, इफ़्फ़न और टोपी का अटूट संबंध।" },
+
+      // Artificial Intelligence (Skill 417 - 12)
+      { id: "ai-01", sub: "AI 417", ch: 1, title: "Communication Skills - II", meta: "Communication methods, non-verbal cues, feedback loop." },
+      { id: "ai-02", sub: "AI 417", ch: 2, title: "Self-Management Skills - II", meta: "Stress management techniques, self-motivation factors." },
+      { id: "ai-03", sub: "AI 417", ch: 3, title: "ICT Skills - II", meta: "Operating systems, file maintenance, cybersecurity." },
+      { id: "ai-04", sub: "AI 417", ch: 4, title: "Entrepreneurial Skills - II", meta: "Entrepreneurial traits, role in socio-economic growth." },
+      { id: "ai-05", sub: "AI 417", ch: 5, title: "Green Skills - II", meta: "Sustainable development goals, green economy transition." },
+      { id: "ai-06", sub: "AI 417", ch: 6, title: "AI Project Cycle & Ethics", meta: "4Ws canvas, data exploration, acquisition, bias and ethics." },
+      { id: "ai-07", sub: "AI 417", ch: 7, title: "Advanced Modeling in AI", meta: "Rule-based vs learning-based models, supervised/unsupervised." },
+      { id: "ai-08", sub: "AI 417", ch: 8, title: "Evaluating Models (Confusion Matrix)", meta: "TP, TN, FP, FN; precision, recall, accuracy, F1-score." },
+      { id: "ai-09", sub: "AI 417", ch: 9, title: "Statistical Data & No-Code Tools", meta: "Descriptive statistics, Teachable Machine tests." },
+      { id: "ai-10", sub: "AI 417", ch: 10, title: "Computer Vision (CV)", meta: "Pixels, convolution, grayscale vs RGB, object detection." },
+      { id: "ai-11", sub: "AI 417", ch: 11, title: "Natural Language Processing (NLP)", meta: "Text normalization, stop words, Bag of Words, TF-IDF." },
+      { id: "ai-12", sub: "AI 417", ch: 12, title: "Advance Python for AI", meta: "Lists, dictionaries, NumPy array manipulation, Matplotlib." },
+
+      // Painting (Theory 049 - 3)
+      { id: "art-01", sub: "Painting", ch: 1, title: "Fundamentals of Visual Arts", meta: "Point, Line, Form, Space, Colour, Texture, Balance, Rhythm." },
+      { id: "art-02", sub: "Painting", ch: 2, title: "Methods and Materials of Painting", meta: "Watercolours, Poster colours, Oil pastels, Wash rendering." },
+      { id: "art-03", sub: "Painting", ch: 3, title: "Appreciation of Indian Art & Heritage", meta: "Padmapani (Ajanta), Ashokan Lion Capital, Kailashnatha temple." }
+    ];
+
+    // --- 3. CLIENT STATE MANAGEMENT ---
+    const STORAGE_KEY = "cbse10_logger_m3_v2";
+
+    let state = {
+      user: {
+        name: "Arpit",
+        uid: "ARPIT_AIR1",
+        pass: "",
+        group: "", // Blank by default, no premade code!
         incognito: false,
-        squad: "AIR_CENTURIONS"
+        theme: "dark",
+        palette: "lavender",
+        registered: false
       },
-      progress: {},
-      starred: {},
-      streak: 1,
-      lastDate: new Date().toISOString().split("T")[0],
-      forestTrees: 0,
-      activeSubject: 'maths',
-      theme: 'dark'
+      chapters: {}, // { [chId]: { completed: boolean, revisions: number, notes: string } }
+      focus: {
+        sessions: 0,
+        totalMinutes: 0
+      },
+      filter: {
+        subject: "ALL",
+        query: ""
+      }
     };
 
-    let activeLeaderboardType = 'global';
-
-    window.addEventListener("DOMContentLoaded", () => {
-      loadState();
-      applyTheme(userState.theme || 'dark');
-      renderSubjectPills();
-      renderChapters();
-      updateMetrics();
-      initCountdown();
-      initRealtimeSync();
-      initLeaderboardListener();
-      renderAchievements();
-      rotateRandomQuote();
-    });
-
-    function loadState() {
-      const saved = localStorage.getItem("topper_cloud_v1");
-      if (saved) {
-        try { userState = { ...userState, ...JSON.parse(saved) }; } catch(e){}
+    function loadLocalState() {
+      const local = localStorage.getItem(STORAGE_KEY);
+      if (local) {
+        try {
+          const parsed = JSON.parse(local);
+          state = { ...state, ...parsed };
+        } catch(e) {}
       }
-      document.getElementById("sidebarUsername").innerText = userState.profile.name;
-      document.getElementById("sidebarUserId").innerText = "#" + userState.profile.id;
-      document.getElementById("activeSquadDisplay").innerText = userState.profile.squad || "None";
-      checkDailyStreak();
     }
 
-    function saveLocal() {
-      localStorage.setItem("topper_cloud_v1", JSON.stringify(userState));
-      updateMetrics();
-      pushToCloud();
+    function saveState(pushRemote = true) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      updateMetricsUI();
+      if (pushRemote && state.user.registered) {
+        syncToFirebase();
+      }
     }
 
-    function checkDailyStreak() {
-      const today = new Date().toISOString().split("T")[0];
-      if (userState.lastDate !== today) {
-        const last = new Date(userState.lastDate);
-        const curr = new Date(today);
-        const diffDays = Math.round((curr - last) / (1000 * 60 * 60 * 24));
-        if (diffDays === 1) {
-          userState.streak++;
-        } else if (diffDays > 1) {
-          userState.streak = 1;
+    // --- 4. FIREBASE TELEMETRY & CLOUD SYNC ---
+    function initFirebaseTelemetry() {
+      if (!firebaseDb) {
+        setTelemetryStatus("Offline (Local)", false);
+        return;
+      }
+
+      // Check live connection state
+      const connectedRef = firebaseDb.ref(".info/connected");
+      connectedRef.on("value", (snap) => {
+        const connected = snap.val() === true;
+        if (connected) {
+          const start = Date.now();
+          firebaseDb.ref(".info/serverTimeOffset").once("value")
+            .then(() => {
+              const rtt = Date.now() - start;
+              setTelemetryStatus(`Live • ${rtt}ms`, true);
+              hideRuleAlert();
+            })
+            .catch(err => {
+              handleFirebaseError(err);
+            });
+          listenToOthersDirectory();
+        } else {
+          setTelemetryStatus("Connecting...", false);
         }
-        userState.lastDate = today;
-        saveLocal();
+      });
+    }
+
+    function setTelemetryStatus(label, isLive) {
+      const elLabel = document.getElementById("telemetryLabel");
+      const elDot = document.getElementById("telemetryDot");
+      if (elLabel) elLabel.innerText = label;
+      if (elDot) {
+        elDot.className = isLive 
+          ? "w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" 
+          : "w-1.5 h-1.5 rounded-full bg-amber-500";
       }
     }
 
-    // --- 4. REALTIME DATABASE SYNC ENGINE ---
-    function pushToCloud() {
-      if (!firebaseDb) return;
-      const uid = userState.profile.id.toUpperCase();
+    function handleFirebaseError(err) {
+      if (err && err.message && err.message.includes("PERMISSION_DENIED")) {
+        const alertBanner = document.getElementById("firebaseRuleAlert");
+        if (alertBanner) alertBanner.classList.remove("hidden");
+        setTelemetryStatus("Locked Rules", false);
+      }
+    }
+
+    function hideRuleAlert() {
+      const alertBanner = document.getElementById("firebaseRuleAlert");
+      if (alertBanner) alertBanner.classList.add("hidden");
+    }
+
+    function syncToFirebase() {
+      if (!firebaseDb || !state.user.registered) return;
+      const cleanUid = state.user.uid.toUpperCase().replace(/[^A-Z0-9_-]/g, "");
+      const completedCount = getCompletedCount();
+
       const payload = {
-        id: uid,
-        name: userState.profile.name,
-        incognito: userState.profile.incognito,
-        squad: (userState.profile.squad || "GENERAL").toUpperCase(),
-        mastered: countMastered(),
-        streak: userState.streak,
-        xp: calculateXP(),
-        trees: userState.forestTrees,
-        progress: userState.progress,
-        updatedAt: Date.now()
+        name: state.user.name,
+        uid: cleanUid,
+        pass: state.user.pass || "",
+        group: (state.user.group || "").toUpperCase(),
+        incognito: Boolean(state.user.incognito),
+        completed: completedCount,
+        totalMinutes: state.focus.totalMinutes,
+        focusSessions: state.focus.sessions,
+        chapters: state.chapters,
+        lastSynced: Date.now()
       };
 
-      firebaseDb.ref("users/" + uid).set(payload);
+      firebaseDb.ref("users/" + cleanUid).set(payload)
+        .then(() => {
+          hideRuleAlert();
+        })
+        .catch(err => {
+          console.error("Firebase sync error:", err);
+          handleFirebaseError(err);
+        });
     }
 
-    function initRealtimeSync() {
+    // --- 5. OTHERS DIRECTORY ---
+    let activeOthersTab = 'global';
+
+    function listenToOthersDirectory() {
       if (!firebaseDb) return;
-      const uid = userState.profile.id.toUpperCase();
-      
-      // Pull and listen to own user record
-      firebaseDb.ref("users/" + uid).once("value", (snapshot) => {
-        const val = snapshot.val();
-        if (val && val.progress) {
-          userState.progress = { ...userState.progress, ...val.progress };
-          userState.forestTrees = Math.max(userState.forestTrees, val.trees || 0);
-          localStorage.setItem("topper_cloud_v1", JSON.stringify(userState));
-          renderChapters();
-          updateMetrics();
-        }
+      firebaseDb.ref("users").on("value", snap => {
+        renderOthersList(snap.val());
+      }, err => {
+        handleFirebaseError(err);
       });
     }
 
-    function initLeaderboardListener() {
-      if (!firebaseDb) return;
-      firebaseDb.ref("users").on("value", (snapshot) => {
-        const usersObj = snapshot.val();
-        renderLeaderboardView(usersObj);
-      });
-    }
+    function renderOthersList(usersObj) {
+      const container = document.getElementById("othersDirectoryList");
+      if (!container) return;
 
-    function renderLeaderboardView(usersObj) {
-      const listEl = document.getElementById("leaderboardList");
       if (!usersObj) {
-        listEl.innerHTML = `<div class="p-8 text-center text-slate-500">No toppers active yet. Be the first!</div>`;
+        container.innerHTML = `<div class="p-8 text-center text-zinc-500">No peers found in database.</div>`;
         return;
       }
 
       let users = Object.values(usersObj);
-
-      if (activeLeaderboardType === 'squad') {
-        const targetSquad = (userState.profile.squad || "GENERAL").toUpperCase();
-        users = users.filter(u => (u.squad || "GENERAL").toUpperCase() === targetSquad);
+      if (activeOthersTab === 'group') {
+        const currentGroup = (state.user.group || "").toUpperCase();
+        if (!currentGroup) {
+          container.innerHTML = `<div class="p-8 text-center text-zinc-500">You haven't joined a group yet. Enter a code above to join or create one.</div>`;
+          return;
+        }
+        users = users.filter(u => (u.group || "").toUpperCase() === currentGroup);
       }
 
-      users.sort((a, b) => (b.xp || 0) - (a.xp || 0));
+      users.sort((a, b) => (b.completed || 0) - (a.completed || 0));
 
       if (users.length === 0) {
-        listEl.innerHTML = `<div class="p-8 text-center text-slate-500">No peers in squad <b>${userState.profile.squad}</b> yet. Share your code!</div>`;
+        container.innerHTML = `<div class="p-8 text-center text-zinc-500">No peers in group <b>${state.user.group}</b> yet. Share your code with friends!</div>`;
         return;
       }
 
-      listEl.innerHTML = users.map((u, idx) => {
-        const isSelf = u.id === userState.profile.id.toUpperCase();
-        const displayName = u.incognito && !isSelf ? "Anonymous Topper" : u.name;
-        const displayId = u.incognito && !isSelf ? "#HIDDEN" : "#" + u.id;
+      container.innerHTML = users.map(u => {
+        const isSelf = u.uid === state.user.uid.toUpperCase();
+        const displayName = u.incognito && !isSelf ? "Anonymous Peer" : u.name;
+        const displayUid = u.incognito && !isSelf ? "@hidden" : "@" + u.uid;
+        const initial = displayName.charAt(0).toUpperCase();
+
+        const timeDiff = Math.max(0, Math.floor((Date.now() - (u.lastSynced || Date.now())) / 60000));
+        const timeAgo = timeDiff === 0 ? "Just now" : `${timeDiff}m ago`;
 
         return `
-          <div class="grid grid-cols-12 px-4 py-3 items-center hover:bg-slate-800/30 transition ${isSelf ? 'bg-indigo-950/20 border-l-2 border-indigo-500' : ''}">
-            <div class="col-span-1 text-center font-bold font-mono ${idx === 0 ? 'text-amber-400 text-base' : idx === 1 ? 'text-slate-300 text-base' : idx === 2 ? 'text-amber-600 text-base' : 'text-slate-500'}">
-              ${idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : idx + 1}
+          <div class="grid grid-cols-12 px-4 py-2.5 items-center hover:bg-zinc-800/30 transition ${isSelf ? 'border-l-2' : ''}" style="${isSelf ? 'border-color: var(--md-primary); background-color: var(--md-primary-container);' : ''}">
+            <div class="col-span-5 flex items-center gap-2.5 truncate">
+              <div class="w-6 h-6 rounded-xl flex items-center justify-center text-[10px] font-bold shrink-0" style="background-color: var(--md-surface-dim); color: var(--md-primary);">
+                ${initial}
+              </div>
+              <div class="truncate">
+                <span class="font-medium text-zinc-200">${displayName} ${isSelf ? '<span class="text-[9px] px-1 py-0.2 rounded font-mono m3-btn-primary">YOU</span>' : ''}</span>
+                <span class="text-[10px] text-zinc-500 block">${displayUid}</span>
+              </div>
             </div>
-            <div class="col-span-5 flex flex-col">
-              <span class="font-bold text-white flex items-center gap-1.5 truncate">
-                ${displayName} ${isSelf ? '<span class="text-[9px] bg-indigo-600 px-1.5 py-0.5 rounded text-white font-mono">YOU</span>' : ''}
-              </span>
-              <span class="text-[10px] text-slate-500 font-mono">${displayId} • ${u.squad || 'No Squad'}</span>
-            </div>
-            <div class="col-span-2 text-center font-semibold text-emerald-400 font-mono">${u.mastered || 0} / 108</div>
-            <div class="col-span-2 text-center font-semibold text-amber-400 font-mono">🔥 ${u.streak || 1}d</div>
-            <div class="col-span-2 text-right font-mono font-bold text-indigo-400">${(u.xp || 0).toLocaleString()} XP</div>
+            <div class="col-span-2 text-center text-zinc-400 font-semibold">${u.group || '—'}</div>
+            <div class="col-span-2 text-center text-emerald-400 font-bold font-mono">${u.completed || 0} / 108</div>
+            <div class="col-span-3 text-right text-zinc-500 text-[10px]">${timeAgo}</div>
           </div>
         `;
       }).join('');
     }
 
-    // --- 5. CHAPTER RENDER & TRACKING ---
-    function renderSubjectPills() {
-      const container = document.getElementById("subjectPills");
-      container.innerHTML = Object.keys(SYLLABUS).map(key => {
-        const item = SYLLABUS[key];
-        const isActive = userState.activeSubject === key;
+    // --- 6. CHECKLIST RENDERING ---
+    const SUBJECTS = ["ALL", "Maths", "Science", "Social Science", "English", "Hindi B", "AI 417", "Painting"];
+
+    function renderSubjectFilterPills() {
+      const container = document.getElementById("subjectFilterRow");
+      if (!container) return;
+
+      container.innerHTML = SUBJECTS.map(sub => {
+        const isActive = state.filter.subject === sub;
+        const count = sub === "ALL" ? 108 : SYLLABUS.filter(i => i.sub === sub).length;
         return `
-          <button onclick="changeSubject('${key}')" class="px-4 py-2 rounded-xl shrink-0 font-semibold text-xs transition ${isActive ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30' : 'theme-card border text-slate-400 hover:text-slate-200'}">
-            ${item.title} (${item.chapters.length})
+          <button onclick="setSubjectFilter('${sub}')" class="px-3.5 py-1.5 rounded-2xl border shrink-0 transition text-xs flex items-center gap-1.5 ${isActive ? 'm3-btn-primary font-semibold shadow-md' : 'm3-card text-zinc-400 hover:text-zinc-200'}">
+            <span>${sub}</span>
+            <span class="text-[10px] opacity-70 font-mono">${count}</span>
           </button>
         `;
       }).join('');
     }
 
-    function changeSubject(key) {
-      userState.activeSubject = key;
-      renderSubjectPills();
+    function setSubjectFilter(sub) {
+      state.filter.subject = sub;
+      renderSubjectFilterPills();
+      renderChapters();
+    }
+
+    function handleSearch(query) {
+      state.filter.query = query.toLowerCase().trim();
       renderChapters();
     }
 
     function renderChapters() {
       const container = document.getElementById("chaptersContainer");
-      const current = SYLLABUS[userState.activeSubject];
-      const query = (document.getElementById("chapterSearch").value || "").toLowerCase();
-      const filter = document.getElementById("statusFilter").value;
+      if (!container) return;
 
-      let filtered = current.chapters.map((title, idx) => ({ title, idx }))
-        .filter(item => item.title.toLowerCase().includes(query));
+      const q = state.filter.query;
+      const sub = state.filter.subject;
 
-      if (filter === 'mastered') filtered = filtered.filter(item => (userState.progress[`${userState.activeSubject}_${item.idx}`] || 0) === 2);
-      if (filter === 'learning') filtered = filtered.filter(item => (userState.progress[`${userState.activeSubject}_${item.idx}`] || 0) === 1);
-      if (filter === 'unstarted') filtered = filtered.filter(item => (userState.progress[`${userState.activeSubject}_${item.idx}`] || 0) === 0);
+      const filtered = SYLLABUS.filter(item => {
+        const matchesSub = sub === "ALL" || item.sub === sub;
+        const matchesQuery = !q ||
+          item.title.toLowerCase().includes(q) ||
+          item.meta.toLowerCase().includes(q) ||
+          item.sub.toLowerCase().includes(q);
+        return matchesSub && matchesQuery;
+      });
 
       if (filtered.length === 0) {
-        container.innerHTML = `<div class="theme-card border p-8 rounded-xl text-center text-slate-500 text-xs">No matching chapters found.</div>`;
+        container.innerHTML = `<div class="m3-card p-8 rounded-2xl text-center text-xs font-mono text-zinc-500">No chapters match your query.</div>`;
         return;
       }
 
       container.innerHTML = filtered.map(item => {
-        const key = `${userState.activeSubject}_${item.idx}`;
-        const status = userState.progress[key] || 0;
-        const isStarred = !!userState.starred[key];
-
-        let badge = `<span class="px-2.5 py-1 rounded-lg text-[11px] bg-slate-800 text-slate-400 font-medium">Not Started</span>`;
-        if (status === 1) badge = `<span class="px-2.5 py-1 rounded-lg text-[11px] bg-amber-500/20 text-amber-400 border border-amber-500/30 font-semibold">In Progress</span>`;
-        if (status === 2) badge = `<span class="px-2.5 py-1 rounded-lg text-[11px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">✓ Mastered</span>`;
+        const chState = state.chapters[item.id] || { completed: false, revisions: 0, notes: "" };
+        const isCompleted = Boolean(chState.completed);
+        const revCount = chState.revisions || 0;
 
         return `
-          <div class="theme-card border p-3.5 rounded-xl flex items-center justify-between gap-3 hover:border-slate-700 transition">
-            <div class="flex items-center gap-3">
-              <button onclick="toggleMastered('${key}')" class="w-6 h-6 rounded-lg border flex items-center justify-center text-xs font-bold transition ${status === 2 ? 'bg-emerald-500 border-emerald-500 text-black' : 'border-slate-700 text-transparent hover:border-slate-500'}">
-                ✓
-              </button>
-              <button onclick="toggleStar('${key}')" class="text-xs transition ${isStarred ? 'text-amber-400' : 'text-slate-600 hover:text-slate-400'}">
-                ★
-              </button>
-              <span class="text-sm font-medium ${status === 2 ? 'text-slate-500 line-through' : ''}">
-                ${item.title}
-              </span>
+          <div class="m3-card rounded-2xl p-3 sm:p-3.5 transition-all flex flex-col justify-between ${isCompleted ? 'border-emerald-500/30' : ''}" style="${isCompleted ? 'background-color: rgba(16, 185, 129, 0.04);' : ''}">
+            <div class="flex items-start justify-between gap-3">
+              
+              <!-- Checkbox & Title -->
+              <div class="flex items-start gap-3 min-w-0">
+                <button onclick="toggleChapterDone('${item.id}')" class="mt-0.5 w-5 h-5 rounded-lg border flex items-center justify-center transition-colors shrink-0 ${isCompleted ? 'bg-emerald-600 border-emerald-600 text-white' : 'border-zinc-700 hover:border-zinc-500 text-transparent'}">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                </button>
+                
+                <div class="min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <span class="text-[9px] font-mono uppercase px-2 py-0.2 rounded-full font-semibold" style="background-color: var(--md-surface-dim); color: var(--md-primary);">${item.sub}</span>
+                    <span class="text-[10px] font-mono text-zinc-500">Unit ${item.ch}</span>
+                  </div>
+                  <h3 class="text-xs sm:text-sm font-semibold text-zinc-200 cursor-pointer hover:underline transition truncate" onclick="toggleChapterNotes('${item.id}')">
+                    ${item.title}
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Revisions & Notes Trigger -->
+              <div class="flex items-center gap-2 font-mono text-xs shrink-0">
+                <div class="flex items-center border rounded-xl overflow-hidden" style="background-color: var(--md-surface-dim); border-color: var(--md-outline);">
+                  <button onclick="adjustRevision('${item.id}', -1)" class="px-2 py-0.5 text-zinc-400 hover:bg-zinc-800 transition">-</button>
+                  <span class="px-2 text-[10px] text-zinc-300 font-semibold" title="Revision count">${revCount} rev</span>
+                  <button onclick="adjustRevision('${item.id}', 1)" class="px-2 py-0.5 text-zinc-400 hover:bg-zinc-800 transition">+</button>
+                </div>
+
+                <button onclick="toggleChapterNotes('${item.id}')" class="p-1 rounded-lg text-zinc-500 hover:text-zinc-300 transition" title="Toggle summary and notes">
+                  <svg class="w-4 h-4 transition-transform duration-200" id="chevron-${item.id}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+
             </div>
-            <div class="cursor-pointer" onclick="cycleStatus('${key}')">
-              ${badge}
+
+            <!-- Notes & Summary Drawer -->
+            <div class="details-drawer" id="drawer-${item.id}">
+              <div class="pt-2 mt-2 border-t space-y-2" style="border-color: var(--md-outline);">
+                <p class="text-xs text-zinc-400 leading-relaxed font-mono">${item.meta}</p>
+                <textarea 
+                  placeholder="Personal formula notes, NCERT page marks..." 
+                  rows="2" 
+                  onchange="saveChapterNotes('${item.id}', this.value)"
+                  class="w-full rounded-xl p-2 text-xs font-mono text-zinc-200 placeholder-zinc-600 focus:outline-none resize-none"
+                  style="background-color: var(--md-surface-dim); border: 1px solid var(--md-outline);"
+                >${chState.notes || ""}</textarea>
+              </div>
             </div>
           </div>
         `;
       }).join('');
     }
 
-    function cycleStatus(key) {
-      const cur = userState.progress[key] || 0;
-      userState.progress[key] = (cur + 1) % 3;
-      if (userState.progress[key] === 2) celebrateMastery();
-      playTickSound();
-      saveLocal();
-      renderChapters();
-    }
-
-    function toggleMastered(key) {
-      const cur = userState.progress[key] || 0;
-      userState.progress[key] = cur === 2 ? 0 : 2;
-      if (userState.progress[key] === 2) celebrateMastery();
-      playTickSound();
-      saveLocal();
-      renderChapters();
-    }
-
-    function toggleStar(key) {
-      userState.starred[key] = !userState.starred[key];
-      saveLocal();
-      renderChapters();
-    }
-
-    function countMastered() {
-      return Object.values(userState.progress).filter(v => v === 2).length;
-    }
-
-    function calculateXP() {
-      const mastered = countMastered();
-      const learning = Object.values(userState.progress).filter(v => v === 1).length;
-      return (mastered * 100) + (learning * 30) + (userState.streak * 50) + (userState.forestTrees * 25);
-    }
-
-    function updateMetrics() {
-      const mastered = countMastered();
-      document.getElementById("statMastered").innerText = `${mastered} / 108`;
-      document.getElementById("statStreak").innerText = `🔥 ${userState.streak} Day`;
-      document.getElementById("statXP").innerText = `${calculateXP()} XP`;
-
-      // Pace calculation: Target Jan 1, 2027
-      const now = new Date();
-      const target = new Date("January 1, 2027 00:00:00");
-      const diffDays = Math.max(1, Math.ceil((target - now) / (1000 * 60 * 60 * 24)));
-      const pace = ((108 - mastered) / diffDays).toFixed(2);
-      document.getElementById("statPace").innerText = `${pace} Units/Day`;
-      renderForest();
-    }
-
-    function celebrateMastery() {
-      try {
-        confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 } });
-      } catch(e){}
-    }
-
-    // --- 6. NAVIGATION & SQUADS ---
-    function switchTab(viewId) {
-      ['dashboard', 'retro', 'leaderboard', 'achievements'].forEach(id => {
-        document.getElementById(`view-${id}`).classList.add("hidden");
-        const btn = document.getElementById(`nav-${id}`);
-        btn.className = "w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition";
-      });
-      document.getElementById(`view-${viewId}`).classList.remove("hidden");
-      const activeBtn = document.getElementById(`nav-${viewId}`);
-      activeBtn.className = "w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30 transition";
-
-      if (viewId === 'leaderboard' && firebaseDb) {
-        firebaseDb.ref("users").once("value", snap => renderLeaderboardView(snap.val()));
-      }
-    }
-
-    function switchLeaderboardView(type) {
-      activeLeaderboardType = type;
-      const btnG = document.getElementById("btn-lead-global");
-      const btnS = document.getElementById("btn-lead-squad");
-      const squadBar = document.getElementById("squadBar");
-
-      if (type === 'global') {
-        btnG.className = "px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white";
-        btnS.className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-400 hover:text-white";
-        squadBar.classList.add("hidden");
+    function toggleChapterDone(id) {
+      if (!state.chapters[id]) {
+        state.chapters[id] = { completed: true, revisions: 1, notes: "" };
       } else {
-        btnS.className = "px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white";
-        btnG.className = "px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-400 hover:text-white";
-        squadBar.classList.remove("hidden");
-      }
-
-      if (firebaseDb) {
-        firebaseDb.ref("users").once("value", snap => renderLeaderboardView(snap.val()));
-      }
-    }
-
-    function joinSquadCode() {
-      const code = document.getElementById("squadJoinInput").value.trim().toUpperCase();
-      if (!code) return;
-      userState.profile.squad = code;
-      document.getElementById("activeSquadDisplay").innerText = code;
-      saveLocal();
-      switchLeaderboardView('squad');
-    }
-
-    // --- 7. RETRO POMODORO & FOREST ---
-    let pomoSeconds = 25 * 60;
-    let pomoTotal = 25 * 60;
-    let pomoTimer = null;
-
-    function changePomoPreset(mins) {
-      pausePomodoro();
-      pomoTotal = parseInt(mins) * 60;
-      pomoSeconds = pomoTotal;
-      updatePomoDisplay();
-    }
-
-    function startPomodoro() {
-      if (pomoTimer) return;
-      document.getElementById("retroStatusText").innerText = "STATUS: FOCUS_MODE_ENGAGED";
-      pomoTimer = setInterval(() => {
-        if (pomoSeconds > 0) {
-          pomoSeconds--;
-          updatePomoDisplay();
-        } else {
-          clearInterval(pomoTimer);
-          pomoTimer = null;
-          userState.forestTrees++;
-          saveLocal();
-          document.getElementById("retroStatusText").innerText = "STATUS: SESSION_CONQUERED";
-          alert("Session finished! +25 XP and 1 Tree Planted in your orchard.");
+        state.chapters[id].completed = !state.chapters[id].completed;
+        if (state.chapters[id].completed && !state.chapters[id].revisions) {
+          state.chapters[id].revisions = 1;
         }
-      }, 1000);
-    }
-
-    function pausePomodoro() {
-      clearInterval(pomoTimer);
-      pomoTimer = null;
-      document.getElementById("retroStatusText").innerText = "STATUS: PAUSED";
-    }
-
-    function resetPomodoro() {
-      pausePomodoro();
-      pomoSeconds = pomoTotal;
-      updatePomoDisplay();
-      document.getElementById("retroStatusText").innerText = "STATUS: READY_FOR_SESSION";
-    }
-
-    function updatePomoDisplay() {
-      const m = String(Math.floor(pomoSeconds / 60)).padStart(2, '0');
-      const s = String(pomoSeconds % 60).padStart(2, '0');
-      document.getElementById("retroTimer").innerText = `${m}:${s}`;
-      const pct = ((pomoTotal - pomoSeconds) / pomoTotal) * 100;
-      document.getElementById("retroBar").style.width = `${pct}%`;
-    }
-
-    function renderForest() {
-      document.getElementById("forestCount").innerText = userState.forestTrees;
-      const el = document.getElementById("forestTrees");
-      el.innerHTML = "🌲".repeat(userState.forestTrees) || "<span class='text-xs font-mono text-slate-500'>Orchard empty. Complete a focus block to plant.</span>";
-    }
-
-    function toggleRetroQuote() {
-      const box = document.getElementById("retroQuoteBox");
-      const btn = document.getElementById("retroQuoteBtn");
-      if (box.classList.contains("hidden")) {
-        box.classList.remove("hidden");
-        btn.innerText = "QUOTE: [ON]";
-      } else {
-        box.classList.add("hidden");
-        btn.innerText = "QUOTE: [OFF]";
       }
+      playSimpleTick();
+      saveState();
+      renderChapters();
     }
 
-    // --- 8. COUNTDOWN TICKER ---
-    function initCountdown() {
-      const target = new Date("January 1, 2027 00:00:00").getTime();
-      setInterval(() => {
-        const diff = Math.max(0, target - new Date().getTime());
+    function adjustRevision(id, delta) {
+      if (!state.chapters[id]) {
+        state.chapters[id] = { completed: false, revisions: Math.max(0, delta), notes: "" };
+      } else {
+        state.chapters[id].revisions = Math.max(0, (state.chapters[id].revisions || 0) + delta);
+      }
+      playSimpleTick();
+      saveState();
+      renderChapters();
+    }
+
+    function toggleChapterNotes(id) {
+      const drawer = document.getElementById(`drawer-${id}`);
+      const chevron = document.getElementById(`chevron-${id}`);
+      if (drawer) drawer.classList.toggle("open");
+      if (chevron) chevron.classList.toggle("rotate-180");
+    }
+
+    function saveChapterNotes(id, text) {
+      if (!state.chapters[id]) {
+        state.chapters[id] = { completed: false, revisions: 0, notes: text };
+      } else {
+        state.chapters[id].notes = text;
+      }
+      saveState();
+    }
+
+    function getCompletedCount() {
+      return Object.values(state.chapters).filter(c => c.completed).length;
+    }
+
+    // --- 7. COUNTDOWN & SYLLABUS PACE METRICS ---
+    function updateMetricsUI() {
+      const completed = getCompletedCount();
+      const pct = Math.min(100, Math.round((completed / 108) * 100));
+
+      const elComp = document.getElementById("metricCompleted");
+      const elPct = document.getElementById("metricPercent");
+      const elBar = document.getElementById("metricProgressBar");
+
+      if (elComp) elComp.innerText = completed;
+      if (elPct) elPct.innerText = `${pct}%`;
+      if (elBar) elBar.style.width = `${pct}%`;
+    }
+
+    function initCountdownTicker() {
+      const targetTime = new Date("2027-01-01T00:00:00").getTime();
+
+      function updateClock() {
+        const now = Date.now();
+        const diff = Math.max(0, targetTime - now);
+
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.getElementById("clockDays").innerText = String(days).padStart(2, '0');
-        document.getElementById("clockHours").innerText = String(hours).padStart(2, '0');
-        document.getElementById("clockMins").innerText = String(mins).padStart(2, '0');
-        document.getElementById("clockSecs").innerText = String(secs).padStart(2, '0');
-      }, 1000);
-    }
+        const elD = document.getElementById("clockDays");
+        const elH = document.getElementById("clockHours");
+        const elM = document.getElementById("clockMins");
+        const elS = document.getElementById("clockSecs");
 
-    // --- 9. AUDIO ENGINE ---
-    let audioCtx = null;
-    let rainNode = null;
-    let gainNode = null;
+        if (elD) elD.innerText = String(days).padStart(2, '0');
+        if (elH) elH.innerText = String(hours).padStart(2, '0');
+        if (elM) elM.innerText = String(mins).padStart(2, '0');
+        if (elS) elS.innerText = String(secs).padStart(2, '0');
 
-    function initAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        gainNode = audioCtx.createGain();
-        gainNode.gain.value = 0.3;
-        gainNode.connect(audioCtx.destination);
+        // Target pace calculation
+        const completed = getCompletedCount();
+        const diffDays = Math.max(1, days);
+        const pace = ((108 - completed) / diffDays).toFixed(2);
+        const elPace = document.getElementById("metricPace");
+        if (elPace) elPace.innerText = `${pace} units/day`;
       }
-      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      updateClock();
+      setInterval(updateClock, 1000);
     }
 
-    function playTickSound() {
+    // --- 8. AUDIO SOUND ENGINE ---
+    let audioCtx = null;
+    function playSimpleTick() {
       try {
-        initAudio();
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
-        const g = audioCtx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5 note
-        g.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
-        osc.connect(g);
-        g.connect(audioCtx.destination);
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.1);
+        osc.stop(audioCtx.currentTime + 0.08);
       } catch(e){}
     }
 
-    function toggleAmbientSound() {
-      initAudio();
-      const btn = document.getElementById("soundToggleBtn");
-      if (rainNode) {
-        rainNode.stop();
-        rainNode.disconnect();
-        rainNode = null;
-        btn.innerText = "Play Rain";
+    // --- 9. FOCUS TIMER ENGINE ---
+    let focusDuration = 25 * 60;
+    let focusRemaining = 25 * 60;
+    let focusTimerInterval = null;
+    let isFocusRunning = false;
+
+    function setFocusPreset(mins) {
+      if (isFocusRunning) resetFocusTimer();
+      focusDuration = mins * 60;
+      focusRemaining = focusDuration;
+      updateFocusDigits();
+
+      ['25', '50', '5'].forEach(p => {
+        const btn = document.getElementById(`btnPreset${p}`);
+        if (btn) btn.className = p == mins 
+          ? "px-3.5 py-1.5 rounded-xl font-medium m3-btn-primary" 
+          : "px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-white";
+      });
+    }
+
+    function toggleFocusTimer() {
+      const btn = document.getElementById("focusToggleBtn");
+      const status = document.getElementById("focusStatusLabel");
+
+      if (isFocusRunning) {
+        clearInterval(focusTimerInterval);
+        isFocusRunning = false;
+        if (btn) btn.innerText = "Resume Focus";
+        if (status) status.innerText = "Paused";
       } else {
-        const bufferSize = audioCtx.sampleRate * 2;
-        const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-        const output = buffer.getChannelData(0);
-        let b0 = 0, b1 = 0, b2 = 0;
-        for (let i = 0; i < bufferSize; i++) {
-          const white = Math.random() * 2 - 1;
-          b0 = 0.99 * b0 + white * 0.05;
-          b1 = 0.95 * b1 + white * 0.1;
-          b2 = 0.85 * b2 + white * 0.25;
-          output[i] = (b0 + b1 + b2) * 0.2;
+        isFocusRunning = true;
+        if (btn) btn.innerText = "Pause";
+        if (status) status.innerText = "Flow Active";
+
+        focusTimerInterval = setInterval(() => {
+          if (focusRemaining > 0) {
+            focusRemaining--;
+            updateFocusDigits();
+          } else {
+            clearInterval(focusTimerInterval);
+            isFocusRunning = false;
+            handleFocusFinished();
+          }
+        }, 1000);
+      }
+    }
+
+    function resetFocusTimer() {
+      clearInterval(focusTimerInterval);
+      isFocusRunning = false;
+      focusRemaining = focusDuration;
+      updateFocusDigits();
+      const btn = document.getElementById("focusToggleBtn");
+      const status = document.getElementById("focusStatusLabel");
+      if (btn) btn.innerText = "Start Focus";
+      if (status) status.innerText = "Ready";
+    }
+
+    function updateFocusDigits() {
+      const m = String(Math.floor(focusRemaining / 60)).padStart(2, '0');
+      const s = String(focusRemaining % 60).padStart(2, '0');
+      const elDigits = document.getElementById("focusTimeDigits");
+      if (elDigits) elDigits.innerText = `${m}:${s}`;
+
+      const ring = document.getElementById("timerProgressRing");
+      if (ring) {
+        const progress = (focusDuration - focusRemaining) / focusDuration;
+        const offset = 276.46 * (1 - progress);
+        ring.style.strokeDashoffset = offset;
+      }
+    }
+
+    function handleFocusFinished() {
+      state.focus.sessions++;
+      state.focus.totalMinutes += Math.round(focusDuration / 60);
+      saveState();
+      resetFocusTimer();
+      showToast("Session finished. Cloud synced.", "success");
+      updateFocusSessionUI();
+    }
+
+    function updateFocusSessionUI() {
+      const elS = document.getElementById("metricFocusSessions");
+      const elM = document.getElementById("metricFocusMinutes");
+      if (elS) elS.innerText = state.focus.sessions;
+      if (elM) elM.innerText = `${state.focus.totalMinutes} mins`;
+    }
+
+    // --- 10. NAVIGATION & VIEWS ---
+    function switchTab(viewId) {
+      ['checklist', 'focus', 'others'].forEach(id => {
+        const sec = document.getElementById(`view-${id}`);
+        const btn = document.getElementById(`tabBtn-${id}`);
+        if (sec) sec.classList.toggle("hidden", id !== viewId);
+        if (btn) {
+          btn.className = id === viewId
+            ? "px-3.5 py-1.5 rounded-xl font-semibold m3-btn-primary transition"
+            : "px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-zinc-200 transition";
         }
-        rainNode = audioCtx.createBufferSource();
-        rainNode.buffer = buffer;
-        rainNode.loop = true;
-        rainNode.connect(gainNode);
-        rainNode.start();
-        btn.innerText = "Stop Rain";
+      });
+      if (viewId === 'others' && firebaseDb) {
+        listenToOthersDirectory();
       }
     }
 
-    function setAudioVolume(val) {
-      if (gainNode) gainNode.gain.value = val / 100;
-    }
+    function switchOthersSubTab(subTab) {
+      activeOthersTab = subTab;
+      const btnG = document.getElementById("subTabBtn-global");
+      const btnGrp = document.getElementById("subTabBtn-group");
+      const ctrl = document.getElementById("groupControlStrip");
 
-    // --- 10. ACHIEVEMENTS & QUOTES ---
-    const ACHIEVEMENTS = [
-      { id: "first_blood", title: "First Blood", desc: "Master your 1st chapter", condition: () => countMastered() >= 1 },
-      { id: "quad_squad", title: "10 Club", desc: "Master 10 chapters", condition: () => countMastered() >= 10 },
-      { id: "quarter_master", title: "Quarter Century", desc: "Master 27 chapters (25%)", condition: () => countMastered() >= 27 },
-      { id: "half_way", title: "Halfway Mark", desc: "Master 54 chapters (50%)", condition: () => countMastered() >= 54 },
-      { id: "centurion", title: "Centurion", desc: "Master 100 chapters", condition: () => countMastered() >= 100 },
-      { id: "air1_ready", title: "AIR 1 Immortality", desc: "100% Complete (All 108 Chapters)", condition: () => countMastered() >= 108 },
-      { id: "forest_starter", title: "Green Thumb", desc: "Grow 5 Focus Trees", condition: () => userState.forestTrees >= 5 },
-      { id: "deep_worker", title: "Deep Work Machine", desc: "Grow 20 Focus Trees", condition: () => userState.forestTrees >= 20 },
-      { id: "streak_week", title: "Consistent Machine", desc: "Maintain a 7-day streak", condition: () => userState.streak >= 7 },
-    ];
-
-    function renderAchievements() {
-      const container = document.getElementById("achievementsGrid");
-      container.innerHTML = ACHIEVEMENTS.map(ach => {
-        const unlocked = ach.condition();
-        return `
-          <div class="theme-card border p-4 rounded-xl flex items-center gap-3.5 transition ${unlocked ? 'border-indigo-500/40 bg-indigo-950/20' : 'opacity-50'}">
-            <div class="text-2xl">${unlocked ? '🏆' : '🔒'}</div>
-            <div>
-              <p class="font-bold text-sm ${unlocked ? 'text-indigo-300' : 'text-slate-400'}">${ach.title}</p>
-              <p class="text-xs text-slate-500">${ach.desc}</p>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    const QUOTES = [
-      { t: "Hesitation is defeat.", a: "Isshin Ashina" },
-      { t: "We do not rise to the level of our expectations, we fall to the level of our training.", a: "Archilochus" },
-      { t: "No man is free who is not master of himself.", a: "Epictetus" },
-      { t: "You have power over your mind - not outside events. Realise this, and you will find strength.", a: "Marcus Aurelius" },
-      { t: "It is not death that a man should fear, but he should fear never beginning to live.", a: "Marcus Aurelius" }
-    ];
-
-    function rotateRandomQuote() {
-      const q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
-      document.getElementById("quoteDashboard").innerText = `"${q.t}" — ${q.a}`;
-      document.getElementById("retroQuoteText").innerText = `"${q.t}"`;
-      document.getElementById("retroQuoteAuthor").innerText = `— ${q.a}`;
-    }
-
-    // --- 11. PROFILE MODAL & THEMES ---
-    function openProfileModal() {
-      document.getElementById("inputUsername").value = userState.profile.name;
-      document.getElementById("inputUserId").value = userState.profile.id;
-      document.getElementById("inputIncognito").checked = userState.profile.incognito;
-      document.getElementById("profileModal").classList.remove("hidden");
-    }
-    function closeProfileModal() {
-      document.getElementById("profileModal").classList.add("hidden");
-    }
-    function saveProfile() {
-      userState.profile.name = document.getElementById("inputUsername").value.trim() || "Arpit";
-      userState.profile.id = document.getElementById("inputUserId").value.trim().toUpperCase() || "ARPIT_2027";
-      userState.profile.incognito = document.getElementById("inputIncognito").checked;
-
-      document.getElementById("sidebarUsername").innerText = userState.profile.name;
-      document.getElementById("sidebarUserId").innerText = "#" + userState.profile.id;
-      saveLocal();
-      closeProfileModal();
-    }
-
-    function cycleTheme() {
-      const modes = ['dark', 'amoled', 'light'];
-      const next = modes[(modes.indexOf(userState.theme) + 1) % modes.length];
-      applyTheme(next);
-    }
-
-    function applyTheme(mode) {
-      userState.theme = mode;
-      document.body.classList.remove('amoled-mode', 'light-mode');
-      const btn = document.getElementById("themeBtn");
-      if (mode === 'amoled') {
-        document.body.classList.add('amoled-mode');
-        btn.innerText = "🖤 AMOLED";
-      } else if (mode === 'light') {
-        document.body.classList.add('light-mode');
-        btn.innerText = "☀️ Light";
+      if (subTab === 'global') {
+        btnG.className = "px-3.5 py-1 rounded-xl m3-btn-primary font-medium";
+        btnGrp.className = "px-3.5 py-1 rounded-xl text-zinc-400 hover:text-white";
+        if (ctrl) ctrl.classList.add("hidden");
       } else {
-        btn.innerText = "🌓 Dark";
+        btnGrp.className = "px-3.5 py-1 rounded-xl m3-btn-primary font-medium";
+        btnG.className = "px-3.5 py-1 rounded-xl text-zinc-400 hover:text-white";
+        if (ctrl) ctrl.classList.remove("hidden");
       }
-      localStorage.setItem("topper_cloud_v1", JSON.stringify(userState));
+      if (firebaseDb) {
+        firebaseDb.ref("users").once("value", snap => renderOthersList(snap.val()));
+      }
     }
+
+    function joinGroup() {
+      const input = document.getElementById("groupJoinInput");
+      const code = input ? input.value.trim().toUpperCase() : "";
+      state.user.group = code;
+      const disp = document.getElementById("currentGroupCodeDisplay");
+      if (disp) disp.innerText = code || "None";
+      saveState();
+      switchOthersSubTab('group');
+      showToast(code ? `Joined group ${code}` : "Group cleared", "info");
+    }
+
+    // --- 11. PROFILE DRAWER & ONBOARDING AUTH ---
+    function openProfileDrawer() {
+      document.getElementById("settingNameInput").value = state.user.name || "Arpit";
+      document.getElementById("settingUidInput").value = state.user.uid || "ARPIT_AIR1";
+      document.getElementById("settingPassInput").value = state.user.pass || "";
+      document.getElementById("settingGroupInput").value = state.user.group || "";
+      document.getElementById("settingIncognitoInput").checked = Boolean(state.user.incognito);
+
+      document.getElementById("profileDrawerBackdrop").classList.remove("hidden");
+      document.getElementById("profileDrawer").classList.remove("translate-x-full");
+    }
+
+    function closeProfileDrawer() {
+      document.getElementById("profileDrawerBackdrop").classList.add("hidden");
+      document.getElementById("profileDrawer").classList.add("translate-x-full");
+    }
+
+    function saveProfileSettings() {
+      state.user.name = document.getElementById("settingNameInput").value.trim() || "Arpit";
+      state.user.uid = document.getElementById("settingUidInput").value.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, "") || "ARPIT_AIR1";
+      state.user.pass = document.getElementById("settingPassInput").value;
+      state.user.group = document.getElementById("settingGroupInput").value.trim().toUpperCase();
+      state.user.incognito = document.getElementById("settingIncognitoInput").checked;
+
+      updateUserUI();
+      saveState();
+      closeProfileDrawer();
+      showToast("Profile settings saved and synced to cloud.", "success");
+    }
+
+    function updateUserUI() {
+      const name = state.user.name || "Arpit";
+      const initial = name.charAt(0).toUpperCase();
+
+      const elNav = document.getElementById("navUsername");
+      const elMonogram = document.getElementById("navAvatarMonogram");
+      const elGrp = document.getElementById("currentGroupCodeDisplay");
+
+      if (elNav) elNav.innerText = name;
+      if (elMonogram) elMonogram.innerText = initial;
+      if (elGrp) elGrp.innerText = state.user.group || "None";
+    }
+
+    let onboardMode = 'create';
+    function switchOnboardingMode(mode) {
+      onboardMode = mode;
+      const btnC = document.getElementById("onboardTab-create");
+      const btnL = document.getElementById("onboardTab-login");
+      const nameField = document.getElementById("onboardNameField");
+      const submitBtn = document.getElementById("onboardSubmitBtn");
+      const err = document.getElementById("onboardError");
+      if (err) err.classList.add("hidden");
+
+      if (mode === 'create') {
+        btnC.className = "flex-1 py-1.5 rounded-xl m3-btn-primary font-medium";
+        btnL.className = "flex-1 py-1.5 rounded-xl text-zinc-400 hover:text-white";
+        nameField.classList.remove("hidden");
+        submitBtn.innerText = "Create & Enter";
+      } else {
+        btnL.className = "flex-1 py-1.5 rounded-xl m3-btn-primary font-medium";
+        btnC.className = "flex-1 py-1.5 rounded-xl text-zinc-400 hover:text-white";
+        nameField.classList.add("hidden");
+        submitBtn.innerText = "Log In Existing ID";
+      }
+    }
+
+    function showOnboardError(message) {
+      const err = document.getElementById("onboardError");
+      if (err) {
+        err.innerText = message;
+        err.classList.remove("hidden");
+      }
+    }
+
+    function handleOnboardSubmit(e) {
+      e.preventDefault();
+      const uid = document.getElementById("onboardUidInput").value.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, "");
+      const pass = document.getElementById("onboardPassInput").value;
+      const submitBtn = document.getElementById("onboardSubmitBtn");
+      const err = document.getElementById("onboardError");
+      if (err) err.classList.add("hidden");
+
+      if (!uid || !pass) {
+        showOnboardError("Please fill out all fields.");
+        return;
+      }
+
+      if (!firebaseDb) {
+        showOnboardError("Database offline. Please check your internet connection.");
+        return;
+      }
+
+      // LOGIN MODE
+      if (onboardMode === 'login') {
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Verifying with cloud...";
+
+        firebaseDb.ref("users/" + uid).once("value")
+          .then(snap => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Log In Existing ID";
+
+            if (!snap.exists()) {
+              showOnboardError(`User ID @${uid} was not found. Please create an account or verify spelling.`);
+              return;
+            }
+
+            const val = snap.val();
+            if (val.pass && val.pass !== pass) {
+              showOnboardError("Incorrect password for this User ID.");
+              return;
+            }
+
+            // Successfully authenticated with cloud!
+            state.user.name = val.name || uid;
+            state.user.uid = uid;
+            state.user.pass = pass;
+            state.user.group = val.group || "";
+            state.user.incognito = Boolean(val.incognito);
+            state.user.registered = true;
+            state.chapters = val.chapters || {};
+            state.focus.totalMinutes = val.totalMinutes || 0;
+            state.focus.sessions = val.focusSessions || 0;
+
+            saveState(false);
+            updateUserUI();
+            renderChapters();
+            updateMetricsUI();
+            updateFocusSessionUI();
+            document.getElementById("onboardingModal").classList.add("hidden");
+            showToast(`Welcome back, ${state.user.name}! Cloud sync established.`, "success");
+          })
+          .catch(error => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Log In Existing ID";
+            handleFirebaseError(error);
+            showOnboardError(error.message || "Failed to reach cloud database.");
+          });
+      } 
+      // CREATE MODE (Check if username is taken first!)
+      else {
+        const name = document.getElementById("onboardNameInput").value.trim() || "Arpit";
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Checking availability...";
+
+        firebaseDb.ref("users/" + uid).once("value")
+          .then(snap => {
+            if (snap.exists()) {
+              // USERNAME IS TAKEN!
+              submitBtn.disabled = false;
+              submitBtn.innerText = "Create & Enter";
+              showOnboardError(`User ID @${uid} is already taken. Please choose another ID or switch to "Existing ID" tab to log in.`);
+              return;
+            }
+
+            // USERNAME IS AVAILABLE! Save to Firebase Realtime Database
+            submitBtn.innerText = "Registering in cloud...";
+            const newUserPayload = {
+              name: name,
+              uid: uid,
+              pass: pass,
+              group: "",
+              incognito: false,
+              completed: 0,
+              totalMinutes: 0,
+              focusSessions: 0,
+              chapters: {},
+              createdAt: Date.now(),
+              lastSynced: Date.now()
+            };
+
+            return firebaseDb.ref("users/" + uid).set(newUserPayload)
+              .then(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Create & Enter";
+
+                state.user.name = name;
+                state.user.uid = uid;
+                state.user.pass = pass;
+                state.user.group = "";
+                state.user.registered = true;
+
+                saveState(false);
+                updateUserUI();
+                document.getElementById("onboardingModal").classList.add("hidden");
+                showToast(`Account @${uid} created successfully!`, "success");
+              });
+          })
+          .catch(error => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Create & Enter";
+            handleFirebaseError(error);
+            showOnboardError(error.message || "Could not register in cloud. Check database rules.");
+          });
+      }
+    }
+
+    function checkOnboarding() {
+      if (!state.user.registered) {
+        document.getElementById("onboardingModal").classList.remove("hidden");
+      } else {
+        updateUserUI();
+      }
+    }
+
+    // --- 12. THEMES & MATERIAL YOU PALETTES ---
+    function setPalette(paletteName) {
+      state.user.palette = paletteName;
+      document.documentElement.setAttribute("data-palette", paletteName);
+      saveState(false);
+    }
+
+    function setAppTheme(theme) {
+      state.user.theme = theme;
+      document.documentElement.classList.remove("dark", "amoled");
+      if (theme === "amoled") {
+        document.documentElement.classList.add("dark", "amoled");
+      } else if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+      ['dark', 'amoled', 'light'].forEach(t => {
+        const btn = document.getElementById(`themeBtn-${t}`);
+        if (btn) btn.className = t === theme ? "py-1 rounded-xl m3-btn-primary font-medium" : "py-1 rounded-xl text-zinc-400";
+      });
+      saveState(false);
+    }
+
+    function exportDataJson() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+      const downloadAnchor = document.createElement("a");
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `cbse10_logger_backup_${Date.now()}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function showToast(msg, type = "info") {
+      const toast = document.getElementById("toastNotification");
+      if (!toast) return;
+      toast.innerText = msg;
+      toast.style.borderColor = type === 'success' ? '#10b981' : 'var(--md-outline)';
+      toast.style.color = type === 'success' ? '#34d399' : 'var(--md-text-primary)';
+      toast.classList.remove("translate-y-12", "opacity-0");
+      setTimeout(() => {
+        toast.classList.add("translate-y-12", "opacity-0");
+      }, 3200);
+    }
+
+    // --- 13. INITIALIZATION ON DOM READY ---
+    window.addEventListener("DOMContentLoaded", () => {
+      loadLocalState();
+      setPalette(state.user.palette || "lavender");
+      setAppTheme(state.user.theme || "dark");
+      renderSubjectFilterPills();
+      renderChapters();
+      updateMetricsUI();
+      updateFocusSessionUI();
+      initCountdownTicker();
+      initFirebaseTelemetry();
+      checkOnboarding();
+    });
   </script>
 </body>
 </html>
